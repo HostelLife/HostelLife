@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Card from "./Card";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+
+// import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -8,15 +9,11 @@ import { useParams } from "react-router-dom";
 import { SearchBar } from "./SeachBar";
 
 export default function ActivitiesPage() {
-  const [events, setEvents] = useState([]);
-
-  let { category } = useParams();
-
   useEffect(() => {
-    const url = `http://localhost:5000/events?category=${category}`;
+    const url = `http://localhost:3000/events`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setEvents(data))
+      .then((data) => console.log(data))
       .catch((error) => {
         console.error(error);
       });
@@ -34,31 +31,51 @@ export default function ActivitiesPage() {
                 <h5 className="card-title text-center">
                   Welcome to daily Activities
                 </h5>
-                <a href="">
-                  <button className="btn btn-outline-primary chat-btn">
-                    <h6>Visit Places</h6>{" "}
-                  </button>
-                </a>
-                <a href="">
-                  <button className="btn btn-outline-primary chat-btn">
-                    <h6>Hiking</h6>{" "}
-                  </button>
-                </a>
-                <a href="">
-                  <button className="btn btn-outline-primary chat-btn">
-                    <h6>Biking</h6>{" "}
-                  </button>
-                </a>
-                <a href="">
-                  <button className="btn btn-outline-primary chat-btn">
-                    <h6>Shopping</h6>{" "}
-                  </button>
-                </a>
-                <div>
-                  {events.map((event) => {
-                    return <Card event={event} />;
-                  })}
-                </div>
+
+                <Link
+                  to="/events/visit_places"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Visit Places</h6>{" "}
+                </Link>
+
+                <Link
+                  to="/events/beach"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Beach</h6>{" "}
+                </Link>
+
+                <Link
+                  to="/events/hiking"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Hiking</h6>{" "}
+                </Link>
+                <Link
+                  to="/events/biking"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Biking</h6>{" "}
+                </Link>
+                <Link
+                  to="/events/shopping"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Shopping</h6>{" "}
+                </Link>
+                <Link
+                  to="/events/food"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Food</h6>{" "}
+                </Link>
+                <Link
+                  to="/events/party"
+                  className="btn btn-outline-primary chat-btn"
+                >
+                  <h6>Party</h6>{" "}
+                </Link>
               </div>
             </div>
           </div>
