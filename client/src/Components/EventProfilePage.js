@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+//import CardsProfile from "./CardsProfile";
+import { useParams } from "react-router-dom";
+import Card from "./Card";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export default function EventProfilePage() {
+  const [events, setEvents] = useState([]);
+
+  let { category } = useParams();
+
+  useEffect(() => {
+    const url = `http://localhost:3000/events?category=${category}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setEvents(data))
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [category]);
   return (
     <>
       <div className="container">
@@ -11,12 +27,15 @@ export default function EventProfilePage() {
           <div className="col-sm">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title text-center">Sagrada Familia</h5>
+                {events.map((event) => {
+                  return <Card event={event} />;
+                })}
+                {/* <h5 className="card-title text-center">Sagrada Familia</h5>
                 <img
                   className="img-thumbnail event-img"
-                  src="https://s03.s3c.es/imag/_v0/770x420/0/f/2/sagrada-familia-dreamstim.jpg"
+                  src="/sagradaFamilia.jpg"
                   mb-2
-                  alt="sageada-familia"
+                  alt="sagrada-familia"
                 />
                 <h6 className="my-3 border bg-success text-center">
                   23/12/2021
@@ -36,23 +55,22 @@ export default function EventProfilePage() {
                   </a>
                   <a href="" className="btn btn-outline-danger btn-sm mx-3">
                     <FontAwesomeIcon icon={faHeart} />
-                  </a>
-                </div>
+                  </a> */}
+              </div>
 
-                <img
-                  className="google-map-img my-3"
-                  src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
-                  mb-2
-                  alt="map"
-                />
+              <img
+                className="google-map-img my-3"
+                src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
+                mb-2
+                alt="map"
+              />
 
-                <div>
-                  <a href="">
-                    <button className="btn btn-outline-primary chat-btn">
-                      <h6>Chat / Make Friends</h6>{" "}
-                    </button>
-                  </a>
-                </div>
+              <div>
+                {/* <a href="">
+                  <button className="btn btn-outline-primary chat-btn">
+                    <h6>Chat / Make Friends</h6>{" "}
+                  </button> */}
+                {/* </a> */}
               </div>
             </div>
           </div>

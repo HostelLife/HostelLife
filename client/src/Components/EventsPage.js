@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ export default function EventsPage() {
       .catch((error) => {
         console.error(error);
       });
-  }, [events, category]);
+  }, [category]);
 
   return (
     <>
@@ -39,18 +39,15 @@ export default function EventsPage() {
                   Select places to visit and meet new people who are visiting
                   similar places...
                 </p>
-                <Link
+
+                {/* <Link
                   to="/events/visit_places/sagrada_familia"
                   className="btn btn-outline-primary chat-btn"
-                ></Link>
-                <Link
-                  to="/events/visit_places/beach"
-                  className="btn btn-outline-primary chat-btn"
-                ></Link>
-                <Link
+                ></Link> */}
+                {/* <Link
                   to="/events/visit_places/party"
                   className="btn btn-outline-primary chat-btn"
-                ></Link>
+                ></Link> */}
 
                 {events.map((event) => {
                   return <Card event={event} />;

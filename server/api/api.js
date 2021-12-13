@@ -7,7 +7,7 @@ const api = () => {
     const newEvent = request.body;
     console.log(newEvent);
     const result = await pool.query(
-      `INSERT INTO events (title, description, startTime, location, category) 
+      `INSERT INTO events (title, description, startTime, location, category)
         VALUES ($1, $2, $3, $4, $5) RETURNING id`,
       [
         newEvent.title,
@@ -35,7 +35,7 @@ const api = () => {
         const query = `SELECT * FROM events WHERE category LIKE '${lowerCasedCategory}'`;
         console.log(query);
         const result = await pool.query(query); // show searched events
-        console.log(result);
+
         response.status(200).send(result.rows);
       }
     } catch (err) {

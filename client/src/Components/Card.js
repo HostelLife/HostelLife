@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Card({ event }) {
-  const { title, starttime } = event;
+  const { id, title, starttime } = event;
+  // const reDirectUrl = `/events/visit_places/${title}`;
   return (
     <div>
-      <h6 className="my-3 border bg-success text-center">
+      <Link to={`/event/${id}`} className="btn btn-outline-primary chat-btn">
         {title} <span className="ml-3">{starttime}</span>{" "}
-      </h6>
+      </Link>
     </div>
   );
 }
