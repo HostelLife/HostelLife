@@ -43,10 +43,22 @@ const api = () => {
       response.sendStatus(500);
     }
   };
+  const getEventById = async (request, response) => {
+    const eventId = request.params.eventId;
+    const event = await pool.query(
+      `select 
+        *
+        from events c
+        where c.id = $1 `,
+      [eventId]
+    );
+    return response.status(200).json(event.rows);
+  };
 
   return {
     postNewEvent,
     getEvents,
+    getEventById,
   };
 };
 
