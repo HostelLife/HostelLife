@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Card from "./Card";
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import CardsProfile from "./CardProfile";
 
 export default function EventProfilePage() {
   const [events, setEvents] = useState([]);
 
-  let { category } = useParams();
+  let { id } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:3000/events?category=${category}`;
+    const url = `http://localhost:5000/events/${id}`;
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setEvents(data))
       .catch((error) => {
         console.error(error);
       });
-  }, [category]);
+  }, [id]);
+
   return (
     <>
       <div className="container">
@@ -27,16 +26,17 @@ export default function EventProfilePage() {
             <div className="card">
               <div className="card-body">
                 {events.map((event) => {
-                  return <Card event={event} />;
+                  return <CardsProfile event={event} />;
                 })}
+
                 {/* <h5 className="card-title text-center">Sagrada Familia</h5>
                 <img
                   className="img-thumbnail event-img"
-                  src="/sagradaFamilia.jpg"
+                  src="public/images/sagradaFamilia.jpg"
                   mb-2
                   alt="sagrada-familia"
-                />
-                <h6 className="my-3 border bg-success text-center">
+                /> */}
+                {/*  <h6 className="my-3 border bg-success text-center">
                   23/12/2021
                 </h6>
                 <p className="card-text border text-center">
