@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -9,16 +9,6 @@ import { Link } from "react-router-dom";
 import { SearchBar } from "./SeachBar";
 
 export default function ActivitiesPage() {
-  useEffect(() => {
-    const url = `http://localhost:3000/events`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
   return (
     <>
       <div className="container">

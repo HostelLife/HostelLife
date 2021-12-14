@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import { useParams } from "react-router-dom";
-//import { Link } from "react-router-dom";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch} from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +13,7 @@ export default function EventsPage() {
   let { category } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:3000/events?category=${category}`;
+    const url = `http://localhost:5000/events?category=${category}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setEvents(data))
@@ -39,19 +38,17 @@ export default function EventsPage() {
                   Select places to visit and meet new people who are visiting
                   similar places...
                 </p>
-
-                {/* <Link
-                  to="/events/visit_places/sagrada_familia"
-                  className="btn btn-outline-primary chat-btn"
-                ></Link> */}
-                {/* <Link
-                  to="/events/visit_places/party"
-                  className="btn btn-outline-primary chat-btn"
-                ></Link> */}
-
-                {events.map((event) => {
-                  return <Card event={event} />;
-                })}
+                {/* <img
+                  className="google-map-img my-1"
+                  src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
+                  mb-2
+                  alt="map"
+                /> */}
+                <div>
+                  {events.map((event) => {
+                    return <Card event={event} />;
+                  })}
+                </div>
               </div>
             </div>
           </div>

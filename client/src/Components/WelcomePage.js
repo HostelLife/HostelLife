@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   useEffect(() => {
-    const url = `http://localhost:3000`;
+    const url = ``;
     fetch(url)
       .then((res) => res.json())
       .then((data) => console.log(data))

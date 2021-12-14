@@ -7,13 +7,14 @@ const api = () => {
     const newEvent = request.body;
     console.log(newEvent);
     const result = await pool.query(
-      `INSERT INTO events (title, description, startTime, location, category)
-        VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+      `INSERT INTO events (title, description, startTime, location, imageFileName, category)
+        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
       [
         newEvent.title,
         newEvent.description,
         newEvent.startTime,
         newEvent.location,
+        newEvent.imageFileName,
         newEvent.category,
       ]
     );

@@ -1,14 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const PORT = 3000;
-
-app.use(cors());
+const PORT = 5000;
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 // PROJECT IMPORTS
+
+app.use(cors());
+app.use(express.json());
+
 const webApi = require("./api.js");
 const api = webApi();
 
