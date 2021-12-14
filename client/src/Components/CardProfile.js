@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
+// import { Link } from "react-router-dom";
+// import Card from "react-bootstrap/Card";
 
 function CardsProfile({ event }) {
   const { title, description, imagefilename, starttime } = event;
