@@ -57,13 +57,6 @@ export default function EventProfilePage() {
                   </a> */}
               </div>
 
-              <img
-                className="google-map-img my-3"
-                src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
-                mb-2
-                alt="map"
-              />
-
               <div>
                 {/* <a href="">
                   <button className="btn btn-outline-primary chat-btn">
