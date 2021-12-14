@@ -13,6 +13,7 @@ const webApi = require("./api.js");
 const api = webApi();
 
 app.get("/events", api.getEvents);
+app.get("/events/:eventId", api.getEventById);
 //post new event
 app.post("/events", api.postNewEvent);
 
