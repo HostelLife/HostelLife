@@ -27,9 +27,8 @@ export default function EventsPage() {
       <div className="container">
         <div className="row">
           <div className="col-sm">
-            <SearchBar />
-
             <div className="card">
+              <SearchBar />
               <div className="card-body">
                 <h5 className="card-title text-center">
                   Visit Beautiful Places

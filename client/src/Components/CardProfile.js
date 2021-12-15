@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "react-bootstrap/Image";
 // import { Link } from "react-router-dom";
 // import Card from "react-bootstrap/Card";
 
@@ -8,7 +9,8 @@ function CardsProfile({ event }) {
   return (
     <div>
       <div>
-        <img src={`/images/${imagefilename}`} alt="" width={"300px"} />
+        <Image src={`/images/${imagefilename}`} fluid />
+        {/* <img src={`/images/${imagefilename}`} alt="" width={"300px"} /> */}
       </div>
       <div> {title}</div>
       <div>{starttime}</div>
