@@ -9,6 +9,7 @@ import { SearchBar } from "./SeachBar";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
+  // const [searchTerm, setSearchTerm] = useState([]);
 
   let { category } = useParams();
 
@@ -22,12 +23,22 @@ export default function EventsPage() {
       });
   }, [category]);
 
+  // const seearchFunction = (rows) => {
+  //   return rows.filter(
+  //     (row) => row.category.toLowerCase().indexOf(searchTerm) > -1
+  //   );
+  // };
+
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-sm">
-            <SearchBar />
+            <SearchBar
+              // searchTerm={seearchFunction(searchTerm)}
+              setSearchTerm={setSearchTerm}
+              events={events}
+            />
 
             <div className="card">
               <div className="card-body">
