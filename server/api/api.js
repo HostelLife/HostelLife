@@ -44,6 +44,7 @@ const api = () => {
       response.sendStatus(500);
     }
   };
+
   const getEventById = async (request, response) => {
     const eventId = request.params.eventId;
     const event = await pool.query(
