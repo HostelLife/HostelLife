@@ -1,7 +1,5 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import { ListGroup } from "react-bootstrap";
-import { ListGroupItem } from "react-bootstrap";
+
 // import { Link } from "react-router-dom";
 
 function CardsProfile({ event }) {
@@ -9,28 +7,8 @@ function CardsProfile({ event }) {
 
   return (
     <div>
-      <Card style={{ width: "100%" }}>
-        <Card.Img variant="top" src={`/images/${imagefilename}`} />
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Title>{starttime}</Card.Title>
-          <Card.Text>{description}</Card.Text>
-        </Card.Body>
-        <Card.Body>
-          <Card.Link href="#">Map</Card.Link>
-
-          <div>
-            <img
-              className="google-map-img my-3"
-              src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
-              mb-2
-              alt="map"
-            />
-          </div>
-        </Card.Body>
-      </Card>
-      {/* <div>
-        <img src={`/images/${imagefilename}`} alt="" />
+      <Card.Body>
+  
       </div>
       <div> {title}</div>
       <div>{starttime}</div>
