@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export function SearchBar({ searchTerm, setSearchTerm }) {
+export function SearchBar() {
   return (
     <div>
       <div className="row height d-flex justify-content-center align-items-center my-3">
@@ -12,8 +12,8 @@ export function SearchBar({ searchTerm, setSearchTerm }) {
             <div className="d-flex justify-content-center align-items-center my-3">
               <input
                 type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                // value={searchTerm}
+                // onChange={onChange}
                 className="form-control form-input mr-3"
                 placeholder="Search anything..."
               />
