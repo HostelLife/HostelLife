@@ -1,16 +1,14 @@
 import React from "react";
-import Image from "react-bootstrap/Image";
+
 // import { Link } from "react-router-dom";
-// import Card from "react-bootstrap/Card";
 
 function CardsProfile({ event }) {
   const { title, description, imagefilename, starttime } = event;
 
   return (
     <div>
-      <div>
-        <Image src={`/images/${imagefilename}`} fluid />
-        {/* <img src={`/images/${imagefilename}`} alt="" width={"300px"} /> */}
+      <Card.Body>
+  
       </div>
       <div> {title}</div>
       <div>{starttime}</div>
@@ -22,7 +20,7 @@ function CardsProfile({ event }) {
           mb-2
           alt="map"
         />
-      </div>
+      </div> */}
       {/* <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={`/images/${imagefilename}`} />
           <Card.Body>
