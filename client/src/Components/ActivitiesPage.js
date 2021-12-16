@@ -20,7 +20,7 @@ export default function ActivitiesPage() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [events]);
 
   return (
     <>
