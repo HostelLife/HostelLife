@@ -1,11 +1,5 @@
 import React from "react";
-
-// import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSearch} from '@fortawesome/free-solid-svg-icons';
-
 import { SearchBar } from "./SeachBar";
 
 export default function ActivitiesPage() {
@@ -14,10 +8,9 @@ export default function ActivitiesPage() {
       <div className="container">
         <div className="row">
           <div className="col-sm">
-            <SearchBar />
-
             <div className="card">
               <div className="card-body">
+                <SearchBar />
                 <h5 className="card-title text-center">
                   Welcome to daily Activities
                 </h5>
