@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
-
-
-const getLocalStorageEmail=()=>{    //NOT SURE ABOUT THE FUNCTION
+const getLocalStorageEmail = () => {
+  //NOT SURE ABOUT THE FUNCTION
   const userInfoResult = localStorage.getItem("userInfoKey");
-  const userInfoObj = JSON.parse(userInfoResult)
+  const userInfoObj = JSON.parse(userInfoResult);
 
-  console.log(typeof(userInfoObj));
-  const {email, name } = userInfoObj;
+  console.log(typeof userInfoObj);
+  const { email, name } = userInfoObj;
   console.log(email);
 
-  if(email == '' && name === ''){
+  if (email == "" && name === "") {
     console.log("access granted");
-
-  }else{
+  } else {
     console.log("Not Authorised! ");
   }
-}
- //getLocalStorageData()
+};
+//getLocalStorageData()
 
 export default function WelcomePage() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -28,13 +26,12 @@ export default function WelcomePage() {
 
   const userInfo = {
     email: userEmail,
-    name: userName
-  }
+    name: userName,
+  };
 
   localStorage.setItem("userInfoKey", JSON.stringify(userInfo));
 
   //localStorage.setItem("name", userName)
-
 
   return (
     <>
@@ -48,11 +45,10 @@ export default function WelcomePage() {
                   Make new friends while travelling...
                 </h5>
                 <Link to="/events" className="btn btn-outline-primary chat-btn">
-                  <h6 type="button" onClick={getLocalStorageEmail}>Let's Go!</h6>{" "}
+                  <h6 type="button" onClick={getLocalStorageEmail}>
+                    Let's Go!
+                  </h6>{" "}
                 </Link>
-
-                  
-
               </div>
             </div>
           </div>
