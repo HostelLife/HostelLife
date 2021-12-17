@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { SearchBar } from "./SeachBar";
+import { Link } from "react-router-dom";
 import CardsProfile from "./CardProfile";
 
 export default function EventProfilePage() {
@@ -19,55 +23,74 @@ export default function EventProfilePage() {
   }, [id]);
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <div className="card">
-              <div className="card-body">
-                {events.map((event) => {
-                  return <CardsProfile event={event} />;
-                })}
-
-                {/* <h5 className="card-title text-center">Sagrada Familia</h5>
-                <img
-                  className="img-thumbnail event-img"
-                  src="public/images/sagradaFamilia.jpg"
-                  mb-2
-                  alt="sagrada-familia"
-                /> */}
-                {/*  <h6 className="my-3 border bg-success text-center">
-                  23/12/2021
-                </h6>
-                <p className="card-text border text-center">
-                  Explore Antoni Gaudi's unfinished masterpiece, the Sagrada
-                  Familia. Gaudi's iconic work - its impressive facades and
-                  interior - is one of Spain's most visited monuments...
-                </p>
-
-                <div className="d-flex flex-row justify-content-center">
-                  <a href="" className="btn btn-outline-success btn-sm mx-1">
-                    <h6>Read More</h6>
-                  </a>
-                  <a href="" className="btn btn-outline-success btn-sm mx-1">
-                    <h6>Join Now</h6>
-                  </a>
-                  <a href="" className="btn btn-outline-danger btn-sm mx-3">
-                    <FontAwesomeIcon icon={faHeart} />
-                  </a> */}
-              </div>
-
-              <div>
-                {/* <a href="">
-                  <button className="btn btn-outline-primary chat-btn">
-                    <h6>Chat / Make Friends</h6>{" "}
-                  </button> */}
-                {/* </a> */}
-              </div>
-            </div>
-          </div>
+    <Card className="text-center bg-dark bg-gradient text-light p-5 mt-5">
+      <Card.Body>
+        <SearchBar />
+        <Card.Title>
+          {" "}
+          Select places to visit and meet new people who are visiting similar
+          places...
+        </Card.Title>
+        <Card.Text className="mt-3">
+          With supporting text below as a natural lead-in to additional content.
+        </Card.Text>
+        <div className="d-grid gap-2 d-flex flex-column bd-highlight mb-3">
+          {events.map((event) => {
+            return <CardsProfile event={event} />;
+          })}
         </div>
-      </div>
-    </>
+      </Card.Body>
+    </Card>
+
+    // <>
+    //   <div className="container">
+    //     <div className="row">
+    //       <div className="col-sm">
+    //         <div className="card">
+    //           <div className="card-body">
+    //             {events.map((event) => {
+    //               return <CardsProfile event={event} />;
+    //             })}
+
+    //             {/* <h5 className="card-title text-center">Sagrada Familia</h5>
+    //             <img
+    //               className="img-thumbnail event-img"
+    //               src="public/images/sagradaFamilia.jpg"
+    //               mb-2
+    //               alt="sagrada-familia"
+    //             /> */}
+    //             {/*  <h6 className="my-3 border bg-success text-center">
+    //               23/12/2021
+    //             </h6>
+    //             <p className="card-text border text-center">
+    //               Explore Antoni Gaudi's unfinished masterpiece, the Sagrada
+    //               Familia. Gaudi's iconic work - its impressive facades and
+    //               interior - is one of Spain's most visited monuments...
+    //             </p>
+
+    //             <div className="d-flex flex-row justify-content-center">
+    //               <a href="" className="btn btn-outline-success btn-sm mx-1">
+    //                 <h6>Read More</h6>
+    //               </a>
+    //               <a href="" className="btn btn-outline-success btn-sm mx-1">
+    //                 <h6>Join Now</h6>
+    //               </a>
+    //               <a href="" className="btn btn-outline-danger btn-sm mx-3">
+    //                 <FontAwesomeIcon icon={faHeart} />
+    //               </a> */}
+    //           </div>
+
+    //           <div>
+    //             {/* <a href="">
+    //               <button className="btn btn-outline-primary chat-btn">
+    //                 <h6>Chat / Make Friends</h6>{" "}
+    //               </button> */}
+    //             {/* </a> */}
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </>
   );
 }
