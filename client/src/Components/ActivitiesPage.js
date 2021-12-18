@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { SearchBar } from "./SeachBar";
 import CategoryCard from "./CategoryCard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -22,25 +18,19 @@ const activities = [
 export default function ActivitiesPage() {
   return (
     <div className="text-center">
-      {/* <SearchBar /> */}
       <h1> Welcome to daily Activities</h1>
-      <p className="mt-3">
+      <p>
         With supporting text below as a natural lead-in to additional content.
       </p>
       <Container className="ActivityPage">
         <Row>
           {activities.map((activity) => (
-            <Col xs={6}>
+            <Col xs={6} className="ActivitiesPage__card">
               <CategoryCard urlSlug={activity.urlSlug} label={activity.label} />
             </Col>
           ))}
         </Row>
       </Container>
-      {/* <div className="d-grid gap-2 d-flex flex-column bd-highlight mb-3">
-          {activities.map((activity) => (
-            <CategoryCard urlSlug={activity.urlSlug} label={activity.label} />
-          ))}
-        </div> */}
     </div>
   );
 }

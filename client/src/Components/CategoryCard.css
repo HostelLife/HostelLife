@@ -1,6 +1,7 @@
 .CategoryCard {
-  height: 5rem;
+  height: 9rem;
   width: 100%;
-  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.07);
+  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
   border-radius: 22px;
+  background-color: #fff;
 }
