@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import EventPageCard from "./EventPageCard";
 import { useParams } from "react-router-dom";
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSearch} from '@fortawesome/free-solid-svg-icons';
-
 import { SearchBar } from "./SeachBar";
+import Button from "react-bootstrap/esm/Button";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
-  // const [searchTerm, setSearchTerm] = useState("");
 
   let { category } = useParams();
 
@@ -23,50 +19,18 @@ export default function EventsPage() {
       });
   }, [category]);
 
-  // const onChange = (e) => setSearchTerm(e.target.value);
-
-  // const eventSearch = events.filter((item) => {
-  //   return Object.keys(item).some((key) =>
-  //     item[key].toString
-  //       .toLowerCase()
-  //       .includes(searchTerm.toString().toLocaleLowerCase())
-  //   );
-  // });
-
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <SearchBar
-            // searchTerm={searchTerm}
-            // events={events}
-            // onChange={onChange}
-            />
-
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title text-center">
-                  Visit Beautiful Places
-                </h5>
-                <p className="card-text border text-center">
-                  Select places to visit and meet new people who are visiting
-                  similar places...
-                </p>
-                {/* <img
-                  className="google-map-img my-1"
-                  src="https://comunicandolonuevo.files.wordpress.com/2015/01/google-maps-new-interface1.jpg"
-                  mb-2
-                  alt="map"
-                /> */}
-                <div>
-                  {events.map((event) => {
-                    return <Card event={event} />;
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
+      <div>
+        <h5 className=" text-center pt-5">Visit Beautiful Places</h5>
+        <p className=" text-center">
+          Select places to visit and meet new people who are visiting similar
+          places...
+        </p>
+        <div>
+          {events.map((event) => {
+            return <EventPageCard event={event} />;
+          })}
         </div>
       </div>
     </>

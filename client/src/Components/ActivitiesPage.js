@@ -9,10 +9,10 @@ const activities = [
   { label: "Visit Places", urlSlug: "visit_places" },
   { label: "Beach", urlSlug: "beach" },
   { label: "Hiking", urlSlug: "hiking" },
-  { label: "Beach", urlSlug: "biking" },
-  { label: "Beach", urlSlug: "food" },
-  { label: "Beach", urlSlug: "shopping" },
-  { label: "Beach", urlSlug: "party" },
+  { label: "Biking", urlSlug: "biking" },
+  { label: "Shopping", urlSlug: "shopping" },
+  { label: "Food", urlSlug: "food" },
+  { label: "Party", urlSlug: "party" },
 ];
 
 export default function ActivitiesPage() {

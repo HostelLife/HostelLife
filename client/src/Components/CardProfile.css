@@ -1,0 +1,36 @@
+.CardProfile_button {
+  background: rgb(202, 246, 230);
+  background: linear-gradient(
+    90deg,
+    rgba(29, 205, 106, 0.3757878151260504) 78%,
+    rgba(0, 255, 141, 0.577468487394958) 100%
+  );
+  width: 100px;
+  border: none;
+  color: #ffffff;
+  margin-top: 2rem;
+}
+.CardProfile_container {
+  border-radius: 25px 25px 10px 10px;
+  margin-top: -4rem;
+  border: none;
+  padding: 1rem;
+  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
+  border-radius: 22px;
+  background-color: #fff;
+}
+.CardProfile_image {
+  width: 100%;
+  height: 30rem;
+  padding: 1.3rem;
+  object-fit: cover;
+}
+.CardProfile_AccesButton {
+  background: rgb(83, 232, 139);
+  background: linear-gradient(
+    90deg,
+    rgba(83, 232, 139, 0) 100%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  color: black;
+}

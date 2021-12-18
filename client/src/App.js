@@ -4,6 +4,7 @@ import EventsPage from "./Components/EventsPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ActivitiesPage from "./Components/ActivitiesPage";
 import WelcomePage from "./Components/WelcomePage";
+import ChatPage from "./Components/ChatPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/events" element={<ActivitiesPage />} />
           <Route exact path="/events/:category" element={<EventsPage />} />
           <Route exact path="/event/:id" element={<EventProfilePage />} />
+          <Route exact path="/event/:id" element={<ChatPage />} />
         </Routes>
       </BrowserRouter>
     </>

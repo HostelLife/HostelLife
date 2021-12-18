@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
+import CardChat from "./CardChat";
 import { useParams } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
-import { SearchBar } from "./SeachBar";
-import { Link } from "react-router-dom";
-import CardsProfile from "./CardProfile";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-
-export default function EventProfilePage() {
+function ChatPage() {
   const [events, setEvents] = useState([]);
 
   let { id } = useParams();
@@ -24,12 +17,13 @@ export default function EventProfilePage() {
         console.error(error);
       });
   }, [id]);
-
   return (
     <div>
       {events.map((event) => {
-        return <CardsProfile event={event} />;
+        return <CardChat event={event} />;
       })}
     </div>
   );
 }
+
+export default ChatPage;
