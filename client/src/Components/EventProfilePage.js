@@ -6,6 +6,10 @@ import { SearchBar } from "./SeachBar";
 import { Link } from "react-router-dom";
 import CardsProfile from "./CardProfile";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import GoogleMapFunc from "./Map/GoogleMapFunc";
+
 export default function EventProfilePage() {
   const [events, setEvents] = useState([]);
 
@@ -40,57 +44,7 @@ export default function EventProfilePage() {
           })}
         </div>
       </Card.Body>
+      <GoogleMapFunc />
     </Card>
-
-    // <>
-    //   <div className="container">
-    //     <div className="row">
-    //       <div className="col-sm">
-    //         <div className="card">
-    //           <div className="card-body">
-    //             {events.map((event) => {
-    //               return <CardsProfile event={event} />;
-    //             })}
-
-    //             {/* <h5 className="card-title text-center">Sagrada Familia</h5>
-    //             <img
-    //               className="img-thumbnail event-img"
-    //               src="public/images/sagradaFamilia.jpg"
-    //               mb-2
-    //               alt="sagrada-familia"
-    //             /> */}
-    //             {/*  <h6 className="my-3 border bg-success text-center">
-    //               23/12/2021
-    //             </h6>
-    //             <p className="card-text border text-center">
-    //               Explore Antoni Gaudi's unfinished masterpiece, the Sagrada
-    //               Familia. Gaudi's iconic work - its impressive facades and
-    //               interior - is one of Spain's most visited monuments...
-    //             </p>
-
-    //             <div className="d-flex flex-row justify-content-center">
-    //               <a href="" className="btn btn-outline-success btn-sm mx-1">
-    //                 <h6>Read More</h6>
-    //               </a>
-    //               <a href="" className="btn btn-outline-success btn-sm mx-1">
-    //                 <h6>Join Now</h6>
-    //               </a>
-    //               <a href="" className="btn btn-outline-danger btn-sm mx-3">
-    //                 <FontAwesomeIcon icon={faHeart} />
-    //               </a> */}
-    //           </div>
-
-    //           <div>
-    //             {/* <a href="">
-    //               <button className="btn btn-outline-primary chat-btn">
-    //                 <h6>Chat / Make Friends</h6>{" "}
-    //               </button> */}
-    //             {/* </a> */}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
   );
 }
