@@ -1,3 +1,6 @@
 .ActivityPage {
   width: 20rem;
 }
+.ActivitiesPage__card {
+  padding: 1rem;
+}
