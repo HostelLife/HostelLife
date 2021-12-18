@@ -11,7 +11,10 @@ function EventPageCard({ event }) {
   // const reDirectUrl = `/events/visit_places/${title}`;
   return (
     <div>
-      <Link to={`/event/${id}`}>
+      <Link
+        to={`/event/${id}`}
+        style={{ textDecoration: "none", color: "#000" }}
+      >
         <Container className="d-flex flex-row EventPageCard">
           <Card.Img
             className="EventPageCard_image"
@@ -20,8 +23,10 @@ function EventPageCard({ event }) {
           />
           <Row>
             <Col className="EventPageCard_title">
-              <Card.Title>{title}</Card.Title>
-              <Card.Title className="text-muted fs-5">{starttime}</Card.Title>
+              <h4>{title}</h4>
+              <p className="text-muted fs-5" style={{ fontSize: "14px" }}>
+                {starttime}
+              </p>
             </Col>
           </Row>
         </Container>

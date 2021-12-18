@@ -36,12 +36,18 @@ export default function WelcomePage() {
   //localStorage.setItem("name", userName)
 
   return (
-    <Card className="text-center bg-dark bg-gradient text-light p-5 mt-5">
-      <Card.Body>
-        <Card.Title> Make new friends while travelling...</Card.Title>
-        <Card.Text className="mt-5">
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text>
+    <Card
+      style={{ height: "100%" }}
+      className="text-center bg-light bg-gradient text-light p-5 mt-5"
+    >
+      <Card.Body style={{ height: "100%" }}>
+        <img alt="" src="images\logo.png" style={{ width: "20rem" }} />
+
+        <Card.Title className="text-dark mt-5">
+          {" "}
+          Make new friends while travelling...
+        </Card.Title>
+
         <Link to="/events">
           <OurButton content={"Let's Go!"} />
         </Link>
