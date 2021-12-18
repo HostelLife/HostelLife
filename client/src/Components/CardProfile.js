@@ -4,17 +4,24 @@ import GoogleMapFunc from "./Map/GoogleMapFunc";
 import Button from "react-bootstrap/Button";
 import "./CardProfile.css";
 import OurButton from "./OurButton";
-// import { Link } from "react-router-dom";
+import BackButton from "./BackButton";
+import { Link } from "react-router-dom";
 
 function CardsProfile({ event }) {
-  const { title, description, imagefilename, starttime } = event;
+  const { title, description, imagefilename, starttime, latitude, longitude } =
+    event;
   const position = {
-    lat: 41.4060244,
-    lng: 2.1684095,
+    lat: latitude,
+    lng: longitude,
   };
+
   return (
     <div>
       <Card style={{ width: "100%" }}>
+        <Link to={`/events/${title}`}>
+          <BackButton />
+        </Link>
+
         <Card.Img
           variant="top"
           src={`/images/${imagefilename}`}
