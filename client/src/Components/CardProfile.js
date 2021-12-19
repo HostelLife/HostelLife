@@ -6,6 +6,8 @@ import "./CardProfile.css";
 import OurButton from "./OurButton";
 import BackButton from "./BackButton";
 import { Link } from "react-router-dom";
+import LocationLogo from "./LocationLogo";
+import Heart from "./Heart";
 
 function CardsProfile({ event }) {
   const { title, description, imagefilename, starttime, latitude, longitude } =
@@ -30,9 +32,14 @@ function CardsProfile({ event }) {
 
         <Card.Body className="text-dark">
           <Card className="CardProfile_container">
-            <Button className="CardProfile_button" variant="success">
-              Must See
-            </Button>
+            <div className="d-flex justify-content-between d-block CardProfile_logos">
+              <Button className="CardProfile_button mb-5" variant="success">
+                Must See
+              </Button>
+
+              <LocationLogo className="CardProfile_locationLogo" />
+              <Heart />
+            </div>
             <Card.Title>{title}</Card.Title>
             <Card.Title>{starttime}</Card.Title>
 

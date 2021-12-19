@@ -8,7 +8,6 @@
   width: 100px;
   border: none;
   color: #ffffff;
-  margin-top: 2rem;
 }
 .CardProfile_container {
   border-radius: 25px 25px 10px 10px;
@@ -33,4 +32,15 @@
     rgba(21, 190, 119, 1) 100%
   );
   color: black;
+}
+.CardProfile_logos {
+  margin-top: 2rem;
+}
+.CardProfile_locationLogo {
+  height: 5rem;
+  width: 5rem;
+  background-color: rgba(249, 168, 77, 0.2);
+  opacity: 0.3;
+  border-radius: 25px;
+  padding: 0.4rem;
 }
