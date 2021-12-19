@@ -5,8 +5,8 @@ drop table if exists bookings;
 
 CREATE TABLE events (
   id        SERIAL PRIMARY KEY,
-  title      VARCHAR(60) NOT NULL,
-  description     VARCHAR(2000),
+  title      VARCHAR(30) NOT NULL,
+  description     VARCHAR(220),
   startTime   VARCHAR(120),
   latitude    float, 
   longitude    float,
@@ -67,7 +67,6 @@ INSERT INTO events (title, description, startTime, latitude, longitude, imageFil
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Macarena Club','Can you believe a nightclub has a legal capacity of 84 people? Yes, it is a micro-club. There are several in Barcelona, but this is the best of them all: Funktion One sound and open seven days a week.','6:00pm', 41.3794643, 2.1746629, 'macarena-club.png', 'party');
 
 
-
 INSERT INTO users (user_email) VALUES ('user1@mail.com');
 INSERT INTO users (user_email) VALUES ('user2@mail.com');
 INSERT INTO users (user_email) VALUES ('user3@mail.com');
@@ -78,4 +77,3 @@ INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Two');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Three');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Four');
-

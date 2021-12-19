@@ -18,6 +18,8 @@ app.get("/events", api.getEvents);
 app.get("/events/:eventId", api.getEventById);
 //post new event
 app.post("/events", api.postNewEvent);
+//post new user activations
+app.post("/users", api.postNewUserBooking);
 
 app.listen(PORT, () =>
   console.log(`HostelLife Server is up and running on port ${PORT}`)
