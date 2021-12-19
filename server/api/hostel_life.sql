@@ -45,3 +45,15 @@ INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Two');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Three');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Four');
+
+
+
+drop table if exists messeges;
+
+
+CREATE TABLE messeges (
+    user_id   VARCHAR(30) NOT NULL,
+    content   VARCHAR(220),
+    timestamp VARCHAR(120),
+    event_id   VARCHAR(30) NOT NULL
+);

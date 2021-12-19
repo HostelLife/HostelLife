@@ -25,6 +25,26 @@ const api = () => {
     });
   };
 
+  const postNewMessege = async (request, response) => {
+    const newMessege = request.body;
+    console.log(newMessege);
+    const result = await pool.query(
+      `INSERT INTO messeges (content, timestamp, event_id)
+        VALUES ($1, $2, $3) RETURNING user_id`,
+      [
+        newMessege.user_id,
+        newMessege.content,
+        newMessege.timestamp,
+        newMessege.event_id,
+      ]
+    );
+    const responseBody = { messegeId: result.rows[0].id };
+    return response.status(201).json({
+      status: "messege Successfully created.",
+      newMessegeId: responseBody.messegeId,
+    });
+  };
+
   const getEvents = async (request, response) => {
     const category = request.query.category;
     try {
@@ -60,6 +80,7 @@ const api = () => {
     postNewEvent,
     getEvents,
     getEventById,
+    postNewMessege,
   };
 };
 
