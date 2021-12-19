@@ -28,20 +28,25 @@ const api = () => {
     const newBooking = request.body;
     console.log(newBooking);
     //still need to fix this query
-    // const userEmailID = await pool.query ( 'SELECT user_id from users where users= ')
+    // const userID = await pool.query(
+    //   "SELECT id from users where user_email=$1",
+    //   [newBooking.userEmail]
+    // );
     const result = await pool.query(
       `INSERT INTO bookings (user_id, hostel_id, activation_date, deactivation_date)
         VALUES ($1, $2, $3, $4)`,
       [
+        // userID,
         newBooking.userEmail,
         newBooking.hostelId,
         newBooking.checkInDate,
         newBooking.checkOutDate,
       ]
     );
+    const responseBody = { userEmail: result.rows[0].userEmail };
     return response.status(201).json({
       status: "User Activation Successful.",
-      NewBooking: result,
+      NewBooking: responseBody.userEmail,
     });
   };
 
