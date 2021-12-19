@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ActivitiesPage from "./Components/ActivitiesPage";
 import WelcomePage from "./Components/WelcomePage";
 import ChatPage from "./Components/ChatPage";
+import AdminPage from "./Components/AdminPage.js";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       {/* <WelcomePage />
       <ActivitiesPage />
       <EventsPage />
-      <EventProfilePage /> */}
+      <EventProfilePage />
+      <AdminPage /> */}
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<WelcomePage />} />
@@ -20,6 +22,7 @@ const App = () => {
           <Route exact path="/events/:category" element={<EventsPage />} />
           <Route exact path="/event/:id" element={<EventProfilePage />} />
           <Route exact path="/event/:id" element={<ChatPage />} />
+          <Route exact path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
     </>
