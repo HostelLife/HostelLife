@@ -10,8 +10,15 @@ import LocationLogo from "./LocationLogo";
 import Heart from "./Heart";
 
 function CardsProfile({ event }) {
-  const { title, description, imagefilename, starttime, latitude, longitude } =
-    event;
+  const {
+    category,
+    title,
+    description,
+    imagefilename,
+    starttime,
+    latitude,
+    longitude,
+  } = event;
   const position = {
     lat: latitude,
     lng: longitude,
@@ -20,7 +27,7 @@ function CardsProfile({ event }) {
   return (
     <div>
       <Card style={{ width: "100%" }}>
-        <Link to={`/events/${title}`}>
+        <Link to={`/events/${category}`}>
           <BackButton />
         </Link>
 

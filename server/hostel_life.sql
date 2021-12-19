@@ -6,7 +6,7 @@ drop table if exists bookings;
 CREATE TABLE events (
   id        SERIAL PRIMARY KEY,
   title      VARCHAR(30) NOT NULL,
-  description     VARCHAR(220),
+  description     VARCHAR(2000),
   startTime   VARCHAR(120),
   latitude    float, 
   longitude    float,
