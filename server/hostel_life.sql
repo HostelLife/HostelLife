@@ -26,10 +26,8 @@ CREATE TABLE hostels (
 
 CREATE TABLE bookings (
   id        SERIAL PRIMARY KEY,
-  
-  user_id INT REFERENCES users(id),
-  user_email INT REFERENCES users(user_email),
 
+  user_id INT REFERENCES users(id),
   hostel_id INT REFERENCES hostels(id),
   activation_date DATE not null,
   deactivation_date DATE not null
