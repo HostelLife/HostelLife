@@ -15,17 +15,21 @@ CREATE TABLE events (
 );
 
 CREATE TABLE users (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   user_email VARCHAR (120) not null
 );
 
 CREATE TABLE hostels (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   hostel_name VARCHAR (120) not null
 );
 
 CREATE TABLE bookings (
+  id        SERIAL PRIMARY KEY,
+  
   user_id INT REFERENCES users(id),
+  user_email INT REFERENCES users(user_email),
+
   hostel_id INT REFERENCES hostels(id),
   activation_date DATE not null,
   deactivation_date DATE not null
@@ -37,12 +41,6 @@ CREATE TABLE messages (
   content     VARCHAR(2000),
   times_tamp   VARCHAR(120)
 );
-
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am','somewhere', 'sagradaFamilia.jpg/100px250', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Casabatallo', 'Casa Batlló is a building in the center of Barcelona. It was designed by Antoni Gaudí, and is considered one of his masterpieces. A remodel of a previously built house, it was redesigned in 1904 by Gaudí and has been refurbished several times after that. Gaudís assistants Domènec Sugrañes i Gras, Josep Canaleta and Joan Rubió also contributed to the renovation project.','12:00pm','somewhere', 'casabatllo.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('La Rambla', 'La Rambla is a street in central Barcelona. A tree-lined pedestrian street, it stretches for 1.2 km connecting the Plaça de Catalunya in its center with the Christopher Columbus Monument at Port Vell. La Rambla forms the boundary between the neighbourhoods of the Barri Gòtic to the east and the El Raval to the west.','3:00pm','somewhere', 'La-Rambla.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Parque Guell', 'Parc Güell is a privatized park system composed of gardens and architectural elements located on Carmel Hill, in Barcelona, Catalonia, Spain. Carmel Hill belongs to the mountain range of Collserola, the Parc del Carmel is located on the northern face.','6:00pm','somewhere', 'Park_Guell.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Test', 'Parc Güell is a privatized park system composed of gardens and architectural elements located on Carmel Hill, in Barcelona, Catalonia, Spain. Carmel Hill belongs to the mountain range of Collserola, the Parc del Carmel is located on the northern face.','6:00pm','somewhere', 'Park_Guell.jpg', 'visit_places');
 
 INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Barceloneta Beach', 'Barceloneta beach is 422 metres long and is one of the oldest and most traditional in the city. It is a favourite amongst foreign visitors, and also youth groups and schools, who often use it for activities.','10:00am','somewhere', 'barcelonita.jpg', 'beach');
 INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Llevant Beach', 'As its name suggests, this is Barcelonas easternmost beach. It opened in 2006 making it the citys newest beach. Until relatively recently, factories and other facilities almost reached the shoreline but today the beach is another of the seafront recreational spaces used by locals and visitors alike.','12:00pm','somewhere', 'Llevant.jpg', 'beach');
