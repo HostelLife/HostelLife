@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import OurButton from "./OurButton";
+import OurButton from "../Badge/Badge.jsx";
 
 const getLocalStorageEmail = () => {
   //NOT SURE ABOUT THE FUNCTION
