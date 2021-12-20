@@ -57,7 +57,6 @@ const api = () => {
     return response.status(200).json(event.rows);
   };
 
-
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
     const currentTme = new Date().toLocaleString();
@@ -80,7 +79,6 @@ const api = () => {
     });
   };
 
-  ////////////////
 
   const postNewUserBooking = async (request, response) => {
     const newBooking = request.body;
@@ -88,12 +86,11 @@ const api = () => {
   
     const result = await pool.query(
       `INSERT INTO bookings (
-        user_id,
+        user_id, 
         hostel_id, 
         activation_date, 
         deactivation_date)
-
-        VALUES ($1, $2, $3, $4) `,
+        VALUES ($1, $2, $3, $4)`,
       [
         newBooking.user_id,
         newBooking.hostel_id,
@@ -103,10 +100,9 @@ const api = () => {
     );
 
     console.log(result.rows);
-    //const responseBody = { Newuserid: result.rows[0].user_id };
     return response.status(201).json({
       status: "User Activation Successful.",
-      //NewBooking: responseBody.userEmail,
+    
     });
   };
 
