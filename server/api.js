@@ -82,11 +82,36 @@ const api = () => {
     return response.status(200).json(event.rows);
   };
 
+  ////////
+
+  const postNewMessege = async (request, response) => {
+    const newMessege = request.body;
+    const currentTme = new Date().toLocaleString();
+   
+    const result = await pool.query(
+      `INSERT INTO messages (user_id, event_id, content, times_tamp)
+        VALUES ($1, $2, $3, $4) RETURNING user_id`,
+      [
+        newMessege.user_id,
+        newMessege.event_id,
+        newMessege.content,
+        currentTme 
+      ]
+    );
+    const responseBody = { messegeId: result.rows[0].id };
+    return response.status(201).json({
+      status: "messege Successfully created.",
+      newMessegeId: responseBody.messegeId,
+      time: currentTme
+    });
+  };
+
   return {
     postNewUserBooking,
     postNewEvent,
     getEvents,
     getEventById,
+    postNewMessege
   };
 };
 
