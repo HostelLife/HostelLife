@@ -24,27 +24,6 @@ const api = () => {
       NewEventId: responseBody.eventId,
     });
   };
-  const postNewUserBooking = async (request, response) => {     // ///
-    const newBooking = request.body;
-    console.log(newBooking);
-    //still need to fix this query
-    // const userEmailID = await pool.query ( 'SELECT user_id from users where users= ')
-    const result = await pool.query(
-      `INSERT INTO bookings (user_id, hostel_id, activation_date, deactivation_date)
-        VALUES ($1, $2, $3, $4)`,
-      [
-        newBooking.userEmail,
-        newBooking.hostelId,
-        newBooking.checkInDate,
-        newBooking.checkOutDate,
-      ]
-    );
-    return response.status(201).json({
-      status: "User Activation Successful.",
-      NewBooking: result,
-    });
-  };             ////          //// 
-
 
   const getEvents = async (request, response) => {
     const category = request.query.category;
@@ -82,10 +61,8 @@ const api = () => {
 
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
-    console.log(newMessege);
     const currentTme = new Date().toLocaleString();
-    console.log(currentTme);
-
+   
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, times_tamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
@@ -93,9 +70,7 @@ const api = () => {
         newMessege.user_id,
         newMessege.event_id,
         newMessege.content,
-        currentTme
-        
-        
+        currentTme 
       ]
     );
     const responseBody = { messegeId: result.rows[0].id };
@@ -110,7 +85,6 @@ const api = () => {
     postNewEvent,
     getEvents,
     getEventById,
-    postNewUserBooking,
     postNewMessege
   };
 };
