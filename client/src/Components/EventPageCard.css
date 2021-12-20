@@ -1,0 +1,20 @@
+.EventPageCard_image {
+  width: 9rem;
+  height: 6rem;
+  padding: 1rem;
+  border-radius: 25px;
+}
+.EventPageCard {
+  width: 100%;
+  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
+  border-radius: 22px;
+  background-color: #fff;
+  margin-top: 0.7rem;
+}
+.EventPageCard_title {
+  padding: 1rem;
+  text-decoration: none;
+}
+.EventPage_button {
+  margin-left: 1110px;
+}

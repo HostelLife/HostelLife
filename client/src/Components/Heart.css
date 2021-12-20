@@ -1,0 +1,8 @@
+.CardProfile_Heart {
+  height: 5rem;
+  width: 5rem;
+  background-color: rgba(249, 168, 77, 0.2);
+  opacity: 0.3;
+  border-radius: 25px;
+  padding: 0.4rem;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import OurButton from "./OurButton";
 
 const getLocalStorageEmail = () => {
   //NOT SURE ABOUT THE FUNCTION
@@ -36,43 +36,22 @@ export default function WelcomePage() {
   //localStorage.setItem("name", userName)
 
   return (
-    <Card className="text-center bg-dark bg-gradient text-light p-5 mt-5">
-      <Card.Body>
-        <Card.Title> Make new friends while travelling...</Card.Title>
-        <Card.Text className="mt-5">
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text>
+    <Card
+      style={{ height: "100%" }}
+      className="text-center bg-light bg-gradient text-light p-5 mt-5"
+    >
+      <Card.Body style={{ height: "100%" }}>
+        <img alt="" src="images\logo.png" style={{ width: "20rem" }} />
+
+        <Card.Title className="text-dark mt-5">
+          {" "}
+          Make new friends while travelling...
+        </Card.Title>
+
         <Link to="/events">
-          <Button
-            className="mt-5"
-            variant="success"
-            onClick={getLocalStorageEmail}
-          >
-            Let's Go!
-          </Button>{" "}
+          <OurButton content={"Let's Go!"} />
         </Link>
       </Card.Body>
     </Card>
   );
-  // <>
-  //   <div className="container">
-  //     <div className="row">
-  //       <div className="col-sm">
-  //         <div className="card">
-  //           <div className="card-body">
-  //             <h1 className="card-title text-center">HostelLife</h1>
-  //             <h5 className="card-title text-center">
-  //               Make new friends while travelling...
-  //             </h5>
-  //             <Link to="/events" className="btn btn-outline-primary chat-btn">
-  //               <h6 type="button" onClick={getLocalStorageEmail}>
-  //                 Let's Go!
-  //               </h6>{" "}
-  //             </Link>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </>
 }
