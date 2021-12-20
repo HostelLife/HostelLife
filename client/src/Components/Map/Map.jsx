@@ -1,6 +1,5 @@
 import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { process_params } from "express/lib/router";
 
 const secretApiKey = require("./apiKey_secret.json");
 
@@ -14,7 +13,7 @@ const onLoad = (marker) => {
   console.log("marker: ", marker);
 };
 
-function GoogleMapFunc(props) {
+function Map(props) {
   const { position } = props;
 
   return (
@@ -28,4 +27,4 @@ function GoogleMapFunc(props) {
   );
 }
 
-export default React.memo(GoogleMapFunc);
+export default React.memo(Map);

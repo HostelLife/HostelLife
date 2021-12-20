@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CardChat from "./CardChat";
+import CardChat from "./CardChat.jsx";
 import { useParams } from "react-router-dom";
 
 function ChatPage() {

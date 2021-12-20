@@ -1,11 +1,11 @@
 import React from "react";
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "./CategoryCard.jsx";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./ActivitiesPage.css";
+import "./CatagoriesPage.css";
 import { Link } from "react-router-dom";
-import BackButton from "./BackButton";
+import BackButton from "../BackButton/BackButton.jsx";
 
 const activities = [
   { label: "Visit Places", urlSlug: "visit_places" },
@@ -17,7 +17,7 @@ const activities = [
   { label: "Party", urlSlug: "party" },
 ];
 
-export default function ActivitiesPage() {
+export default function CatagoriesPage() {
   return (
     <div className="text-center p-2">
       <div className="d-flex flex-row">
