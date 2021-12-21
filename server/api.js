@@ -60,24 +60,18 @@ const api = () => {
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
     const currentTme = new Date().toLocaleString();
-   
+
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, times_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
-      [
-        newMessege.user_id,
-        newMessege.event_id,
-        newMessege.content,
-        currentTme 
-      ]
+      [newMessege.user_id, newMessege.event_id, newMessege.content, currentTme]
     );
-
 
     const responseBody = { messegeId: result.rows[0].id };
     return response.status(201).json({
       status: "messege Successfully created.",
       newMessegeId: responseBody.messegeId,
-      time: currentTme
+      time: currentTme,
     });
   };
 
@@ -100,47 +94,37 @@ const api = () => {
     }
   };
 
-
   const postNewUserBooking = async (request, response) => {
+    try{
     const newBooking = request.body;
+
     const { user_email: userEmail} = newBooking;
-      console.log(userEmail);
-
     const { hostel_id: hostelId} = newBooking;
-      console.log(hostelId);
 
-  const queryResult = await pool.query(
-    `select
-      u.id
-      from users u
-      where u.user_email = $1`,
+  const emailQuery = await pool.query(
+    `select u.id from users u where u.user_email = $1`,
     [userEmail]
   );
 
-  const hostelIdQueryResult = await pool.query(
-    `select
-      *
-      from hostels h
-      where h.id = $1`,
+  const hostelIdQuery = await pool.query(
+    `select * from hostels h where h.id = $1`,
     [hostelId]
   );
 
-  console.log(hostelId);
-
-    const hostelIdResult = hostelIdQueryResult.rows[0]
+  const hostelIdResult = hostelIdQuery.rows[0];
   
-  if(queryResult.rows.length === 0){
+  if(emailQuery.rows.length === 0){
     return response.status(400).json({
-      error: "User doesent exists.",
+      error: "User doesen't exists.",
     })
-  }else if(hostelIdResult.length === 0){
+  }else if(!hostelIdResult){
     return response.status(400).json({
-      error: "Hostel Id doesent exists.",
+      error: "Hostel Id doesen't exists.",
     })
-  }
 
-  const userId = queryResult.rows[0].id
-
+  }else{
+    const userId = emailQuery.rows[0].id
+  
     const result = await pool.query(
       `INSERT INTO bookings (
         user_id, 
@@ -156,11 +140,16 @@ const api = () => {
       ]
     );
 
-    console.log(result.rows);
     return response.status(201).json({
-      status: "User Activation Successful.",
-    
+      status: "User Activation Successful.",   
     });
+  }
+    }catch(error){
+      console.log(error);
+      response
+      .status(400)
+      .send(`Please ckeck your informations. Yor have the following issue ${error}`)
+    }
   };
 
   return {
@@ -170,6 +159,7 @@ const api = () => {
     postNewMessege,
     postNewUserBooking,
     getNewMessage
+
   };
 };
 

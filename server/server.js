@@ -21,6 +21,8 @@ app.get("/messages/:userId", api.getNewMessage)
 //post new event
 app.post("/events", api.postNewEvent);
 app.post("/messages", api.postNewMessege);
+app.post("/users", api.postNewUserBooking);
+
 
 
 

@@ -11,21 +11,22 @@ CREATE TABLE events (
   startTime   VARCHAR(120),
   latitude    float, 
   longitude    float,
-  imageFileName     VARCHAR(120),
+  imageFileName   VARCHAR(120),
   category  VARCHAR(120) 
 );
 
 CREATE TABLE users (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   user_email VARCHAR (120) not null
 );
 
 CREATE TABLE hostels (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   hostel_name VARCHAR (120) not null
 );
 
 CREATE TABLE bookings (
+  id        SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id),
   hostel_id INT REFERENCES hostels(id),
   activation_date DATE not null,
