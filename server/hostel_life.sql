@@ -41,6 +41,8 @@ CREATE TABLE messages (
 );
 
 
+
+
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am', 41.4034522, 2.1742895, 'sagradaFamilia.jpg', 'visit_places');
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Casabatallo', 'Casa Batlló is a building in the center of Barcelona. It was designed by Antoni Gaudí, and is considered one of his masterpieces. A remodel of a previously built house, it was redesigned in 1904 by Gaudí and has been refurbished several times after that. Gaudís assistants Domènec Sugrañes i Gras, Josep Canaleta and Joan Rubió also contributed to the renovation project.','12:00pm', 41.391747, 2.165067, 'casabatllo.jpg', 'visit_places');
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('La Rambla', 'La Rambla is a street in central Barcelona. A tree-lined pedestrian street, it stretches for 1.2 km connecting the Plaça de Catalunya in its center with the Christopher Columbus Monument at Port Vell. La Rambla forms the boundary between the neighbourhoods of the Barri Gòtic to the east and the El Raval to the west.','3:00pm', 41.3856127, 2.1676279, 'La-Rambla.jpg', 'visit_places');
