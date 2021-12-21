@@ -71,6 +71,7 @@ const api = () => {
         currentTme 
       ]
     );
+
     const responseBody = { messegeId: result.rows[0].id };
     return response.status(201).json({
       status: "messege Successfully created.",
@@ -79,10 +80,36 @@ const api = () => {
     });
   };
 
-
   const postNewUserBooking = async (request, response) => {
+    try{
     const newBooking = request.body;
-    //console.log(newBooking);
+
+    const { user_email: userEmail} = newBooking;
+    const { hostel_id: hostelId} = newBooking;
+
+  const emailQuery = await pool.query(
+    `select u.id from users u where u.user_email = $1`,
+    [userEmail]
+  );
+
+  const hostelIdQuery = await pool.query(
+    `select * from hostels h where h.id = $1`,
+    [hostelId]
+  );
+
+  const hostelIdResult = hostelIdQuery.rows[0];
+  
+  if(emailQuery.rows.length === 0){
+    return response.status(400).json({
+      error: "User doesen't exists.",
+    })
+  }else if(!hostelIdResult){
+    return response.status(400).json({
+      error: "Hostel Id doesen't exists.",
+    })
+
+  }else{
+    const userId = emailQuery.rows[0].id
   
     const result = await pool.query(
       `INSERT INTO bookings (
@@ -92,18 +119,24 @@ const api = () => {
         deactivation_date)
         VALUES ($1, $2, $3, $4)`,
       [
-        newBooking.user_id,
+        userId,
         newBooking.hostel_id,
         newBooking.activation_date,
         newBooking.deactivation_date
       ]
     );
 
-    console.log(result.rows);
     return response.status(201).json({
-      status: "User Activation Successful.",
-    
+      status: "User Activation Successful.",   
     });
+  }
+    }catch(error){
+      console.log(error);
+      response
+      .status(400)
+      .send(`Please ckeck your informations. Yor have the following issue ${error}`)
+    }
+
   };
 
   return {
