@@ -18,7 +18,10 @@ app.get("/events", api.getEvents);
 app.get("/events/:eventId", api.getEventById);
 //post new event
 app.post("/events", api.postNewEvent);
-app.post("/messages", api.postNewMessege);
+app.post("/messages", api.postNewMessage);
+//get new messages
+app.get("/messages", api.getNewMessage);
+
 //post new user activations
 app.post("/users", api.postNewUserBooking);
 

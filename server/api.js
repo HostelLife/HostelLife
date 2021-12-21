@@ -84,34 +84,50 @@ const api = () => {
 
   ////////
 
-  const postNewMessege = async (request, response) => {
-    const newMessege = request.body;
+  const postNewMessage = async (request, response) => {
+    const newMessage = request.body;
     const currentTme = new Date().toLocaleString();
    
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, times_tamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [
-        newMessege.user_id,
-        newMessege.event_id,
-        newMessege.content,
+        newMessage.user_id,
+        newMessage.event_id,
+        newMessage.content,
         currentTme 
       ]
     );
-    const responseBody = { messegeId: result.rows[0].id };
+    const responseBody = { messageId: result.rows[0].id };
     return response.status(201).json({
-      status: "messege Successfully created.",
-      newMessegeId: responseBody.messegeId,
+      status: "message Successfully created.",
+      newMessageId: responseBody.messageId,
       time: currentTme
     });
   };
+   //Get all messages by event  
+const getNewMessage = async (req, res) => {
+  try {
+    let query = `SELECT * FROM database ORDER BY event`;
+    const newMessage = req.params.newMessage;
+    const result = await pool.query(`SELECT * FROM events WHERE event_id=$2`, [
+      newMessage,
+    ]);
+    res.status(201).send(result.rows);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 
   return {
     postNewUserBooking,
     postNewEvent,
     getEvents,
     getEventById,
-    postNewMessege
+    postNewMessage,
+    getNewMessage
+    
   };
 };
 
