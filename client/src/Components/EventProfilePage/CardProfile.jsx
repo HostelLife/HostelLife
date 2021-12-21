@@ -7,6 +7,7 @@ import OurButton from "../Badge/Badge.jsx";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 import Heart from "../Heart/Heart.jsx";
+import { BsFillPersonFill } from "react-icons/bs";
 
 function CardsProfile({ event }) {
   const {
@@ -47,6 +48,9 @@ function CardsProfile({ event }) {
             </div>
             <Card.Title>{title}</Card.Title>
             <Card.Title>{starttime}</Card.Title>
+            <p>
+              <BsFillPersonFill /> travellers joining
+            </p>
 
             <Card.Text>{description}</Card.Text>
             <OurButton content={" Access the Chat"} />
