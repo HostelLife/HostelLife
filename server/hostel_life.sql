@@ -11,21 +11,22 @@ CREATE TABLE events (
   startTime   VARCHAR(120),
   latitude    float, 
   longitude    float,
-  imageFileName     VARCHAR(120),
+  imageFileName   VARCHAR(120),
   category  VARCHAR(120) 
 );
 
 CREATE TABLE users (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   user_email VARCHAR (120) not null
 );
 
 CREATE TABLE hostels (
-  id        SERIAL primary key,
+  id        SERIAL PRIMARY KEY,
   hostel_name VARCHAR (120) not null
 );
 
 CREATE TABLE bookings (
+  id        SERIAL PRIMARY KEY,
   user_id INT REFERENCES users(id),
   hostel_id INT REFERENCES hostels(id),
   activation_date DATE not null,
@@ -38,12 +39,6 @@ CREATE TABLE messages (
   content     VARCHAR(2000),
   times_tamp   VARCHAR(120)
 );
-
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am','somewhere', 'sagradaFamilia.jpg/100px250', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Casabatallo', 'Casa Batlló is a building in the center of Barcelona. It was designed by Antoni Gaudí, and is considered one of his masterpieces. A remodel of a previously built house, it was redesigned in 1904 by Gaudí and has been refurbished several times after that. Gaudís assistants Domènec Sugrañes i Gras, Josep Canaleta and Joan Rubió also contributed to the renovation project.','12:00pm','somewhere', 'casabatllo.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('La Rambla', 'La Rambla is a street in central Barcelona. A tree-lined pedestrian street, it stretches for 1.2 km connecting the Plaça de Catalunya in its center with the Christopher Columbus Monument at Port Vell. La Rambla forms the boundary between the neighbourhoods of the Barri Gòtic to the east and the El Raval to the west.','3:00pm','somewhere', 'La-Rambla.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Parque Guell', 'Parc Güell is a privatized park system composed of gardens and architectural elements located on Carmel Hill, in Barcelona, Catalonia, Spain. Carmel Hill belongs to the mountain range of Collserola, the Parc del Carmel is located on the northern face.','6:00pm','somewhere', 'Park_Guell.jpg', 'visit_places');
-INSERT INTO events (title, description, startTime, location, imageFileName, category) VALUES ('Test', 'Parc Güell is a privatized park system composed of gardens and architectural elements located on Carmel Hill, in Barcelona, Catalonia, Spain. Carmel Hill belongs to the mountain range of Collserola, the Parc del Carmel is located on the northern face.','6:00pm','somewhere', 'Park_Guell.jpg', 'visit_places');
 
 
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am', 41.4034522, 2.1742895, 'sagradaFamilia.jpg', 'visit_places');

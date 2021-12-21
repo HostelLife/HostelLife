@@ -24,31 +24,6 @@ const api = () => {
       NewEventId: responseBody.eventId,
     });
   };
-  const postNewUserBooking = async (request, response) => {
-    const newBooking = request.body;
-    console.log(newBooking);
-    //still need to fix this query
-    // const userID = await pool.query(
-    //   "SELECT id from users where user_email=$1",
-    //   [newBooking.userEmail]
-    // );
-    const result = await pool.query(
-      `INSERT INTO bookings (user_id, hostel_id, activation_date, deactivation_date)
-        VALUES ($1, $2, $3, $4)`,
-      [
-        // userID,
-        newBooking.userEmail,
-        newBooking.hostelId,
-        newBooking.checkInDate,
-        newBooking.checkOutDate,
-      ]
-    );
-    const responseBody = { userEmail: result.rows[0].userEmail };
-    return response.status(201).json({
-      status: "User Activation Successful.",
-      NewBooking: responseBody.userEmail,
-    });
-  };
 
   const getEvents = async (request, response) => {
     const category = request.query.category;
@@ -91,6 +66,7 @@ const api = () => {
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [newMessege.user_id, newMessege.event_id, newMessege.content, currentTme]
     );
+
     const responseBody = { messegeId: result.rows[0].id };
     return response.status(201).json({
       status: "messege Successfully created.",
@@ -99,12 +75,74 @@ const api = () => {
     });
   };
 
+  const postNewUserBooking = async (request, response) => {
+    try{
+    const newBooking = request.body;
+
+    const { user_email: userEmail} = newBooking;
+    const { hostel_id: hostelId} = newBooking;
+
+  const emailQuery = await pool.query(
+    `select u.id from users u where u.user_email = $1`,
+    [userEmail]
+  );
+
+  const hostelIdQuery = await pool.query(
+    `select * from hostels h where h.id = $1`,
+    [hostelId]
+  );
+
+  const hostelIdResult = hostelIdQuery.rows[0];
+  
+  if(emailQuery.rows.length === 0){
+    return response.status(400).json({
+      error: "User doesen't exists.",
+    })
+  }else if(!hostelIdResult){
+    return response.status(400).json({
+      error: "Hostel Id doesen't exists.",
+    })
+
+  }else{
+    const userId = emailQuery.rows[0].id
+  
+    const result = await pool.query(
+      `INSERT INTO bookings (
+        user_id, 
+        hostel_id, 
+        activation_date, 
+        deactivation_date)
+        VALUES ($1, $2, $3, $4)`,
+      [
+        userId,
+        newBooking.hostel_id,
+        newBooking.activation_date,
+        newBooking.deactivation_date
+      ]
+    );
+
+    return response.status(201).json({
+      status: "User Activation Successful.",   
+    });
+  }
+    }catch(error){
+      console.log(error);
+      response
+      .status(400)
+      .send(`Please ckeck your informations. Yor have the following issue ${error}`)
+    }
+
+  };
+
   return {
-    postNewUserBooking,
     postNewEvent,
     getEvents,
     getEventById,
     postNewMessege,
+
+    postNewUserBooking
+
+
   };
 };
 
