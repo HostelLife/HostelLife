@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import EventPageCard from "./EventPageCard";
+import EventPageCard from "./EventPageCard.jsx";
 import { useParams } from "react-router-dom";
-import BackButton from "./BackButton";
+import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 
 export default function EventsPage() {

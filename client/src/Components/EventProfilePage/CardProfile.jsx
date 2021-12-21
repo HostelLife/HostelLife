@@ -1,13 +1,13 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import GoogleMapFunc from "./Map/GoogleMapFunc";
+import Map from "../Map/Map";
 import Button from "react-bootstrap/Button";
 import "./CardProfile.css";
-import OurButton from "./OurButton";
-import BackButton from "./BackButton";
+import OurButton from "../Badge/Badge.jsx";
+import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
-import LocationLogo from "./LocationLogo";
-import Heart from "./Heart";
+import Heart from "../Heart/Heart.jsx";
+import { BsFillPersonFill } from "react-icons/bs";
 
 function CardsProfile({ event }) {
   const {
@@ -44,17 +44,19 @@ function CardsProfile({ event }) {
                 Must See
               </Button>
 
-              <LocationLogo className="CardProfile_locationLogo" />
               <Heart />
             </div>
             <Card.Title>{title}</Card.Title>
             <Card.Title>{starttime}</Card.Title>
+            <p>
+              <BsFillPersonFill /> travellers joining
+            </p>
 
             <Card.Text>{description}</Card.Text>
             <OurButton content={" Access the Chat"} />
           </Card>
 
-          <GoogleMapFunc position={position} />
+          <Map position={position} />
         </Card.Body>
       </Card>
     </div>
