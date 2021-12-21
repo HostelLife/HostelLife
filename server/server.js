@@ -16,11 +16,13 @@ const api = webApi();
 
 app.get("/events", api.getEvents);
 app.get("/events/:eventId", api.getEventById);
+app.get("/messages/:userId", api.getNewMessage)
+
 //post new event
 app.post("/events", api.postNewEvent);
 app.post("/messages", api.postNewMessege);
-//post new user activations
-app.post("/users", api.postNewUserBooking);
+
+
 
 
 app.listen(PORT, () =>

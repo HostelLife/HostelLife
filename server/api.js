@@ -24,31 +24,6 @@ const api = () => {
       NewEventId: responseBody.eventId,
     });
   };
-  const postNewUserBooking = async (request, response) => {
-    const newBooking = request.body;
-    console.log(newBooking);
-    //still need to fix this query
-    // const userID = await pool.query(
-    //   "SELECT id from users where user_email=$1",
-    //   [newBooking.userEmail]
-    // );
-    const result = await pool.query(
-      `INSERT INTO bookings (user_id, hostel_id, activation_date, deactivation_date)
-        VALUES ($1, $2, $3, $4)`,
-      [
-        // userID,
-        newBooking.userEmail,
-        newBooking.hostelId,
-        newBooking.checkInDate,
-        newBooking.checkOutDate,
-      ]
-    );
-    const responseBody = { userEmail: result.rows[0].userEmail };
-    return response.status(201).json({
-      status: "User Activation Successful.",
-      NewBooking: responseBody.userEmail,
-    });
-  };
 
   const getEvents = async (request, response) => {
     const category = request.query.category;
@@ -82,14 +57,12 @@ const api = () => {
     return response.status(200).json(event.rows);
   };
 
-  ////////
-
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
     const currentTme = new Date().toLocaleString();
    
     const result = await pool.query(
-      `INSERT INTO messages (user_id, event_id, content, times_tamp)
+      `INSERT INTO messages (user_id, event_id, content, times_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [
         newMessege.user_id,
@@ -98,6 +71,8 @@ const api = () => {
         currentTme 
       ]
     );
+
+
     const responseBody = { messegeId: result.rows[0].id };
     return response.status(201).json({
       status: "messege Successfully created.",
@@ -106,12 +81,95 @@ const api = () => {
     });
   };
 
+///////////////getNewMessage ////////////
+
+    const getNewMessage = async (req, res) => {
+    try {  
+      const userIdForMassage = parseInt(req.params.userId);
+      const result = await pool.query(`SELECT m.content, times_stamp FROM messages m WHERE m.user_id=$1`, 
+      [userIdForMassage]
+      );
+
+      const mesggageArray = result.rows;
+      const lastMessage =  mesggageArray[mesggageArray.length - 1];
+      res.status(201)
+          .send(lastMessage);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  const postNewUserBooking = async (request, response) => {
+    const newBooking = request.body;
+    const { user_email: userEmail} = newBooking;
+      console.log(userEmail);
+
+    const { hostel_id: hostelId} = newBooking;
+      console.log(hostelId);
+
+  const queryResult = await pool.query(
+    `select
+      u.id
+      from users u
+      where u.user_email = $1`,
+    [userEmail]
+  );
+
+  const hostelIdQueryResult = await pool.query(
+    `select
+      *
+      from hostels h
+      where h.id = $1`,
+    [hostelId]
+  );
+
+  console.log(hostelId);
+
+    const hostelIdResult = hostelIdQueryResult.rows[0]
+  
+  if(queryResult.rows.length === 0){
+    return response.status(400).json({
+      error: "User doesent exists.",
+    })
+  }else if(hostelIdResult.length === 0){
+    return response.status(400).json({
+      error: "Hostel Id doesent exists.",
+    })
+  }
+
+  const userId = queryResult.rows[0].id
+
+    const result = await pool.query(
+      `INSERT INTO bookings (
+        user_id, 
+        hostel_id, 
+        activation_date, 
+        deactivation_date)
+        VALUES ($1, $2, $3, $4)`,
+      [
+        userId,
+        newBooking.hostel_id,
+        newBooking.activation_date,
+        newBooking.deactivation_date
+      ]
+    );
+
+    console.log(result.rows);
+    return response.status(201).json({
+      status: "User Activation Successful.",
+    
+    });
+  };
+
   return {
-    postNewUserBooking,
     postNewEvent,
     getEvents,
     getEventById,
-    postNewMessege
+    postNewMessege,
+    postNewUserBooking,
+    getNewMessage
   };
 };
 
