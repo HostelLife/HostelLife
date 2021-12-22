@@ -93,61 +93,88 @@ const api = () => {
   };
 
   const postNewUserBooking = async (request, response) => {
-    try{
-    const newBooking = request.body;
+    try {
+      const newBooking = request.body;
 
-    const { user_email: userEmail} = newBooking;
-    const { hostel_id: hostelId} = newBooking;
+      const { user_email: userEmail } = newBooking;
+      const { hostel_id: hostelId } = newBooking;
 
-  const emailQuery = await pool.query(
-    `select u.id from users u where u.user_email = $1`,
-    [userEmail]
-  );
+      const emailQuery = await pool.query(
+        `select u.id from users u where u.user_email = $1`,
+        [userEmail]
+      );
 
-  const hostelIdQuery = await pool.query(
-    `select * from hostels h where h.id = $1`,
-    [hostelId]
-  );
+      const hostelIdQuery = await pool.query(
+        `select * from hostels h where h.id = $1`,
+        [hostelId]
+      );
 
-  const hostelIdResult = hostelIdQuery.rows[0];
-  
-  if(emailQuery.rows.length === 0){
-    return response.status(400).json({
-      error: "User doesen't exists.",
-    })
-  }else if(!hostelIdResult){
-    return response.status(400).json({
-      error: "Hostel Id doesen't exists.",
-    })
+      const hostelIdResult = hostelIdQuery.rows[0];
 
-  }else{
-    const userId = emailQuery.rows[0].id
-  
-    const result = await pool.query(
-      `INSERT INTO bookings (
+      if (emailQuery.rows.length === 0) {
+        return response.status(400).json({
+          error: "User doesen't exists.",
+        });
+      } else if (!hostelIdResult) {
+        return response.status(400).json({
+          error: "Hostel Id doesen't exists.",
+        });
+      } else {
+        const userId = emailQuery.rows[0].id;
+
+        const result = await pool.query(
+          `INSERT INTO bookings (
         user_id, 
         hostel_id, 
         activation_date, 
         deactivation_date)
         VALUES ($1, $2, $3, $4)`,
-      [
-        userId,
-        newBooking.hostel_id,
-        newBooking.activation_date,
-        newBooking.deactivation_date
-      ]
-    );
+          [
+            userId,
+            newBooking.hostel_id,
+            newBooking.activation_date,
+            newBooking.deactivation_date,
+          ]
+        );
 
-    return response.status(201).json({
-      status: "User Activation Successful.",   
-    });
-  }
-    }catch(error){
+        return response.status(201).json({
+          status: "User Activation Successful.",
+        });
+      }
+    } catch (error) {
       console.log(error);
       response
-      .status(400)
-      .send(`Please ckeck your informations. Yor have the following issue ${error}`)
+        .status(400)
+        .send(
+          `Please ckeck your informations. Yor have the following issue ${error}`
+        );
     }
+
+  };
+
+  const postParticipantBySpectificEventId = async (req, res) => {
+    try {
+      const eventId = req.params.eventId;
+      const newUserEmail = req.body.user_email;
+
+      const result = await pool.query(`select * from events where id=$1`, [
+        eventId,
+      ]);
+
+      if (result.rows.length === 0) {
+        return res.status(400).send("Event Id does not exist.");
+      }
+      if (!newUserEmail) {
+        return res.status(400).send("Please provide user email.");
+      }
+
+      const insertNewQuery = `insert into participants (event_id, user_email) values ($1, $2) returning id`;
+      await pool.query(insertNewQuery, [eventId, newUserEmail]);
+      res.status(200).send("Participant Created!");
+    } catch (err) {
+      console.log(err);
+    }
+
   };
 
   return {
@@ -155,8 +182,12 @@ const api = () => {
     getEvents,
     getEventById,
     postNewMessege,
+
     postNewUserBooking,
     getNewMessage
+
+
+    postParticipantBySpectificEventId,
 
   };
 };
