@@ -79,15 +79,13 @@ const api = () => {
 
     const getNewMessage = async (req, res) => {
     try {  
-      const userIdForMassage = parseInt(req.params.userId);
-      const result = await pool.query(`SELECT m.content, times_stamp FROM messages m WHERE m.user_id=$1`, 
-      [userIdForMassage]
+      const massagesByEventId = req.query.event;
+      const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
+      [massagesByEventId]
       );
 
-      const mesggageArray = result.rows;
-      const lastMessage =  mesggageArray[mesggageArray.length - 1];
       res.status(201)
-          .send(lastMessage);
+          .send(result.rows);
 
     } catch (err) {
       console.log(err);
