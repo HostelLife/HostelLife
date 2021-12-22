@@ -45,17 +45,44 @@ const api = () => {
     }
   };
 
+  ///---modifying ---//
+
+  // const getEventById = async (request, response) => {
+  //   const eventId = request.params.eventId;
+  //   const event = await pool.query(
+  //     `select * from events c where c.id = $1 `,
+  //     [eventId]
+  //   );
+  //   return response.status(200).json(event.rows);
+  // };
+
   const getEventById = async (request, response) => {
-    const eventId = request.params.eventId;
-    const event = await pool.query(
-      `select 
-        *
-        from events c
-        where c.id = $1 `,
-      [eventId]
-    );
-    return response.status(200).json(event.rows);
+ try{
+  const eventId = request.params.eventId;
+  const event = await pool.query(
+    `select * from events c where c.id = $1 `,
+    [eventId]
+  );
+  const eventInfoById = event.rows[0];
+
+  const totalParticipents = await pool.query(
+    `'select COUNT(*) from participants p where p.event_id = $1'`,
+    [eventId]
+  )
+  const totalParticipentsResult = totalParticipents.rows[0].count;
+  console.log(totalParticipentsResult);
+
+  return response.status(200).json({
+    eventInfo: eventInfoById,
+    numberOfParticipents : totalParticipentsResult
+  });
+
+ }catch(erroe){
+   console.log(error);
+ }
   };
+
+
 
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
