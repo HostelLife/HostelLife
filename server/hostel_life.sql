@@ -39,9 +39,11 @@ CREATE TABLE messages (
   content     VARCHAR(2000),
   times_tamp   VARCHAR(120)
 );
-
-
-
+CREATE TABLE participants (
+  id        SERIAL PRIMARY KEY,
+  event_id INT REFERENCES events(id),
+  user_email  VARCHAR(120)
+);
 
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am', 41.4034522, 2.1742895, 'sagradaFamilia.jpg', 'visit_places');
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Casabatallo', 'Casa Batlló is a building in the center of Barcelona. It was designed by Antoni Gaudí, and is considered one of his masterpieces. A remodel of a previously built house, it was redesigned in 1904 by Gaudí and has been refurbished several times after that. Gaudís assistants Domènec Sugrañes i Gras, Josep Canaleta and Joan Rubió also contributed to the renovation project.','12:00pm', 41.391747, 2.165067, 'casabatllo.jpg', 'visit_places');
@@ -88,3 +90,8 @@ INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Two');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Three');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Four');
+
+INSERT INTO participants (event_id, user_email) VALUES (1, "user1@mail.com")
+INSERT INTO participants (event_id, user_email) VALUES (2, "user2@mail.com")
+INSERT INTO participants (event_id, user_email) VALUES (3, "user3@mail.com")
+
