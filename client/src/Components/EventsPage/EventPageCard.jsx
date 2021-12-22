@@ -10,12 +10,29 @@ function EventPageCard({ event }) {
   const { id, imagefilename, title, starttime } = event;
   // const reDirectUrl = `/events/visit_places/${title}`;
   return (
-    <div>
+    <div className="EventPageCard_main">
       <Link
         to={`/event/${id}`}
         style={{ textDecoration: "none", color: "#000" }}
       >
-        <Container className="d-flex flex-row EventPageCard">
+        <Card
+          style={{ width: "100%" }}
+          className="d-flex flex-row EventPageCard"
+        >
+          <Card.Img
+            style={{ width: "9rem" }}
+            variant="top"
+            src={`/images/${imagefilename}`}
+            className="EventPageCard_image"
+          />
+          <Card.Body>
+            <Card.Title style={{ width: "50%" }}>{title}</Card.Title>
+            <Card.Text className="text-muted fs-5" style={{ fontSize: "14px" }}>
+              {starttime}
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        {/* <Container className="d-flex flex-row EventPageCard">
           <Card.Img
             className="EventPageCard_image"
             variant="top"
@@ -29,7 +46,7 @@ function EventPageCard({ event }) {
               </p>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
       </Link>
     </div>
   );

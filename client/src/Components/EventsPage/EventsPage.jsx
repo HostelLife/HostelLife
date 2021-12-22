@@ -19,6 +19,43 @@ export default function EventsPage() {
       });
   }, [category]);
 
+  // const headings = [
+  //   {
+  //     header: "Visit Sites",
+  //     explanation:
+  //       "Select sites to visit and meet new people who are visiting same sites..",
+  //   },
+  //   {
+  //     header: "Enjoy the Barcelona Beach Experience",
+  //     explanation:
+  //       "Select beach which you want to visit with some other new people",
+  //   },
+  //   {
+  //     header: "Hiking Routes",
+  //     explanation:
+  //       "Enjoy selcting routes to hike with new people who are going together with you",
+  //   },
+  //   {
+  //     header: "Biking Routes",
+  //     explanation:
+  //       "Select biking routes to go though the greenery mountains with new people who are going joing with you",
+  //   },
+  //   {
+  //     header: "Shopping Experience",
+  //     explanation:
+  //       "Select kinds of shopping experience you want with new people who are going together with you",
+  //   },
+  //   {
+  //     header: "Food Craving",
+  //     explanation:
+  //       "Select the restaurent to have experience of local foods together with new people",
+  //   },
+  //   {
+  //     header: "Party Lovers",
+  //     explanation: "Select the club to have great experience with new people",
+  //   },
+  // ];
+
   return (
     <>
       <div className="d-flex flex-row p-2">
@@ -32,6 +69,7 @@ export default function EventsPage() {
         Select places to visit and meet new people who are visiting similar
         places...
       </p>
+
       <div>
         {events.map((event) => {
           return <EventPageCard event={event} />;
