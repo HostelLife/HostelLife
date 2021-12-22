@@ -75,23 +75,17 @@ const api = () => {
     });
   };
 
-//----getNewMessage----//
+//------//
 
-const getNewMessage = async (req, res) => {
+const getMessagesByEventId = async (req, res) => {
   try {  
-    const massagesByEventId = req.query.event;
+    const eventId = req.query.event;
     const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
-    [massagesByEventId]
+    [eventId]
     );
     const resultArr = result.rows;
-
-    if(resultArr.length === 0){
-      res.status(201)
-        .send("No messages yet. Be the first one to start a conversation");
-    }else{
-      res.status(201)
-        .send(result.rows);
-    }
+      res.status(200)
+        .send(resultArr);
 
   } catch (err) {
     console.log(err);
@@ -164,7 +158,7 @@ const getNewMessage = async (req, res) => {
       const newUserEmail = req.body.user_email;
 
       const result = await pool.query(`select * from events where id=$1`, [
-        eventId,
+        eventId
       ]);
 
       if (result.rows.length === 0) {
@@ -190,7 +184,7 @@ const getNewMessage = async (req, res) => {
     postNewMessege,
 
     postNewUserBooking,
-    getNewMessage,
+    getMessagesByEventId,
 
     postParticipantBySpectificEventId
 
