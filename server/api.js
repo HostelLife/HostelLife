@@ -75,22 +75,28 @@ const api = () => {
     });
   };
 
-///////////////getNewMessage ////////////
+//----getNewMessage----//
 
-    const getNewMessage = async (req, res) => {
-    try {  
-      const massagesByEventId = req.query.event;
-      const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
-      [massagesByEventId]
-      );
+const getNewMessage = async (req, res) => {
+  try {  
+    const massagesByEventId = req.query.event;
+    const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
+    [massagesByEventId]
+    );
+    const resultArr = result.rows;
 
+    if(resultArr.length === 0){
       res.status(201)
-          .send(result.rows);
-
-    } catch (err) {
-      console.log(err);
+        .send("No messages yet. Be the first one to start a conversation");
+    }else{
+      res.status(201)
+        .send(result.rows);
     }
-  };
+
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   const postNewUserBooking = async (request, response) => {
     try {
@@ -184,10 +190,9 @@ const api = () => {
     postNewMessege,
 
     postNewUserBooking,
-    getNewMessage
+    getNewMessage,
 
-
-    postParticipantBySpectificEventId,
+    postParticipantBySpectificEventId
 
   };
 };
