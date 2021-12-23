@@ -170,23 +170,38 @@ const api = () => {
 
   // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
-    const eventId = req.params.eventId;
-    const userEmail = req.body.user_email;
+    try {
+      const eventId = req.params.eventId;
+      const userEmail = req.body.user_email;
 
-    console.log(eventId);
-    console.log(userEmail);
+      console.log(eventId);
+      console.log(userEmail);
 
-    const queryResult = await pool.query(
-      `select u.id from users u where u.user_email=$1`,
-      [userEmail]
-    );
-    const userId = queryResult.rows[0].id;
+      const queryResult = await pool.query(
+        `select u.id from users u where u.user_email=$1`,
+        [userEmail]
+      );
+      if (!eventId || !userEmail) {
+        return res.status(400).send("Either event id or user email is empty");
+      }
 
-    console.log(userId);
+      const registerResult = queryResult.rows[0];
 
-    const insertNewQuery = `insert into participants (event_id, user_id) values ($1, $2) returning id`;
-    await pool.query(insertNewQuery, [eventId, userId]);
-    res.send("ok");
+      if (!registerResult) {
+        return res.status(200).send("Email address is not registered yet");
+      }
+
+      const userId = queryResult.rows[0].id;
+      console.log(userId);
+
+      const insertNewQuery = `insert into participants (event_id, user_id) values ($1, $2) returning id`;
+      await pool.query(insertNewQuery, [eventId, userId]);
+      res.status(200).send("Participant is Created!");
+    } catch (err) {
+      return res
+        .status(400)
+        .send("Email address is already exist in the following event");
+    }
   };
 
   return {
