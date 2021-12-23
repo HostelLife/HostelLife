@@ -62,7 +62,7 @@ const api = () => {
     const currentTme = new Date().toLocaleString();
 
     const result = await pool.query(
-      `INSERT INTO messages (user_id, event_id, content, times_tamp)
+      `INSERT INTO messages (user_id, event_id, content, times_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [newMessege.user_id, newMessege.event_id, newMessege.content, currentTme]
     );
@@ -73,6 +73,25 @@ const api = () => {
       newMessegeId: responseBody.messegeId,
       time: currentTme,
     });
+  };
+
+///////////////getNewMessage ////////////
+
+    const getNewMessage = async (req, res) => {
+    try {  
+      const userIdForMassage = parseInt(req.params.userId);
+      const result = await pool.query(`SELECT m.content, times_stamp FROM messages m WHERE m.user_id=$1`, 
+      [userIdForMassage]
+      );
+
+      const mesggageArray = result.rows;
+      const lastMessage =  mesggageArray[mesggageArray.length - 1];
+      res.status(201)
+          .send(lastMessage);
+
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const postNewUserBooking = async (request, response) => {
@@ -132,6 +151,7 @@ const api = () => {
           `Please ckeck your informations. Yor have the following issue ${error}`
         );
     }
+
   };
 
   //
@@ -202,6 +222,7 @@ const api = () => {
         .status(400)
         .send("Email address is already exist in the following event");
     }
+
   };
 
   return {
@@ -211,7 +232,13 @@ const api = () => {
     postNewMessege,
 
     postNewUserBooking,
+
     addParticipantToEvent,
+
+    getNewMessage
+
+
+
   };
 };
 

@@ -16,15 +16,16 @@ const api = webApi();
 
 app.get("/events", api.getEvents);
 app.get("/events/:eventId", api.getEventById);
+app.get("/messages/:userId", api.getNewMessage)
+
 //post new event
 app.post("/events", api.postNewEvent);
 app.post("/messages", api.postNewMessege);
-
-//post new user activations
 app.post("/users", api.postNewUserBooking);
 
 //post participant with eventId
 app.post("/events/:eventId/participant", api.addParticipantToEvent);
+
 
 app.listen(PORT, () =>
   console.log(`HostelLife Server is up and running on port ${PORT}`)
