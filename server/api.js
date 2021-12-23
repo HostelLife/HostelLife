@@ -75,24 +75,22 @@ const api = () => {
     });
   };
 
-///////////////getNewMessage ////////////
+//------//
 
-    const getNewMessage = async (req, res) => {
-    try {  
-      const userIdForMassage = parseInt(req.params.userId);
-      const result = await pool.query(`SELECT m.content, times_stamp FROM messages m WHERE m.user_id=$1`, 
-      [userIdForMassage]
-      );
+const getMessagesByEventId = async (req, res) => {
+  try {  
+    const eventId = req.query.event;
+    const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
+    [eventId]
+    );
+    const resultArr = result.rows;
+      res.status(200)
+        .send(resultArr);
 
-      const mesggageArray = result.rows;
-      const lastMessage =  mesggageArray[mesggageArray.length - 1];
-      res.status(201)
-          .send(lastMessage);
-
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   const postNewUserBooking = async (request, response) => {
     try {
@@ -194,8 +192,14 @@ const api = () => {
       const eventId = req.params.eventId;
       const userEmail = req.body.user_email;
 
+
+      const result = await pool.query(`select * from events where id=$1`, [
+        eventId
+      ]);
+
       console.log(eventId);
       console.log(userEmail);
+
 
       const queryResult = await pool.query(
         `select u.id from users u where u.user_email=$1`,
@@ -233,9 +237,15 @@ const api = () => {
 
     postNewUserBooking,
 
+    getMessagesByEventId,
+
+  
+
+
     addParticipantToEvent,
 
-    getNewMessage
+ 
+
 
 
 
