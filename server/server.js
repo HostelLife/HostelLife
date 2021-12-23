@@ -24,7 +24,7 @@ app.post("/messages", api.postNewMessege);
 app.post("/users", api.postNewUserBooking);
 
 //post participant with eventId
-app.post("/events/:eventId/participant", api.postParticipantBySpectificEventId);
+app.post("/events/:eventId/participant", api.addParticipantToEvent);
 
 
 app.listen(PORT, () =>
