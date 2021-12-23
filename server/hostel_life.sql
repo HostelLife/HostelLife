@@ -1,8 +1,11 @@
+drop table if exists messages;
+drop table if exists participants;
 drop table if exists events;
+drop table if exists bookings;
 drop table if exists users;
 drop table if exists hostels;
-drop table if exists bookings;
-drop table if exists messages;
+
+
 
 CREATE TABLE events (
   id        SERIAL PRIMARY KEY,
@@ -39,10 +42,12 @@ CREATE TABLE messages (
   content     VARCHAR(2000),
   times_tamp   VARCHAR(120)
 );
+
 CREATE TABLE participants (
   id        SERIAL PRIMARY KEY,
-  event_id INT REFERENCES events(id),
-  user_email  VARCHAR(120)
+  event_id INT REFERENCES events(id),                              
+  user_id   INT references users(id),
+  unique(event_id, user_id)
 );
 
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Sagrada Famililia', 'Make your visit to the Sagrada Familia unforgettable with a 1.5-hour guided tour of Gaudí’s masterpiece. See the Basilica’s dream-like façade and interior in a small-group or private tour setting accompanied by an expert guide. During the tour you will learn about the ongoing construction, the current predicted completion date, and the generations of craftspeople, architects and artists learned how to bring Gaudi’s vision to life.','10:00am', 41.4034522, 2.1742895, 'sagradaFamilia.jpg', 'visit_places');
@@ -91,7 +96,13 @@ INSERT INTO hostels (hostel_name) VALUES ('Hostel Two');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Three');
 INSERT INTO hostels (hostel_name) VALUES ('Hostel Four');
 
-INSERT INTO participants (event_id, user_email) VALUES (1, "user1@mail.com")
-INSERT INTO participants (event_id, user_email) VALUES (2, "user2@mail.com")
-INSERT INTO participants (event_id, user_email) VALUES (3, "user3@mail.com")
+
+INSERT INTO participants (event_id, user_id) VALUES (6, 1);
+INSERT INTO participants (event_id, user_id) VALUES (2, 2);
+INSERT INTO participants (event_id, user_id) VALUES (3, 4);
+
+
+
+
+
 
