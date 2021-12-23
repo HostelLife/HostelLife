@@ -7,7 +7,7 @@ export default function EventProfilePage() {
   //getting the localStorage email
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
   const userEmailLocal = userInfo.email;
-  console.log("User mail from local storage " + userInfo.email);
+  console.log("User mail from local storage " + userEmailLocal);
   let { id } = useParams();
 
   // const [searchParams, setSearchParams] = useSearchParams();
