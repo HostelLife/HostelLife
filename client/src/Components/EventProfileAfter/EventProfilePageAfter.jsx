@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CardProfileBefore from "./CardProfileBefore";
+import CardProfileAfter from "./CardProfileAfter";
 
 function EventProfileBefore() {
   const [events, setEvents] = useState([]);
@@ -27,7 +27,7 @@ function EventProfileBefore() {
   return (
     <div>
       {events.map((event) => {
-        return <CardProfileBefore event={event} />;
+        return <CardProfileAfter event={event} />;
       })}
     </div>
   );

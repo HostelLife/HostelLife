@@ -58,7 +58,7 @@ function CardsProfile({ event }) {
             </p>
 
             <Card.Text>{description}</Card.Text>
-            <OurButton content={"Cancel the Event"} />
+            <OurButton content={"Join the Event"} />
             <Map position={position} />
           </Card>
         </Card.Body>

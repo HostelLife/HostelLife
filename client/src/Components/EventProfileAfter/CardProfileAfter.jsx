@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Map from "../Map/Map";
 //import Button from "react-bootstrap/Button";
-import "./CardProfileBefore.css";
+import "./CardProfileAfter.css";
 import OurButton from "../Badge/Badge.jsx";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
@@ -56,7 +56,7 @@ function CardProfileBefore({ event }) {
             </p>
 
             <Card.Text>{description}</Card.Text>
-            <OurButton content={"Join the Event"} />
+            <OurButton content={"Cancel the Event"} />
             <Map position={position} />
           </Card>
         </Card.Body>
