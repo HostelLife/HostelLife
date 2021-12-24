@@ -1,5 +1,5 @@
 import React from "react";
-import EventProfileBefore from "../EventProfileBefore/EventProfileBefore.jsx";
+import EventProfilePage from "../EventProfilePage/EventProfilePage.jsx";
 import EventsPage from "../EventsPage/EventsPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CatagoriesPage from "../CatagoriesPage/CatagoriesPage.jsx";
@@ -15,7 +15,7 @@ const App = () => {
           <Route exact path="/" element={<WelcomePage />} />
           <Route exact path="/events" element={<CatagoriesPage />} />
           <Route exact path="/events/:category" element={<EventsPage />} />
-          <Route exact path="/event/:id" element={<EventProfileBefore />} />
+          <Route exact path="/event/:id" element={<EventProfilePage />} />
           <Route exact path="/event/:id" element={<ChatPage />} />
           <Route exact path="/admin" element={<AdminPage />} />
         </Routes>
