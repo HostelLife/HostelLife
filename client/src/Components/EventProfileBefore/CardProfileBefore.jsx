@@ -2,20 +2,20 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Map from "../Map/Map";
 //import Button from "react-bootstrap/Button";
-import "./CardProfile.css";
+import "./CardProfileBefore.css";
 import OurButton from "../Badge/Badge.jsx";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 
-function CardsProfile({ event }) {
+function CardProfileBefore({ event }) {
   const {
     category,
     title,
     description,
     imagefilename,
-    starttime,
+
     latitude,
     longitude,
   } = event;
@@ -23,7 +23,6 @@ function CardsProfile({ event }) {
     lat: latitude,
     lng: longitude,
   };
-
   return (
     <div>
       <Card style={{ width: "100%" }}>
@@ -34,12 +33,12 @@ function CardsProfile({ event }) {
         <Card.Img
           variant="top"
           src={`/images/${imagefilename}`}
-          className="CardProfile_image"
+          className="CardProfileBefore_image"
         />
 
         <Card.Body className="text-dark">
-          <Card className="CardProfile_container">
-            <div className="d-flex justify-content-between d-block CardProfile_logos">
+          <Card className="CardProfile_Before_container">
+            <div className="d-flex justify-content-between d-block CardProfileBefore_logos">
               {/* <Button className="CardProfile_button mb-5" variant="success">
                 Must See
               </Button> */}
@@ -52,13 +51,12 @@ function CardsProfile({ event }) {
               />
             </div>
 
-            <Card.Title>{starttime}</Card.Title>
             <p>
               <BsFillPersonFill /> travellers joining
             </p>
 
             <Card.Text>{description}</Card.Text>
-            <OurButton content={"Cancel the Event"} />
+            <OurButton content={"Join the Event"} />
             <Map position={position} />
           </Card>
         </Card.Body>
@@ -67,4 +65,4 @@ function CardsProfile({ event }) {
   );
 }
 
-export default CardsProfile;
+export default CardProfileBefore;
