@@ -8,9 +8,8 @@ import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
-function CardProfileBefore({ event }) {
+function CardProfileAfter({ event }) {
   const {
     category,
     title,
@@ -66,4 +65,4 @@ function CardProfileBefore({ event }) {
   );
 }
 
-export default CardProfileBefore;
+export default CardProfileAfter;

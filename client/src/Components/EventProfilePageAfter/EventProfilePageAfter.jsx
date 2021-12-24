@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CardProfileBefore from "./CardProfileBefore";
+import CardProfileAfter from "./CardProfileAfter";
 
-function EventProfileBefore() {
+function EventProfilePageAfter() {
   const [events, setEvents] = useState([]);
   //getting the localStorage email
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
@@ -27,10 +27,10 @@ function EventProfileBefore() {
   return (
     <div>
       {events.map((event) => {
-        return <CardProfileBefore event={event} />;
+        return <CardProfileAfter event={event} />;
       })}
     </div>
   );
 }
 
-export default EventProfileBefore;
+export default EventProfilePageAfter;
