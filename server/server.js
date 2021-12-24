@@ -16,7 +16,9 @@ const api = webApi();
 
 app.get("/events", api.getEvents);
 app.get("/events/:eventId", api.getEventById);
-app.get("/messages", api.getMessagesByEventId)
+//app.get("/events/:eventId", api.isCurrUserParticipating);
+
+app.get("/messages", api.getMessagesByEventId);
 
 //post new event
 app.post("/events", api.postNewEvent);
