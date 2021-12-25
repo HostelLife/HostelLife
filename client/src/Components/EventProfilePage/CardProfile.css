@@ -19,7 +19,7 @@
 }
 .CardProfile_image {
   width: 100%;
-  height: 32rem;
+  height: 30rem;
   padding: 1.3rem;
   object-fit: cover;
 }
@@ -53,4 +53,7 @@
   border: none;
   width: 10rem;
   margin-top: 3rem;
+}
+.PersonLogo {
+  color: rgb(21, 190, 119);
 }

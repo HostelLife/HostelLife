@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import "./CatagoriesPage.css";
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
+import Card from "react-bootstrap/Card";
 
 const activities = [
   { label: "Visit Places", urlSlug: "visit_places" },
@@ -19,27 +20,38 @@ const activities = [
 
 export default function CatagoriesPage() {
   return (
-    <div className="text-center p-2">
-      <div className="d-flex flex-row">
-        <Link to="/">
-          <BackButton />
-        </Link>
+    <Card className="text-center bg-light text-light WelcomePage_mainContainer">
+      <div className="text-center p-2">
+        <div className="d-flex flex-row justify-content-between">
+          <Link to="/">
+            <BackButton />
+          </Link>
 
-        <h3 style={{ marginTop: "1rem" }}> Welcome to daily Activities</h3>
+          <h3
+            style={{
+              marginTop: "1rem",
+              color: "#000",
+            }}
+          >
+            Choose the daily Activities
+          </h3>
+
+          <div></div>
+        </div>
+
+        <Container className="CatagoriesPage">
+          <Row>
+            {activities.map((activity) => (
+              <Col xs={6} className="CatagoriesPage_Card">
+                <CategoryCard
+                  urlSlug={activity.urlSlug}
+                  label={activity.label}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
-
-      <p>
-        With supporting text below as a natural lead-in to additional content.
-      </p>
-      <Container className="ActivityPage">
-        <Row>
-          {activities.map((activity) => (
-            <Col xs={6} className="ActivitiesPage__card">
-              <CategoryCard urlSlug={activity.urlSlug} label={activity.label} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    </Card>
   );
 }

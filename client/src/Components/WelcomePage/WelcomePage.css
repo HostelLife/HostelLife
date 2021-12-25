@@ -1,0 +1,23 @@
+.WelcomePage_mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0d0d0d;
+  width: 100%;
+  overflow: hidden;
+}
+
+.WelcomePage_button {
+  margin-top: 8rem;
+}
+.WelcomePage_text {
+  background: rgb(83, 232, 139);
+  background: -webkit-linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

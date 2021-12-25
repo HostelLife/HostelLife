@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import CardsProfile from "./CardProfile.jsx";
 
 export default function EventProfilePage() {
-  const [events, setEvents] = useState([]);
+  const [event, setEvent] = useState();
   //getting the localStorage email
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
   const userEmailLocal = userInfo.email;
@@ -12,13 +12,14 @@ export default function EventProfilePage() {
 
   // const [searchParams, setSearchParams] = useSearchParams();
   // searchParams.get("");
+  //?userEmail=${userEmailLocal}
 
   useEffect(() => {
-    const url = `http://localhost:5000/events/${id}?userEmail=${userEmailLocal}`;
+    const url = `http://localhost:5000/events/${id}`;
 
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setEvents(data))
+      .then((data) => setEvent(data))
       .catch((error) => {
         console.error(error);
       });
@@ -40,11 +41,5 @@ export default function EventProfilePage() {
     }).then((res) => console.log(res));
   };
 
-  return (
-    <div>
-      {events.map((event) => {
-        return <CardsProfile event={event} onClick={onClick} />;
-      })}
-    </div>
-  );
+  return <div>{event && <CardsProfile event={event} onClick={onClick} />}</div>;
 }

@@ -19,7 +19,6 @@ app.get("/events/:eventId", api.getEventById);
 
 //app.get("/events/:eventId", api.isCurrUserParticipating);
 
-
 app.get("/messages", api.getMessagesByEventId);
 
 //post new event
