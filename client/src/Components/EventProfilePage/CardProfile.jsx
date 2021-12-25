@@ -1,15 +1,14 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Map from "../Map/Map";
-//import Button from "react-bootstrap/Button";
 import "./CardProfile.css";
-import OurButton from "../Badge/Badge.jsx";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
+import Button from "react-bootstrap/Button";
 
-function CardsProfile({ event }) {
+function CardsProfile({ event, handleOnSubmit, onClick }) {
   const {
     category,
     title,
@@ -40,9 +39,6 @@ function CardsProfile({ event }) {
         <Card.Body className="text-dark">
           <Card className="CardProfile_container">
             <div className="d-flex justify-content-between d-block CardProfile_logos">
-              {/* <Button className="CardProfile_button mb-5" variant="success">
-                Must See
-              </Button> */}
               <Card.Title>{title}</Card.Title>
 
               <AiOutlineStar
@@ -51,14 +47,18 @@ function CardsProfile({ event }) {
                 }}
               />
             </div>
-
             <Card.Title>{starttime}</Card.Title>
             <p>
               <BsFillPersonFill /> travellers joining
             </p>
-
             <Card.Text>{description}</Card.Text>
-            <OurButton content={"Join the Event"} />
+            <Button
+              variant="success"
+              onClick={onClick}
+              className="CardProfile_button"
+            >
+              Join the Event
+            </Button>{" "}
             <Map position={position} />
           </Card>
         </Card.Body>

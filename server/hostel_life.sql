@@ -89,6 +89,7 @@ INSERT INTO users (user_email) VALUES ('user1@mail.com');
 INSERT INTO users (user_email) VALUES ('user2@mail.com');
 INSERT INTO users (user_email) VALUES ('user3@mail.com');
 INSERT INTO users (user_email) VALUES ('user4@mail.com');
+INSERT INTO users (user_email) VALUES ('suman@gmail.com');
 
 
 INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
