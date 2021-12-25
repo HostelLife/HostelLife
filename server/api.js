@@ -1,5 +1,6 @@
 const secrets = require("./secrets.json");
 const { Pool } = require("pg");
+const { faCommentsDollar } = require("@fortawesome/free-solid-svg-icons");
 const pool = new Pool(secrets);
 
 const api = () => {
@@ -122,22 +123,21 @@ const getEventById = async (request, response) => {
     });
   };
 
-//------//
+  //------//
 
-const getMessagesByEventId = async (req, res) => {
-  try {  
-    const eventId = req.query.event;
-    const result = await pool.query(`SELECT * FROM messages m WHERE m.event_id=$1`, 
-    [eventId]
-    );
-    const resultArr = result.rows;
-      res.status(200)
-        .send(resultArr);
-
-  } catch (err) {
-    console.log(err);
-  }
-};
+  const getMessagesByEventId = async (req, res) => {
+    try {
+      const eventId = req.query.event;
+      const result = await pool.query(
+        `SELECT * FROM messages m WHERE m.event_id=$1`,
+        [eventId]
+      );
+      const resultArr = result.rows;
+      res.status(200).send(resultArr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const postNewUserBooking = async (request, response) => {
     try {
@@ -196,57 +196,13 @@ const getMessagesByEventId = async (req, res) => {
           `Please ckeck your informations. Yor have the following issue ${error}`
         );
     }
-
   };
-
-  //
-
-  //   const result1 = await pool.query(
-  //     `select p.user_email from participants p where p.user_email=$1`,
-  //     [newUserEmail]
-  //   );
-  //   const result2 = await pool.query(
-  //     `select p.user_email from participants p
-  //     inner join events e on e.id=p.event_id
-  //     where p.event_id=$1 and p.user_email=$2`,
-  //     [eventId, newUserEmail]
-  //   );
-
-  //   console.log(result2.rows.length);
-
-  //   if (result.rows.length === 0) {
-  //     return res.status(400).send("Event Id does not exist.");
-  //   }
-  //   if (!newUserEmail) {
-  //     return res.status(400).send("Please provide user email.");
-  //   } else if (result1.rows.length > 0) {
-  //     return res.status(409).send("Email is already exist");
-  //   } else if (result2.rows.length > 0) {
-  //     return res.status(409).send("Email is already exist");
-  //   }
-
-  //   const insertNewQuery = `insert into participants (event_id, user_id) values ($1, $2) returning id`;
-  //   await pool.query(insertNewQuery, [eventId, userId]);
-  //   res.status(200).send("Participant is Created!");
-  // } catch (err) {
-  //   console.log(err);
-  // }
-  // };
 
   // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
-      const userEmail = req.body.user_email;
-
-
-      const result = await pool.query(`select * from events where id=$1`, [
-        eventId
-      ]);
-
-      console.log(eventId);
-      console.log(userEmail);
-
+      const userEmail = req.body.userEmail;
 
       const queryResult = await pool.query(
         `select u.id from users u where u.user_email=$1`,
@@ -259,11 +215,10 @@ const getMessagesByEventId = async (req, res) => {
       const registerResult = queryResult.rows[0];
 
       if (!registerResult) {
-        return res.status(200).send("Email address is not registered yet");
+        return res.status(400).send("Email address is not registered yet");
       }
 
       const userId = queryResult.rows[0].id;
-      console.log(userId);
 
       const insertNewQuery = `insert into participants (event_id, user_id) values ($1, $2) returning id`;
       await pool.query(insertNewQuery, [eventId, userId]);
@@ -273,7 +228,25 @@ const getMessagesByEventId = async (req, res) => {
         .status(400)
         .send("Email address is already exist in the following event");
     }
+  };
 
+  // delete participant from en event
+  const deleteParticipantFromEvent = async (req, res) => {
+    try {
+      const eventId = req.params.eventId;
+      const userEmail = req.body.user_email;
+
+      const emailQuery = `select u.id from users u where u.user_email=$1`;
+      const findEmail = await pool.query(emailQuery, [userEmail]);
+
+      const userId = findEmail.rows[0].id;
+
+      const deleteQuery = `delete from participants where event_id=$1 and user_id=$2`;
+      await pool.query(deleteQuery, [eventId, userId]);
+      res.status(200).send("Participant is deleted");
+    } catch (err) {
+      console.log("err");
+    }
   };
 
   return {
@@ -285,6 +258,7 @@ const getMessagesByEventId = async (req, res) => {
     getMessagesByEventId,
 
     addParticipantToEvent,
+
   //isCurrUserParticipating
 
 
@@ -292,6 +266,9 @@ const getMessagesByEventId = async (req, res) => {
 
 
 
+
+
+    deleteParticipantFromEvent,
 
   };
 };

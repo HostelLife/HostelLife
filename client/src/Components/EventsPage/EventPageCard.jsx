@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import "./EventPageCard.css";
 
 function EventPageCard({ event }) {
-  const { id, imagefilename, title, starttime } = event;
+  const { id, imagefilename, title } = event;
   // const reDirectUrl = `/events/visit_places/${title}`;
   return (
     <div className="EventPageCard_main">
@@ -27,9 +27,10 @@ function EventPageCard({ event }) {
           />
           <Card.Body>
             <Card.Title style={{ width: "50%" }}>{title}</Card.Title>
-            <Card.Text className="text-muted fs-5" style={{ fontSize: "14px" }}>
-              {starttime}
-            </Card.Text>
+            <Card.Text
+              className="text-muted fs-5"
+              style={{ fontSize: "14px" }}
+            ></Card.Text>
           </Card.Body>
         </Card>
         {/* <Container className="d-flex flex-row EventPageCard">

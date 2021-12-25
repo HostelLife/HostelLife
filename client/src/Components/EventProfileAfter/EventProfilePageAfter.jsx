@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import CardsProfile from "./CardProfile.jsx";
+import CardProfileAfter from "./CardProfileAfter";
 
-export default function EventProfilePage() {
+function EventProfileBefore() {
   const [events, setEvents] = useState([]);
   //getting the localStorage email
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
@@ -24,27 +24,13 @@ export default function EventProfilePage() {
       });
   }, [id, userEmailLocal]);
 
-  const onClick = (event) => {
-    event.preventDefault();
-
-    const data = { userEmail: userEmailLocal };
-
-    const url = `http://localhost:5000/events/${id}/participant`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => console.log(res));
-  };
-
   return (
     <div>
       {events.map((event) => {
-        return <CardsProfile event={event} onClick={onClick} />;
+        return <CardProfileAfter event={event} />;
       })}
     </div>
   );
 }
+
+export default EventProfileBefore;

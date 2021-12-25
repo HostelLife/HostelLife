@@ -1,8 +1,8 @@
 import Button from "react-bootstrap/esm/Button";
 import React from "react";
-import "./Badge.css";
+import "./OurButton.css";
 
-function Badge({ content }) {
+function OurButton({ content }) {
   return (
     <Button className="Badge" variant="success">
       {content}
@@ -10,4 +10,4 @@ function Badge({ content }) {
   );
 }
 
-export default Badge;
+export default OurButton;

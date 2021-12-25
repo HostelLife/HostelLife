@@ -9,7 +9,7 @@
   border: none;
   color: #ffffff;
 }
-.CardProfile_container {
+.CardProfile_Before_container {
   border-radius: 30px !important;
   margin-top: -4rem;
   border: none;
@@ -17,7 +17,7 @@
   box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
   background-color: #fff;
 }
-.CardProfile_image {
+.CardProfileBefore_image {
   width: 100%;
   height: 32rem;
   padding: 1.3rem;
@@ -32,25 +32,6 @@
   );
   color: black;
 }
-.CardProfile_logos {
+.CardProfileBefore_logos {
   margin-top: 2rem;
-}
-.CardProfile_locationLogo {
-  height: 5rem;
-  width: 5rem;
-  background-color: rgba(249, 168, 77, 0.2);
-  opacity: 0.3;
-  border-radius: 25px;
-  padding: 0.4rem;
-}
-.CardProfile_button {
-  background: rgb(83, 232, 139);
-  background: linear-gradient(
-    130deg,
-    rgba(83, 232, 139, 1) 0%,
-    rgba(21, 190, 119, 1) 100%
-  );
-  border: none;
-  width: 10rem;
-  margin-top: 3rem;
 }
