@@ -1,10 +1,12 @@
 import React from "react";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
+import "./PersonLogo.css";
 
 function PersonLogo() {
   return (
-    <div>
-      <BsFillPersonFill />
+    <div className="PersonLogo">
+      <BsPerson className="PersonLogo" />
+      <BsPerson />
     </div>
   );
 }

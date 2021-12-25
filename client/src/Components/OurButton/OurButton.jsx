@@ -4,7 +4,11 @@ import "./OurButton.css";
 
 function OurButton({ content }) {
   return (
-    <Button className="Badge" variant="success">
+    <Button
+      className="OurButton"
+      variant="success"
+      style={{ border: "none", borderRadius: "18px" }}
+    >
       {content}
     </Button>
   );
