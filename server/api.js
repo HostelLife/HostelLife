@@ -155,7 +155,7 @@ const api = () => {
   const addParticipantToEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
-      const userEmail = req.body.user_email;
+      const userEmail = req.body.userEmail;
 
       const queryResult = await pool.query(
         `select u.id from users u where u.user_email=$1`,

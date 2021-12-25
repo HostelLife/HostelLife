@@ -24,10 +24,26 @@ export default function EventProfilePage() {
       });
   }, [id, userEmailLocal]);
 
+  const onClick = (event) => {
+    event.preventDefault();
+
+    const data = { userEmail: userEmailLocal };
+
+    const url = `http://localhost:5000/events/${id}/participant`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => console.log(res));
+  };
+
   return (
     <div>
       {events.map((event) => {
-        return <CardsProfile event={event} />;
+        return <CardsProfile event={event} onClick={onClick} />;
       })}
     </div>
   );
