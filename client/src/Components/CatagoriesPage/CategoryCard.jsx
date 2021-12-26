@@ -7,9 +7,13 @@ function CategoryCard({ label, urlSlug }) {
   return (
     <div>
       <Link to={`/events/${urlSlug}`}>
-        <Button className="mt-1 px-4 CategoryCard" variant="#F4F4F4">
+        <Button
+          className="mt-1 px-4 CategoryCard"
+          variant="#ffffff"
+          style={{ borderRadius: "25px" }}
+        >
           {label}
-        </Button>
+        </Button>{" "}
       </Link>
     </div>
   );
