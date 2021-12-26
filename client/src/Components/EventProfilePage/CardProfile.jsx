@@ -5,7 +5,7 @@ import "./CardProfile.css";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
-import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
 
 function CardsProfile({ event, onClick }) {
@@ -17,7 +17,11 @@ function CardsProfile({ event, onClick }) {
     starttime,
     latitude,
     longitude,
+    isAlreadyJoining
   } = event;
+
+  console.log(isAlreadyJoining);
+
   const position = {
     lat: latitude,
     lng: longitude,
@@ -41,21 +45,29 @@ function CardsProfile({ event, onClick }) {
 
         <Card.Body className="text-dark">
           <Card className="CardProfile_container">
+            
             <div className="d-flex justify-content-between d-block CardProfile_logos">
               <Card.Title>{title}</Card.Title>
-
-              <AiOutlineStar
+              {
+                isAlreadyJoining &&  
+                <AiFillStar
                 style={{
-                  height: "1rem",
+                  height: "2rem",
+                  width: "2rem",
+                  color: "orange"
                 }}
               />
+              }            
             </div>
+            
             <Card.Title>{starttime}</Card.Title>
             <p>
               <BsPerson className="PersonLogo" /> travellers joining
             </p>
             <Card.Text>{description}</Card.Text>
-            <Button
+            
+          {!isAlreadyJoining && 
+          <Button
               style={{
                 border: "none",
                 borderRadius: "18px",
@@ -64,9 +76,10 @@ function CardsProfile({ event, onClick }) {
               variant="success"
               onClick={onClick}
               className="CardProfile_button"
-            >
-              Join the Event
+            >Join the Event
             </Button>
+          }
+            
             <Map position={position} />
           </Card>
         </Card.Body>
