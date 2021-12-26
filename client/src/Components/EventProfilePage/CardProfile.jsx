@@ -17,7 +17,8 @@ function CardsProfile({ event, onClick }) {
     starttime,
     latitude,
     longitude,
-    isAlreadyJoining,
+    numberOfParticipents,
+    isAlreadyJoining
   } = event;
 
   console.log(isAlreadyJoining);
@@ -60,7 +61,8 @@ function CardsProfile({ event, onClick }) {
 
             <Card.Title>{starttime}</Card.Title>
             <p>
-              <BsPerson className="PersonLogo" /> travellers joining
+              <BsPerson className="PersonLogo" /> 
+              <span className="total-participants"> {numberOfParticipents} </span> travellers joining
             </p>
             <Card.Text>{description}</Card.Text>
 

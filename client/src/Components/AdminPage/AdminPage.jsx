@@ -41,7 +41,7 @@ export default function AdminPage() {
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
             />
-            {console.log("value")}
+
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -80,7 +80,10 @@ export default function AdminPage() {
               onChange={(e) => setCheckOutDate(e.target.value)}
             />
           </Form.Group>
+
           <Link to={`/welcome/?email=${userEmail}`}>
+
+
             <Button
               className="AdminPage_SubmitButton"
               variant="primary"
