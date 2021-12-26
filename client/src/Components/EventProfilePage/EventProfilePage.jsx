@@ -15,8 +15,8 @@ export default function EventProfilePage() {
   //?userEmail=${userEmailLocal}
 
   useEffect(() => {
-    const url = `http://localhost:5000/events/${id}`;
-
+    const url = `http://localhost:5000/events/${id}?userEmail=${userEmailLocal}`;
+    console.log(userEmailLocal);
     fetch(url)
       .then((res) => res.json())
       .then((data) => setEvent(data))

@@ -1,6 +1,7 @@
 const secrets = require("./secrets.json");
 const { Pool } = require("pg");
 const { faCommentsDollar } = require("@fortawesome/free-solid-svg-icons");
+const res = require("express/lib/response");
 const pool = new Pool(secrets);
 
 const api = () => {
@@ -68,22 +69,26 @@ const api = () => {
       let userIsJoining = false;
 
       if (userEmail) {
-        const userIdQuery = await pool.query(
+        const userIdQueryResponse = await pool.query(
           `select u.id from users u where u.user_email = $1`,
           [userEmail]
         );
-        const userIdResult = userIdQuery.rows[0].id;
+        const user = userIdQueryResponse.rows[0];
 
-        const findUserIdQuery = `select *
+        if (user) {
+          const userId = user.id;
+
+          const findUserIdQuery = `select *
     from  participants p 
     where p.user_id = $1 
     and   p.event_id = $2`;
-        const getParticipantsQueryResponse = await pool.query(findUserIdQuery, [
-          userIdResult,
-          eventId,
-        ]);
+          const getParticipantsQueryResponse = await pool.query(
+            findUserIdQuery,
+            [userId, eventId]
+          );
 
-        userIsJoining = getParticipantsQueryResponse.rows.length > 0;
+          userIsJoining = getParticipantsQueryResponse.rows.length > 0;
+        }
       }
       return response.status(200).json({
         ...event,

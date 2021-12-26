@@ -15,7 +15,7 @@ function CategoryCard({ label, urlSlug, imagefilename }) {
           }}
         >
           {label}
-        </Button>
+        </Button>{" "}
       </Link>
     </div>
   );

@@ -54,7 +54,7 @@ export default function EventsPage() {
   //     header: "Party Lovers",
   //     explanation: "Select the club to have great experience with new people",
   //   },
-  // ];
+  // ]
 
   return (
     <>
@@ -69,12 +69,17 @@ export default function EventsPage() {
         Select places to visit and meet new people who are visiting similar
         places.
       </p>
-
-      <div>
-        {events.map((event) => {
-          return <EventPageCard event={event} />;
-        })}
-      </div>
+        <div>
+          {events.map((event) => {
+            return (
+              <EventPageCard
+                event={event}
+                header={event.header}
+                explanation={event.explanation}
+              />
+            );
+          })}
+        </div>
     </>
   );
 }

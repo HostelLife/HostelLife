@@ -5,17 +5,30 @@ function BackButton() {
   return (
     <div>
       <svg
+        style={{ marginTop: "1rem" }}
+        width="45"
+        height="45"
+        viewBox="0 0 45 45"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="#DA6317"
-        className="bi bi-chevron-left ActivityPage_backLogo"
-        viewBox="0 0 16 16"
       >
-        <path
-          fill-rule="evenodd"
-          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-        />
+        <g id="Icon Back">
+          <rect
+            id="Rectangle"
+            opacity="0.1"
+            width="45"
+            height="45"
+            rx="15"
+            fill="#F9A84D"
+          />
+          <g id="Vector">
+            <path
+              id="Path"
+              d="M20.6359 22.182L27 28.5462L25.182 30.3641L17 22.182L25.182 14L27 15.818L20.6359 22.182Z"
+              fill="#DA6317"
+            />
+          </g>
+        </g>
       </svg>
     </div>
   );

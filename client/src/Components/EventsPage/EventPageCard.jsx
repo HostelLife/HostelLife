@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
 import "./EventPage.css";
 
 function EventPageCard({ event }) {
   const { id, starttime, imagefilename, title } = event;
-  // const reDirectUrl = `/events/visit_places/${title}`;
+
   return (
     <div className="EventPageCard_main">
       <Link
