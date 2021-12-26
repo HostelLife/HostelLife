@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export function SearchBar() {
   return (
@@ -17,7 +17,7 @@ export function SearchBar() {
                 className="form-control form-input mr-3"
                 placeholder="Search anything..."
               />
-              <FontAwesomeIcon icon={faSearch} />
+             {/* <FontAwesomeIcon icon={faSearch} /> */}
             </div>
           </div>
         </div>

@@ -57,3 +57,8 @@
 .PersonLogo {
   color: rgb(21, 190, 119);
 }
+
+.total-participants{
+  font-size: larger;
+  color: rgb(0, 151, 101);
+}
