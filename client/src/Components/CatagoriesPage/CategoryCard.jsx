@@ -6,7 +6,7 @@ import "./CategoryCard.css";
 function CategoryCard({ label, urlSlug, imagefilename }) {
   return (
     <div>
-      <Link to={`/events/${urlSlug}`}>
+      <Link to={`/welcome/events/${urlSlug}`}>
         <Button
           className="mt-1 px-2 CategoryCard"
           variant="#F4F4F4"

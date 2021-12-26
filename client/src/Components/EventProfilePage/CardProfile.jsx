@@ -17,7 +17,7 @@ function CardsProfile({ event, onClick }) {
     starttime,
     latitude,
     longitude,
-    isAlreadyJoining
+    isAlreadyJoining,
   } = event;
 
   console.log(isAlreadyJoining);
@@ -33,7 +33,7 @@ function CardsProfile({ event, onClick }) {
         className=" bg-light text-light d-flex justify-content-start p-1"
         style={{ border: "none" }}
       >
-        <Link to={`/events/${category}`} className="ms-3">
+        <Link to={`/welcome/events/${category}`} className="ms-3">
           <BackButton />
         </Link>
 
@@ -45,41 +45,40 @@ function CardsProfile({ event, onClick }) {
 
         <Card.Body className="text-dark">
           <Card className="CardProfile_container">
-            
             <div className="d-flex justify-content-between d-block CardProfile_logos">
               <Card.Title>{title}</Card.Title>
-              {
-                isAlreadyJoining &&  
+              {isAlreadyJoining && (
                 <AiFillStar
-                style={{
-                  height: "2rem",
-                  width: "2rem",
-                  color: "orange"
-                }}
-              />
-              }            
+                  style={{
+                    height: "2rem",
+                    width: "2rem",
+                    color: "orange",
+                  }}
+                />
+              )}
             </div>
-            
+
             <Card.Title>{starttime}</Card.Title>
             <p>
               <BsPerson className="PersonLogo" /> travellers joining
             </p>
             <Card.Text>{description}</Card.Text>
-            
-          {!isAlreadyJoining && 
-          <Button
-              style={{
-                border: "none",
-                borderRadius: "18px",
-                marginBottom: "1rem",
-              }}
-              variant="success"
-              onClick={onClick}
-              className="CardProfile_button"
-            >Join the Event
-            </Button>
-          }
-            
+
+            {!isAlreadyJoining && (
+              <Button
+                style={{
+                  border: "none",
+                  borderRadius: "18px",
+                  marginBottom: "1rem",
+                }}
+                variant="success"
+                onClick={onClick}
+                className="CardProfile_button"
+              >
+                Join the Event
+              </Button>
+            )}
+
             <Map position={position} />
           </Card>
         </Card.Body>

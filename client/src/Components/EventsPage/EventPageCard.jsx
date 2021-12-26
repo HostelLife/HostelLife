@@ -9,7 +9,7 @@ function EventPageCard({ event }) {
   return (
     <div className="EventPageCard_main">
       <Link
-        to={`/event/${id}`}
+        to={`/welcome/events/event/${id}`}
         style={{ textDecoration: "none", color: "#000" }}
       >
         <Card

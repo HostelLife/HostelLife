@@ -59,7 +59,7 @@ export default function EventsPage() {
   return (
     <>
       <div className="d-flex flex-row p-2">
-        <Link to="/events">
+        <Link to="/welcome/events">
           <BackButton />
         </Link>
 
@@ -69,17 +69,17 @@ export default function EventsPage() {
         Select places to visit and meet new people who are visiting similar
         places.
       </p>
-        <div>
-          {events.map((event) => {
-            return (
-              <EventPageCard
-                event={event}
-                header={event.header}
-                explanation={event.explanation}
-              />
-            );
-          })}
-        </div>
+      <div>
+        {events.map((event) => {
+          return (
+            <EventPageCard
+              event={event}
+              header={event.header}
+              explanation={event.explanation}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
