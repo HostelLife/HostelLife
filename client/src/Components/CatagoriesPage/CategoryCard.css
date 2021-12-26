@@ -1,8 +1,9 @@
 .CategoryCard {
-  height: 8rem;
+  height: 9rem;
   width: 100%;
+  margin-bottom: 15px;
   box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
-  border-radius: 40px !important;
+  border-radius: 50px !important;
   border-color: coral;
   background-color: coral;
   background-position: center;
@@ -12,7 +13,4 @@
   color: rgb(255, 127, 80, 0.9) !important;
   font-weight: 700 !important;
   text-shadow: 0 2px white, 1px 1px white, 2px 1px white;
-
-  /* text-shadow: -1px 3px white, -2px 0 white, 2px 3px white, 2px -1px white; */
-  /* -1px 3px white, */
 }

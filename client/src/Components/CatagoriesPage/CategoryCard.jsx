@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import "./CategoryCard.css";
 
 function CategoryCard({ label, urlSlug, imagefilename }) {
@@ -10,7 +9,7 @@ function CategoryCard({ label, urlSlug, imagefilename }) {
       <Link to={`/events/${urlSlug}`}>
         <Button
           className="mt-1 px-2 CategoryCard"
-          variant="light"
+          variant="#F4F4F4"
           style={{
             backgroundImage: `url("/images/${imagefilename}")`,
           }}

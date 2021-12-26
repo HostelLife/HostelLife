@@ -1,15 +1,16 @@
-.EventPageCard_main {
-  padding: 1rem;
+.EventPage_mainContainer {
+  padding: 0.6rem;
+  background-color: #fff;
 }
 .EventPageCard {
   box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
-  border-radius: 22px;
+  border-radius: 22px !important;
   /* background-color: #fff; */
+  background-color: coral;
   margin-top: 0.7rem;
   box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
   border-radius: 30px !important;
   border-color: coral;
-  background-color: coral;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,11 +23,18 @@
 .EventPageCard_image {
   height: 6rem;
   padding: 0.5rem;
-  border-radius: 15px;
+  border-radius: 18px !important;
   overflow: hidden;
 }
 
 .EventPageCard_title {
   padding: 0.5rem;
   text-decoration: none;
+}
+.EventPageCard_time {
+  color: black;
+}
+.EventPageCard_main {
+  padding: 0.6rem;
+  border: none;
 }
