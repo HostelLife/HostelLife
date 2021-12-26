@@ -3,8 +3,6 @@ import EventPageCard from "./EventPageCard.jsx";
 import { useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import "./EventPage.css";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -59,34 +57,18 @@ export default function EventsPage() {
   // ]
 
   return (
-    <Card className="text-center bg-light text-light d-flex flex-row justify-content-center ">
-      <div className="text-center p-2">
-        <div className="d-flex flex-row ">
-          <Link to="/events">
-            <BackButton />
-          </Link>
+    <>
+      <div className="d-flex flex-row p-2">
+        <Link to="/events">
+          <BackButton />
+        </Link>
 
-          <h3
-            className="mx-5  pt-3"
-            style={{
-              color: "#000",
-            }}
-          >
-            Must See..
-          </h3>
-          <div></div>
-        </div>
-        <p
-          className=" text-center"
-          style={{
-            marginTop: "1rem",
-            color: "#000",
-          }}
-        >
-          Select places to visit and meet new people who are visiting similar
-          places...
-        </p>
-
+        <h5 className="mx-5  pt-3">Visit Beautiful Places</h5>
+      </div>
+      <p className=" text-center">
+        Select places to visit and meet new people who are visiting similar
+        places.
+      </p>
         <div>
           {events.map((event) => {
             return (
@@ -98,7 +80,6 @@ export default function EventsPage() {
             );
           })}
         </div>
-      </div>
-    </Card>
+    </>
   );
 }
