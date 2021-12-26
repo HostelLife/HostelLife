@@ -56,7 +56,7 @@ export default function EventsPage() {
   //     header: "Party Lovers",
   //     explanation: "Select the club to have great experience with new people",
   //   },
-  // ];
+  // ]
 
   return (
     <Card className="text-center bg-light text-light d-flex flex-row justify-content-center ">
@@ -89,7 +89,13 @@ export default function EventsPage() {
 
         <div>
           {events.map((event) => {
-            return <EventPageCard event={event} />;
+            return (
+              <EventPageCard
+                event={event}
+                header={event.header}
+                explanation={event.explanation}
+              />
+            );
           })}
         </div>
       </div>
