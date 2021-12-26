@@ -1,7 +1,18 @@
 .CategoryCard {
-  height: 9rem;
+  height: 8rem;
   width: 100%;
-  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
-  border-radius: 22px;
-  background-color: #fff;
+  box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
+  border-radius: 40px !important;
+  border-color: coral;
+  background-color: coral;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1.25rem !important;
+  color: rgb(255, 127, 80, 0.9) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px white, 1px 1px white, 2px 1px white;
+
+  /* text-shadow: -1px 3px white, -2px 0 white, 2px 3px white, 2px -1px white; */
+  /* -1px 3px white, */
 }

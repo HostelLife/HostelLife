@@ -67,7 +67,7 @@ export default function EventsPage() {
       </div>
       <p className=" text-center">
         Select places to visit and meet new people who are visiting similar
-        places...
+        places.
       </p>
 
       <div>
