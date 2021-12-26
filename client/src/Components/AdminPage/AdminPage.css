@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+.AdminPage_MainContainer {
+  width: 100%;
+}
+.AdminPage_SubmitButton {
+  background: rgb(83, 232, 139);
+  background: linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  border: none;
+  width: 10rem;
+  margin-top: 3rem;
+  border-radius: 18px;
+}
+.AdminPage_Card {
+  border: none;
+}
