@@ -13,7 +13,7 @@ function CategoryCard({ label, urlSlug }) {
           style={{ borderRadius: "25px" }}
         >
           {label}
-        </Button>{" "}
+        </Button>
       </Link>
     </div>
   );
