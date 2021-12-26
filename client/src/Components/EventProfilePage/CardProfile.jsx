@@ -1,15 +1,14 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Map from "../Map/Map";
-//import Button from "react-bootstrap/Button";
 import "./CardProfile.css";
-import OurButton from "../Badge/Badge.jsx";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsPerson } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
+import Button from "react-bootstrap/Button";
 
-function CardsProfile({ event }) {
+function CardsProfile({ event, onClick }) {
   const {
     category,
     title,
@@ -26,8 +25,11 @@ function CardsProfile({ event }) {
 
   return (
     <div>
-      <Card style={{ width: "100%" }}>
-        <Link to={`/events/${category}`}>
+      <Card
+        className=" bg-light text-light d-flex justify-content-start p-1"
+        style={{ border: "none" }}
+      >
+        <Link to={`/events/${category}`} className="ms-3">
           <BackButton />
         </Link>
 
@@ -40,9 +42,6 @@ function CardsProfile({ event }) {
         <Card.Body className="text-dark">
           <Card className="CardProfile_container">
             <div className="d-flex justify-content-between d-block CardProfile_logos">
-              {/* <Button className="CardProfile_button mb-5" variant="success">
-                Must See
-              </Button> */}
               <Card.Title>{title}</Card.Title>
 
               <AiOutlineStar
@@ -51,14 +50,23 @@ function CardsProfile({ event }) {
                 }}
               />
             </div>
-
             <Card.Title>{starttime}</Card.Title>
             <p>
-              <BsFillPersonFill /> travellers joining
+              <BsPerson className="PersonLogo" /> travellers joining
             </p>
-
             <Card.Text>{description}</Card.Text>
-            <OurButton content={"Join the Event"} />
+            <Button
+              style={{
+                border: "none",
+                borderRadius: "18px",
+                marginBottom: "1rem",
+              }}
+              variant="success"
+              onClick={onClick}
+              className="CardProfile_button"
+            >
+              Join the Event
+            </Button>
             <Map position={position} />
           </Card>
         </Card.Body>

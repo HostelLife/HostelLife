@@ -35,7 +35,7 @@ const api = () => {
       } else {
         const lowerCasedCategory = category.toLowerCase();
         const query = `SELECT * FROM events WHERE category LIKE '${lowerCasedCategory}'`;
-        console.log(query);
+        //console.log(query);
         const result = await pool.query(query); // show searched events
 
         response.status(200).send(result.rows);
@@ -46,17 +46,65 @@ const api = () => {
     }
   };
 
+  ///---modifying ---//
+
   const getEventById = async (request, response) => {
-    const eventId = request.params.eventId;
-    const event = await pool.query(
-      `select 
-        *
-        from events c
-        where c.id = $1 `,
-      [eventId]
-    );
-    return response.status(200).json(event.rows);
+    try {
+      const userEmail = request.query.userEmail;
+      const eventId = request.params.eventId;
+
+      const getEveentQueryResponse = await pool.query(
+        `select * from events c where c.id = $1 `,
+        [eventId]
+      );
+      const event = getEveentQueryResponse.rows[0];
+
+      const getTotalParticipantsQueryResponse = await pool.query(
+        `select COUNT(*) from participants p where p.event_id = $1`,
+        [eventId]
+      );
+      const participantsCount = getTotalParticipantsQueryResponse.rows[0].count;
+
+      let userIsJoining = false;
+
+      if (userEmail) {
+        const userIdQuery = await pool.query(
+          `select u.id from users u where u.user_email = $1`,
+          [userEmail]
+        );
+        const userIdResult = userIdQuery.rows[0].id;
+
+        const findUserIdQuery = `select *
+    from  participants p 
+    where p.user_id = $1 
+    and   p.event_id = $2`;
+        const getParticipantsQueryResponse = await pool.query(findUserIdQuery, [
+          userIdResult,
+          eventId,
+        ]);
+
+        userIsJoining = getParticipantsQueryResponse.rows.length > 0;
+      }
+      return response.status(200).json({
+        ...event,
+        numberOfParticipents: participantsCount,
+        isAlreadyJoining: userIsJoining,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  ///////////////////////////////////////////////////////////////
+  // const  isCurrUserParticipating = async (req , res)=> {
+  //   const userEmail = req.query.userEmail;
+
+  //   const userIdQuery = await pool.query(
+  //     `select u.id from users u where u.user_email = $1`, [userEmail]
+  //   );
+  //     console.log(userIdQuery.rows);
+  //   res.status(400).send("ok");
+  // }
 
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
@@ -155,7 +203,7 @@ const api = () => {
   const addParticipantToEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
-      const userEmail = req.body.user_email;
+      const userEmail = req.body.userEmail;
 
       const queryResult = await pool.query(
         `select u.id from users u where u.user_email=$1`,
@@ -207,12 +255,13 @@ const api = () => {
     getEvents,
     getEventById,
     postNewMessege,
-
     postNewUserBooking,
-
     getMessagesByEventId,
 
     addParticipantToEvent,
+
+    //isCurrUserParticipating
+
     deleteParticipantFromEvent,
   };
 };

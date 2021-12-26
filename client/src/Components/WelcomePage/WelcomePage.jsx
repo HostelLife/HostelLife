@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import OurButton from "../Badge/Badge.jsx";
+import OurButton from "../OurButton/OurButton.jsx";
+import "./WelcomePage.css";
 
 const getLocalStorageEmail = () => {
   //NOT SURE ABOUT THE FUNCTION
@@ -37,21 +38,24 @@ export default function WelcomePage() {
 
   return (
     <Card
-      style={{ height: "100%" }}
-      className="text-center bg-light bg-gradient text-light p-5 mt-5"
+      style={{ height: "100vh" }}
+      className="text-center bg-light text-light WelcomePage_mainContainer"
     >
-      <Card.Body style={{ height: "100%" }}>
-        <img alt="" src="images\logo.png" style={{ width: "20rem" }} />
+      <img
+        alt=""
+        src="images\logo-black.png"
+        style={{ width: "18rem", marginTop: "1px" }}
+        className=" WelcomePage_image"
+      />
 
-        <Card.Title className="text-dark mt-5">
-          {" "}
-          Make new friends while travelling...
-        </Card.Title>
+      <Card.Title className=" mt-5 WelcomePage_text">
+        {" "}
+        Make new friends while travelling...
+      </Card.Title>
 
-        <Link to="/events">
-          <OurButton content={"Let's Go!"} />
-        </Link>
-      </Card.Body>
+      <Link to="/events">
+        <OurButton content={"Start Exploring"} className="WelcomePage_button" />
+      </Link>
     </Card>
   );
 }

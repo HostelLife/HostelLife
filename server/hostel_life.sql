@@ -5,8 +5,6 @@ drop table if exists bookings;
 drop table if exists users;
 drop table if exists hostels;
 
-
-
 CREATE TABLE events (
   id        SERIAL PRIMARY KEY,
   title      VARCHAR(30) NOT NULL,
@@ -89,6 +87,7 @@ INSERT INTO users (user_email) VALUES ('user1@mail.com');
 INSERT INTO users (user_email) VALUES ('user2@mail.com');
 INSERT INTO users (user_email) VALUES ('user3@mail.com');
 INSERT INTO users (user_email) VALUES ('user4@mail.com');
+INSERT INTO users (user_email) VALUES ('suman@gmail.com');
 
 
 INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
@@ -98,11 +97,10 @@ INSERT INTO hostels (hostel_name) VALUES ('Hostel Four');
 
 
 INSERT INTO participants (event_id, user_id) VALUES (6, 1);
+INSERT INTO participants (event_id, user_id) VALUES (6, 2);
+INSERT INTO participants (event_id, user_id) VALUES (6, 3);
 INSERT INTO participants (event_id, user_id) VALUES (2, 2);
 INSERT INTO participants (event_id, user_id) VALUES (3, 4);
+INSERT INTO participants (event_id, user_id) VALUES (3, 2);
 
-
-
-
-
-
+select * from participants p where p.user_id = 2;
