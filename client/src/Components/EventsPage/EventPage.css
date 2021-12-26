@@ -4,15 +4,27 @@
 }
 .EventPageCard {
   box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
-  border-radius: 18px !important;
-  background-color: #fff;
+  border-radius: 22px !important;
+  /* background-color: #fff; */
+  background-color: coral;
   margin-top: 0.7rem;
+  box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
+  border-radius: 30px !important;
+  border-color: coral;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1.25rem !important;
+  color: rgb(255, 127, 80, 0.9) !important;
+  font-weight: 700 !important;
+  /* text-shadow: -1px 3px black, -2px 0 black, 2px 3px black, 2px -1px black; */
 }
 
 .EventPageCard_image {
   height: 6rem;
   padding: 0.5rem;
   border-radius: 18px !important;
+  overflow: hidden;
 }
 
 .EventPageCard_title {

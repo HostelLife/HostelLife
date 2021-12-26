@@ -4,3 +4,11 @@
 .CatagoriesPage_Card {
   padding: 1rem;
 }
+.SubTitleFont {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  color: rgb(255, 127, 80, 0.8);
+  font-size: 1.7rem;
+  font-style: italic;
+  text-decoration: underline;
+}
