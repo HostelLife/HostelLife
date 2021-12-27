@@ -3,6 +3,7 @@ import EventPageCard from "./EventPageCard.jsx";
 import { useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -58,16 +59,16 @@ export default function EventsPage() {
 
   return (
     <>
-      <div className="d-flex flex-row p-2">
-        <Link to="/welcome/events">
+      <div className="d-flex flex-row p-2  text-center">
+        <Link to="/events">
           <BackButton />
         </Link>
 
-        <h5 className="mx-5  pt-3">Visit Beautiful Places</h5>
+        <h5 className="mx-5  pt-3">Must See {category} sites</h5>
       </div>
       <p className=" text-center">
-        Select places to visit and meet new people who are visiting similar
-        places.
+        Select sites to visit and meet new people who are visiting together with
+        you.
       </p>
       <div>
         {events.map((event) => {

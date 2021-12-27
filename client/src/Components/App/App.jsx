@@ -12,19 +12,11 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/welcome" element={<WelcomePage />} />
-          <Route exact path="/welcome/events" element={<CatagoriesPage />} />
-          <Route
-            exact
-            path="/welcome/events/:category"
-            element={<EventsPage />}
-          />
-          <Route
-            exact
-            path="/welcome/events/event/:id"
-            element={<EventProfilePage />}
-          />
-          <Route exact path="/event/:id" element={<ChatPage />} />
+          <Route exact path="/" element={<WelcomePage />} />
+          <Route exact path="/events" element={<CatagoriesPage />} />
+          <Route exact path="/events/:category" element={<EventsPage />} />
+          <Route exact path="/event/:id" element={<EventProfilePage />} />
+          <Route exact path="/event/:id/chat" element={<ChatPage />} />
           <Route exact path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>

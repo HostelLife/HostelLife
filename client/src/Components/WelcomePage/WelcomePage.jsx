@@ -53,7 +53,7 @@ export default function WelcomePage() {
         Make new friends while travelling...
       </Card.Title>
 
-      <Link to="/welcome/events">
+      <Link to="/events">
         <OurButton content={"Start Exploring"} className="WelcomePage_button" />
       </Link>
     </Card>
