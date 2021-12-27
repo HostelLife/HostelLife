@@ -81,9 +81,7 @@ export default function AdminPage() {
             />
           </Form.Group>
 
-          <Link to={`/welcome/?email=${userEmail}`}>
-
-
+          <Link to={`/?email=${userEmail}`}>
             <Button
               className="AdminPage_SubmitButton"
               variant="primary"

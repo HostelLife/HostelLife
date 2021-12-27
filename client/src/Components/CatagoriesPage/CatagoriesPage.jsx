@@ -31,7 +31,7 @@ export default function CatagoriesPage() {
     <Card className="text-center bg-light text-light WelcomePage_mainContainer">
       <div className="text-center p-2">
         <div className="d-flex flex-row justify-content-between">
-          <Link to="/welcome">
+          <Link to="/">
             <BackButton />
           </Link>
 

@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 
 function CardsProfile({ event, onClick }) {
   const {
+    id,
     category,
     title,
     description,
@@ -18,7 +19,7 @@ function CardsProfile({ event, onClick }) {
     latitude,
     longitude,
     numberOfParticipents,
-    isAlreadyJoining
+    isAlreadyJoining,
   } = event;
 
   console.log(isAlreadyJoining);
@@ -34,7 +35,7 @@ function CardsProfile({ event, onClick }) {
         className=" bg-light text-light d-flex justify-content-start p-1"
         style={{ border: "none" }}
       >
-        <Link to={`/welcome/events/${category}`} className="ms-3">
+        <Link to={`/events/${category}`} className="ms-3">
           <BackButton />
         </Link>
 
@@ -61,10 +62,17 @@ function CardsProfile({ event, onClick }) {
 
             <Card.Title>{starttime}</Card.Title>
             <p>
-              <BsPerson className="PersonLogo" /> 
-              <span className="total-participants"> {numberOfParticipents} </span> travellers joining
+              <BsPerson className="PersonLogo" />
+              <span className="total-participants">
+                {" "}
+                {numberOfParticipents}{" "}
+              </span>{" "}
+              travellers joining
             </p>
             <Card.Text>{description}</Card.Text>
+            <Link to={`/event/${id}/chat`}>
+              <Button variant="success">Chat</Button>
+            </Link>
 
             {!isAlreadyJoining && (
               <Button

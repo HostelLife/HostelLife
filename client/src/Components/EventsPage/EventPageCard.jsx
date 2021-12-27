@@ -9,7 +9,7 @@ function EventPageCard({ event }) {
   return (
     <div className="EventPageCard_main">
       <Link
-        to={`/welcome/events/event/${id}`}
+        to={`/event/${id}`}
         style={{ textDecoration: "none", color: "#000" }}
       >
         <Card
@@ -25,7 +25,6 @@ function EventPageCard({ event }) {
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text className="text-muted " style={{ fontSize: "15px" }}>
-              {" "}
               {starttime}
             </Card.Text>
           </Card.Body>
