@@ -77,16 +77,14 @@ const api = () => {
 
         if (user) {
           const userId = user.id;
-
           const findUserIdQuery = `select *
-    from  participants p 
-    where p.user_id = $1 
-    and   p.event_id = $2`;
+             from  participants p 
+             where p.user_id = $1 
+             and  p.event_id = $2`;
           const getParticipantsQueryResponse = await pool.query(
             findUserIdQuery,
             [userId, eventId]
           );
-
           userIsJoining = getParticipantsQueryResponse.rows.length > 0;
         }
       }
@@ -240,18 +238,24 @@ const api = () => {
   const deleteParticipantFromEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
-      const userEmail = req.body.user_email;
-
+      const userEmail = req.body.userEmail;
+      if (!userEmail) {
+        res.status(400).send("User email is required");
+      }
       const emailQuery = `select u.id from users u where u.user_email=$1`;
+
       const findEmail = await pool.query(emailQuery, [userEmail]);
 
-      const userId = findEmail.rows[0].id;
+      const user = findEmail.rows[0];
+      if (user) {
+        const userId = user.id;
 
-      const deleteQuery = `delete from participants where event_id=$1 and user_id=$2`;
-      await pool.query(deleteQuery, [eventId, userId]);
-      res.status(200).send("Participant is deleted");
+        const deleteQuery = `delete from participants where event_id=$1 and user_id=$2`;
+        await pool.query(deleteQuery, [eventId, userId]);
+        res.status(200).send("Participant is deleted");
+      }
     } catch (err) {
-      console.log("err");
+      console.log(err);
     }
   };
 
