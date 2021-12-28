@@ -38,8 +38,9 @@ CREATE TABLE messages (
   user_id INT REFERENCES users(id),
   event_id INT REFERENCES events(id),
   content     VARCHAR(2000),
-  times_tamp   VARCHAR(120)
+  times_tamp   Date not null
 );
+
 
 CREATE TABLE participants (
   id        SERIAL PRIMARY KEY,
@@ -102,4 +103,9 @@ INSERT INTO participants (event_id, user_id) VALUES (6, 3);
 INSERT INTO participants (event_id, user_id) VALUES (2, 2);
 INSERT INTO participants (event_id, user_id) VALUES (3, 4);
 INSERT INTO participants (event_id, user_id) VALUES (3, 2);
+
+INSERT INTO messages (user_id, event_id, content, times_tamp) VALUES (1, 1, 'Hello World', '2021-12-29');
+INSERT INTO messages (user_id, event_id, content, times_tamp) VALUES (2, 1, 'Hello Baecelona', '2021-12-30');
+INSERT INTO messages (user_id, event_id, content, times_tamp) VALUES (3, 1, 'Hello Spain', '2021-12-31');
+INSERT INTO messages (user_id, event_id, content, times_tamp) VALUES (4, 1, 'Hello Europe', '2022-01-29');
 

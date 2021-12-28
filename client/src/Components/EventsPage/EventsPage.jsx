@@ -20,57 +20,21 @@ export default function EventsPage() {
       });
   }, [category]);
 
-  // const headings = [
-  //   {
-  //     header: "Visit Sites",
-  //     explanation:
-  //       "Select sites to visit and meet new people who are visiting same sites..",
-  //   },
-  //   {
-  //     header: "Enjoy the Barcelona Beach Experience",
-  //     explanation:
-  //       "Select beach which you want to visit with some other new people",
-  //   },
-  //   {
-  //     header: "Hiking Routes",
-  //     explanation:
-  //       "Enjoy selcting routes to hike with new people who are going together with you",
-  //   },
-  //   {
-  //     header: "Biking Routes",
-  //     explanation:
-  //       "Select biking routes to go though the greenery mountains with new people who are going joing with you",
-  //   },
-  //   {
-  //     header: "Shopping Experience",
-  //     explanation:
-  //       "Select kinds of shopping experience you want with new people who are going together with you",
-  //   },
-  //   {
-  //     header: "Food Craving",
-  //     explanation:
-  //       "Select the restaurent to have experience of local foods together with new people",
-  //   },
-  //   {
-  //     header: "Party Lovers",
-  //     explanation: "Select the club to have great experience with new people",
-  //   },
-  // ]
-
   return (
     <>
-      <div className="d-flex flex-row p-2  text-center">
+      <div className="d-flex flex-row p-2  text-center justify-content-around">
         <Link to="/events">
           <BackButton />
         </Link>
 
         <h5 className="mx-5  pt-3">Must See {category} sites</h5>
+        <div></div>
       </div>
-      <p className=" text-center">
+      <p className=" text-center px-3">
         Select sites to visit and meet new people who are visiting together with
         you.
       </p>
-      <div>
+      <div className="d-flex flex-column p-2  text-center justify-content-start">
         {events.map((event) => {
           return (
             <EventPageCard
