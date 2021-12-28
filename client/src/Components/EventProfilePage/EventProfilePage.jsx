@@ -8,7 +8,7 @@ export default function EventProfilePage() {
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
   const userEmail = userInfo.email;
   console.log("User mail from local storage " + userEmail);
-  let { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     getEventData(id, userEmail).then((eventData) => setEvent(eventData));
@@ -22,7 +22,7 @@ export default function EventProfilePage() {
     return jsonResponse;
   };
 
-  const onClick = async (event) => {
+  const onJoinClick = async (event) => {
     event.preventDefault();
 
     const data = { userEmail: userEmail };
@@ -40,5 +40,32 @@ export default function EventProfilePage() {
     setEvent(eventData);
   };
 
-  return <div>{event && <CardsProfile event={event} onClick={onClick} />}</div>;
+  const onCancelClick = async (event) => {
+    event.preventDefault();
+
+    const data = { userEmail: userEmail };
+    const url = `http://localhost:5000/events/${id}/participant`;
+    await fetch(url, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const eventData = await getEventData(id, userEmail);
+    setEvent(eventData);
+  };
+
+  return (
+    <div>
+      {event && (
+        <CardsProfile
+          event={event}
+          onJoinClick={onJoinClick}
+          onCancelClick={onCancelClick}
+        />
+      )}
+    </div>
+  );
 }
