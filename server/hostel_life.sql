@@ -103,4 +103,3 @@ INSERT INTO participants (event_id, user_id) VALUES (2, 2);
 INSERT INTO participants (event_id, user_id) VALUES (3, 4);
 INSERT INTO participants (event_id, user_id) VALUES (3, 2);
 
-select * from participants p where p.user_id = 2;
