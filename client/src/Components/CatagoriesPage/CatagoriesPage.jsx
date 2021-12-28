@@ -11,7 +11,7 @@ import Card from "react-bootstrap/Card";
 const activities = [
   {
     label: "Main Attractions",
-    urlSlug: "main_attraction",
+    urlSlug: "visit_places",
     imagefilename: "sagradaFamilia.jpg",
   },
   { label: "Beach", urlSlug: "beach", imagefilename: "barcelonita.jpg" },
