@@ -2,10 +2,10 @@
   height: 9rem;
   width: 100%;
   margin-bottom: 15px;
-  box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
-  border-radius: 50px !important;
+  box-shadow: 0px 3px 8px 26px rgba(83, 232, 139, 0.15);
+  border-radius: 20px !important;
   border-color: coral;
-  background-color: coral;
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
