@@ -147,8 +147,6 @@ const api = () => {
     }
   };
 
-////  USER REGISTRATION    ///  ///////  /////   ///
-
 const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
@@ -172,7 +170,7 @@ const postNewUserBooking = async (request, response) => {
         hostel_id, 
         activation_date, 
         deactivation_date)
-        VALUES ($1, $2, $3, $4) returning id`,
+        VALUES ($1, $2, $3, $4) returning id`
           [
             newUserId,
             hostelId,
