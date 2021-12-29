@@ -38,7 +38,7 @@ CREATE TABLE messages (
   user_id INT REFERENCES users(id),
   event_id INT REFERENCES events(id),
   content     VARCHAR(2000),
-  times_tamp   VARCHAR(120)
+  time_stamp   VARCHAR(120)
 );
 
 CREATE TABLE participants (

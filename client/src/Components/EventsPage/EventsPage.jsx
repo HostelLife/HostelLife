@@ -64,7 +64,7 @@ export default function EventsPage() {
           <BackButton />
         </Link>
 
-        <h5 className="mx-5  pt-3">Must See {category} sites</h5>
+        <h5 className="mx-5  pt-3">Must See sites</h5>
       </div>
       <p className=" text-center">
         Select sites to visit and meet new people who are visiting together with
