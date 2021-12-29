@@ -29,11 +29,11 @@ export default function AdminPage() {
 
   return (
     <>
-      <Card className="text-start bg-light text-light d-flex flex-row justify-content-center AdminPage_Card">
+      <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
         <div className="d-flex flex-row justify-content-start p-2">
           <Form onSubmit={onSubmitForm}>
             <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
-              <Form.Label className="text-dark ">
+              <Form.Label className="text-light ">
                 Guest Email Address
               </Form.Label>
               <Form.Control
@@ -50,7 +50,7 @@ export default function AdminPage() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label className="text-dark">Hostel ID</Form.Label>
+              <Form.Label className="text-light">Hostel ID</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
                 type="number"
@@ -61,7 +61,7 @@ export default function AdminPage() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="text-dark">Check-In Date</Form.Label>
+              <Form.Label className="text-light">Check-In Date</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
                 className="text-muted "
@@ -72,7 +72,7 @@ export default function AdminPage() {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="text-dark">Check-Out Date</Form.Label>
+              <Form.Label className="text-light">Check-Out Date</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
                 className="text-muted"
