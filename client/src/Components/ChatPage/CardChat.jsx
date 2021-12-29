@@ -4,25 +4,30 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { BsCursor } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import SendButton from "./SendButton.jsx";
 
-function CardChat({ event }) {
+function CardChat({ event, onClick }) {
   const { id, title } = event;
   return (
-    <>
-      <Card className="d-flex flex-row">
+    <div className="bg-dark" style={{ height: "100vh" }}>
+      <Card className="d-flex flex-row bg-dark justify-content-between">
         <Link to={`/event/${id}`}>
           <BackButton />
         </Link>
-        <p className="mt-4 mx-2">{title}</p>
+        <p className="mt-4 mx-2 text-light">{title}</p>
+        <div></div>
       </Card>
 
       <Form className="d-flex flex-row">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="text" />
         </Form.Group>
-        <BsCursor className="m-2" />
+        <Button>
+          <SendButton />
+        </Button>
       </Form>
-    </>
+    </div>
   );
 }
 

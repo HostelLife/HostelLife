@@ -2,34 +2,39 @@
   padding: 0.6rem;
   background-color: #fff;
 }
+
 .EventPageCard {
-  box-shadow: 12px 26px 50px 0px rgba(93, 109, 234, 0.12);
-  border-radius: 22px !important;
-  /* background-color: #fff; */
-  background-color: coral;
+  padding: 0.6rem;
   margin-top: 0.7rem;
-  box-shadow: 12px 10px 20px 2px rgb(255, 69, 0, 0.82);
-  border-radius: 30px !important;
-  border-color: coral;
+  box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
+  border-radius: 20px !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 1.25rem !important;
-  color: rgb(255, 127, 80, 0.9) !important;
   font-weight: 700 !important;
-  /* text-shadow: -1px 3px black, -2px 0 black, 2px 3px black, 2px -1px black; */
 }
 
 .EventPageCard_image {
   height: 6rem;
   padding: 0.5rem;
-  border-radius: 18px !important;
+  border-radius: 20px !important;
   overflow: hidden;
 }
 
 .EventPageCard_title {
   padding: 0.5rem;
   text-decoration: none;
+}
+.title {
+  background: rgb(83, 232, 139);
+  background: -webkit-linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .EventPageCard_time {
   color: black;

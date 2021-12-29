@@ -118,7 +118,7 @@ const api = () => {
     const currentTme = new Date().toLocaleString();
 
     const result = await pool.query(
-      `INSERT INTO messages (user_id, event_id, content, times_stamp)
+      `INSERT INTO messages (user_id, event_id, content, time_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
       [newMessege.user_id, newMessege.event_id, newMessege.content, currentTme]
     );

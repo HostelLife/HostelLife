@@ -14,7 +14,7 @@ function CategoryCard({ label, urlSlug, imagefilename }) {
             backgroundImage: `url("/images/${imagefilename}")`,
           }}
         >
-          {label}
+          <div className="CatagoryCard_text">{label}</div>
         </Button>
       </Link>
     </div>

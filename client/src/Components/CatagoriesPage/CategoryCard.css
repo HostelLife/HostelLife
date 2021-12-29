@@ -2,15 +2,20 @@
   height: 9rem;
   width: 100%;
   margin-bottom: 15px;
-  box-shadow: 0px 3px 8px 26px rgba(83, 232, 139, 0.15);
+  box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
   border-radius: 20px !important;
-  border-color: coral;
-
+  border-color: rgb(249, 168, 77);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  font-size: 1.25rem !important;
-  color: rgb(255, 127, 80, 0.9) !important;
+  background-color: #f4f4f4;
+  font-size: 1.1rem !important;
   font-weight: 700 !important;
-  text-shadow: 0 2px white, 1px 1px white, 2px 1px white;
+  overflow: hidden;
+}
+.CatagoryCard_text {
+  color: rgb(83, 232, 139);
+  background-color: #000;
+  opacity: 0.7;
+  border-radius: 20px;
 }

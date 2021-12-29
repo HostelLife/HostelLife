@@ -30,9 +30,9 @@ function CardsProfile({ event, onJoinClick, onCancelClick }) {
   };
 
   return (
-    <div>
+    <div className=" bg-dark text-light d-flex justify-content-center">
       <Card
-        className=" bg-light text-light d-flex justify-content-start p-1"
+        className=" bg-dark text-light d-flex justify-content-center"
         style={{ border: "none" }}
       >
         <Link to={`/events/${category}`} className="ms-3">
@@ -45,8 +45,8 @@ function CardsProfile({ event, onJoinClick, onCancelClick }) {
           className="CardProfile_image"
         />
 
-        <Card.Body className="text-dark">
-          <Card className="CardProfile_container">
+        <Card.Body className="text-light">
+          <Card className="CardProfile_container bg-dark">
             <div className="d-flex justify-content-between d-block CardProfile_logos">
               <Card.Title>{title}</Card.Title>
               {isAlreadyJoining && (

@@ -10,7 +10,7 @@ import Card from "react-bootstrap/Card";
 
 const activities = [
   {
-    label: "Main Attractions",
+    label: "Main Attraction",
     urlSlug: "main_attraction",
     imagefilename: "sagradaFamilia.jpg",
   },
@@ -28,7 +28,7 @@ const activities = [
 
 export default function CatagoriesPage() {
   return (
-    <Card className="text-center bg-light text-light WelcomePage_mainContainer">
+    <Card className="text-center bg-dark text-light WelcomePage_mainContainer">
       <div className="text-center p-2">
         <div className="d-flex flex-row justify-content-between">
           <Link to="/">
@@ -40,7 +40,7 @@ export default function CatagoriesPage() {
               marginTop: "1rem",
               marginLeft: "1rem",
               marginBottom: "1rem",
-              color: "#000",
+              color: "#fff",
             }}
           >
             Daily Activities
