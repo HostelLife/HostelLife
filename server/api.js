@@ -150,17 +150,25 @@ const api = () => {
 const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
-      const { userEmail, hostelId, checkInDate, checkOutDate} = newBooking;
+      const { userName, userEmail, hostelId, checkInDate, checkOutDate} = newBooking;
+
+      console.log(userName);
       
       const emailQueryResult = await pool.query(
         `select u.id from users u where u.user_email = $1`,
         [userEmail]
       );
       const isEmailExsist = emailQueryResult.rows.length > 0;
+      if(!userName){
+        return response.status(400).json({
+          status: "User name is requied.",
+          
+        });
 
-      if (!isEmailExsist) {
+      }
+      else if (!isEmailExsist) {
       const createNewUser =  await pool.query(
-        `INSERT INTO users (user_email) VALUES ($1) returning id`, [userEmail]);
+        `INSERT INTO users (user_name, user_email) VALUES ($1, $2) returning id`, [userName , userEmail]);
 
         const newUserId = createNewUser.rows[0].id;
 
