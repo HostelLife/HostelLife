@@ -4,8 +4,9 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { BsCursor } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-function CardChat({ event }) {
+function CardChat({ event, onClick }) {
   const { id, title } = event;
   return (
     <>
@@ -20,7 +21,9 @@ function CardChat({ event }) {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="text" />
         </Form.Group>
-        <BsCursor className="m-2" />
+        <Button>
+          <BsCursor className="m-2" onClick={onClick} />
+        </Button>
       </Form>
     </>
   );
