@@ -6,7 +6,8 @@ const secretApiKey = require("./apiKey_secret.json");
 const containerStyle = {
   width: "100%",
   height: "300px",
-  margin: "10px",
+  margin: "10px auto",
+  borderRadius: "20px",
 };
 
 const onLoad = (marker) => {
