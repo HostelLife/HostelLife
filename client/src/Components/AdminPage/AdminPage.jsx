@@ -28,12 +28,12 @@ export default function AdminPage() {
   };
 
   return (
-    <>
+    <div className="bg-dark" style={{ height: "100vh" }}>
       <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
-        <div className="d-flex flex-row justify-content-start p-2">
+        <div className="d-flex bg-dark flex-row justify-content-start p-2">
           <Form onSubmit={onSubmitForm}>
             <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
-              <Form.Label className="text-light ">
+              <Form.Label className="text-light">
                 Guest Email Address
               </Form.Label>
               <Form.Control
@@ -86,6 +86,6 @@ export default function AdminPage() {
           </Form>
         </div>
       </Card>
-    </>
+    </div>
   );
 }
