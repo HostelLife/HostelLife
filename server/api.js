@@ -1,8 +1,17 @@
-const secrets = require("./secrets.json");
+// const secrets = require("./secrets.json");
 const { Pool } = require("pg");
 //const { faCommentsDollar } = require("@fortawesome/free-solid-svg-icons");
 const res = require("express/lib/response");
-const pool = new Pool(secrets);
+
+const config = {
+  user: process.env.DBUSER,
+  host: process.env.DBHOST,
+  database: process.env.DBDATABASENAME,
+  password: process.env.DBPASS,
+  port: process.env.DBPORT,
+};
+console.log(config);
+const pool = new Pool(config);
 
 const api = () => {
   const postNewEvent = async (request, response) => {
