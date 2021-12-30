@@ -131,11 +131,25 @@ const api = () => {
 
   const getMessagesByEventId = async (req, res) => {
     try {
-      const eventId = req.query.event;
-      const result = await pool.query(
-        `SELECT * FROM messages m WHERE m.event_id=$1`,
-        [eventId]
-      );
+      // const userEmail = req.body.userId;
+      // const userResult = await pool.query(
+      //   `select u.id from users u where u.user_email=$1`,
+      //   [userEmail]
+      // );
+
+      // const result = userResult.rows[0];
+      // if (!result) {
+      //   return res.status(400).send("Error");
+      // }
+      // const result1 = result.id;
+      // await pool.query(
+      //   `select * from messages m
+      // inner join users u on u.id=m.user_id
+      // where u.id=$1`,
+      //   [result1]
+      // );
+      const result = await pool.query(`select * from messages`);
+
       const resultArr = result.rows;
       res.status(200).send(resultArr);
     } catch (err) {

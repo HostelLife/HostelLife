@@ -18,12 +18,16 @@ function CardChat({ event, onClick }) {
         <p className="mt-4 mx-2 text-light">{title}</p>
         <div></div>
       </Card>
+      <Card style={{ height: "50vh", backgroundColor: "#000" }}></Card>
 
       <Form className="d-flex flex-row">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="text" />
         </Form.Group>
-        <Button>
+        <Button
+          style={{ backgroundColor: "transparent", border: "none" }}
+          className="d-flex"
+        >
           <SendButton />
         </Button>
       </Form>
