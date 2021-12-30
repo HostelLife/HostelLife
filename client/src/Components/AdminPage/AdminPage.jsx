@@ -7,15 +7,17 @@ import { Link } from "react-router-dom";
 import PopOver from "./PopOver";
 
 export default function AdminPage() {
+  const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [hostelId, setHostelId] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { userEmail, hostelId, checkInDate, checkOutDate };
+      const body = {userName, userEmail, hostelId, checkInDate, checkOutDate };
       const response = await fetch("http://localhost:5000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -23,15 +25,33 @@ export default function AdminPage() {
       });
       console.log(response);
     } catch (err) {
-      console.log(err.message);
+      //var printError = err.message;
+      console.log(err.message);   
     }
   };
 
+  
   return (
     <div className="bg-dark" style={{ height: "100vh" }}>
       <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
         <div className="d-flex bg-dark flex-row justify-content-start p-2">
+          
           <Form onSubmit={onSubmitForm}>
+
+            <Form.Group className="mb-3" controlId="formUserName">
+              <Form.Label className="text-light">User Name</Form.Label>
+              <Form.Control
+                style={{ borderRadius: "18px" }}
+                type="text"
+                placeholder="Enter User Name"
+                value={userName}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                 return setUserName(e.target.value);
+                }}            
+              />
+            </Form.Group>
+
             <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
               <Form.Label className="text-light">
                 Guest Email Address
@@ -82,6 +102,11 @@ export default function AdminPage() {
                 onChange={(e) => setCheckOutDate(e.target.value)}
               />
             </Form.Group>
+
+            <div>
+              <p>Print Error here</p>
+            </div>
+
             <PopOver userEmail={userEmail} />
           </Form>
         </div>
