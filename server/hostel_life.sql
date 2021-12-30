@@ -18,7 +18,8 @@ CREATE TABLE events (
 
 CREATE TABLE users (
   id        SERIAL PRIMARY KEY,
-  user_email VARCHAR (120) not null
+  user_email VARCHAR (120) not null,
+  user_name VARCHAR (100)
 );
 
 CREATE TABLE hostels (
@@ -84,11 +85,11 @@ INSERT INTO events (title, description, startTime, latitude, longitude, imageFil
 INSERT INTO events (title, description, startTime, latitude, longitude, imageFileName, category) VALUES ('Macarena Club','Can you believe a nightclub has a legal capacity of 84 people? Yes, it is a micro-club. There are several in Barcelona, but this is the best of them all: Funktion One sound and open seven days a week.','6:00pm', 41.3794643, 2.1746629, 'macarena-club.png', 'party');
 
 
-INSERT INTO users (user_email) VALUES ('user1@mail.com');
-INSERT INTO users (user_email) VALUES ('user2@mail.com');
-INSERT INTO users (user_email) VALUES ('user3@mail.com');
-INSERT INTO users (user_email) VALUES ('user4@mail.com');
-INSERT INTO users (user_email) VALUES ('suman@gmail.com');
+INSERT INTO users (user_email, user_name) VALUES ('user1@mail.com', 'user1');
+INSERT INTO users (user_email, user_name) VALUES ('user2@mail.com', 'user2');
+INSERT INTO users (user_email, user_name) VALUES ('user3@mail.com', 'user3');
+INSERT INTO users (user_email, user_name) VALUES ('user4@mail.com', 'user4');
+INSERT INTO users (user_email, user_name) VALUES ('suman@gmail.com', 'suman');
 
 
 INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
@@ -108,4 +109,10 @@ INSERT INTO messages (user_id, event_id, content, time_stamp) VALUES (1, 1, 'Hel
 INSERT INTO messages (user_id, event_id, content, time_stamp) VALUES (2, 1, 'Hello Baecelona', '2021-12-30 10:23:54');
 INSERT INTO messages (user_id, event_id, content, time_stamp) VALUES (3, 1, 'Hello Spain', '2021-12-31 10:23:54');
 INSERT INTO messages (user_id, event_id, content, time_stamp) VALUES (4, 1, 'Hello Europe', '2022-01-29 10:23:54');
+
+
+
+
+
+
 
