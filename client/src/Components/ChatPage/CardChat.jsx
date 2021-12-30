@@ -10,7 +10,7 @@ import SendButton from "./SendButton.jsx";
 function CardChat({ event, onClick }) {
   const { id, title } = event;
   return (
-    <div className="bg-dark" style={{ height: "100vh" }}>
+    <div className="bg-dark" style={{ height: "100vh", padding: "1rem" }}>
       <Card className="d-flex flex-row bg-dark justify-content-between">
         <Link to={`/event/${id}`}>
           <BackButton />
@@ -18,7 +18,7 @@ function CardChat({ event, onClick }) {
         <p className="mt-4 mx-2 text-light">{title}</p>
         <div></div>
       </Card>
-      <Card style={{ height: "50vh", backgroundColor: "#000" }}></Card>
+      <Card style={{ height: "70vh", backgroundColor: "#000" }}></Card>
 
       <Form className="d-flex flex-row">
         <Form.Group className="mb-3" controlId="formBasicEmail">
