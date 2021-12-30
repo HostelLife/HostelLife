@@ -52,8 +52,8 @@ export default function CatagoriesPage() {
           {/* <p className="SubTitleFont">CATEGORIES </p>
       <Container className="ActivityPage"> */}
           <Row>
-            {activities.map((activity) => (
-              <Col xs={6} className="CatagoriesPage_Card">
+            {activities.map((activity, index) => (
+              <Col xs={6} className="CatagoriesPage_Card" key={index}>
                 <CategoryCard
                   urlSlug={activity.urlSlug}
                   label={activity.label}
