@@ -47,12 +47,13 @@ export default function EventsPage() {
         className="d-flex flex-column p-2  text-center justify-content-start"
         style={{ backgroundColor: "#0D0D0D" }}
       >
-        {events.map((event) => {
+        {events.map((event, index) => {
           return (
             <EventPageCard
               event={event}
               header={event.header}
               explanation={event.explanation}
+              key={index}
             />
           );
         })}
