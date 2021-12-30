@@ -5,8 +5,6 @@ const res = require("express/lib/response");
 const pool = new Pool(secrets);
 
 const api = () => {
-
-
   const postNewEvent = async (request, response) => {
     const newEvent = request.body;
     console.log(newEvent);
@@ -135,25 +133,11 @@ const api = () => {
 
   const getMessagesByEventId = async (req, res) => {
     try {
-      // const userEmail = req.body.userId;
-      // const userResult = await pool.query(
-      //   `select u.id from users u where u.user_email=$1`,
-      //   [userEmail]
-      // );
-
-      // const result = userResult.rows[0];
-      // if (!result) {
-      //   return res.status(400).send("Error");
-      // }
-      // const result1 = result.id;
-      // await pool.query(
-      //   `select * from messages m
-      // inner join users u on u.id=m.user_id
-      // where u.id=$1`,
-      //   [result1]
-      // );
-      const result = await pool.query(`select * from messages`);
-
+      const eventId = req.query.event;
+      const result = await pool.query(
+        `SELECT * FROM messages m WHERE m.event_id=$1`,
+        [eventId]
+      );
       const resultArr = result.rows;
       res.status(200).send(resultArr);
     } catch (err) {
@@ -161,28 +145,28 @@ const api = () => {
     }
   };
 
-const postNewUserBooking = async (request, response) => {
+  const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
-      const { userName, userEmail, hostelId, checkInDate, checkOutDate} = newBooking;
+      const { userName, userEmail, hostelId, checkInDate, checkOutDate } =
+        newBooking;
 
       console.log(userName);
-      
+
       const emailQueryResult = await pool.query(
         `select u.id from users u where u.user_email = $1`,
         [userEmail]
       );
       const isEmailExsist = emailQueryResult.rows.length > 0;
-      if(!userName){
+      if (!userName) {
         return response.status(400).json({
           status: "User name is requied.",
-          
         });
-
-      }
-      else if (!isEmailExsist) {
-      const createNewUser =  await pool.query(
-        `INSERT INTO users (user_name, user_email) VALUES ($1, $2) returning id`, [userName , userEmail]);
+      } else if (!isEmailExsist) {
+        const createNewUser = await pool.query(
+          `INSERT INTO users (user_name, user_email) VALUES ($1, $2) returning id`,
+          [userName, userEmail]
+        );
 
         const newUserId = createNewUser.rows[0].id;
 
@@ -193,26 +177,19 @@ const postNewUserBooking = async (request, response) => {
         activation_date, 
         deactivation_date)
         VALUES ($1, $2, $3, $4) returning id`,
-          [
-            newUserId,
-            hostelId,
-            checkInDate,
-            checkOutDate,
-          ]);
+          [newUserId, hostelId, checkInDate, checkOutDate]
+        );
 
         return response.status(201).json({
           status: "New user and booking has created.",
           userId: newUserId,
-          bookingId: result.rows[0].id
+          bookingId: result.rows[0].id,
         });
-
-      } else if(isEmailExsist){
+      } else if (isEmailExsist) {
         return response.status(400).json({
-          checkEmail: "User already exsist."
+          checkEmail: "User already exsist.",
         });
-
       }
-
     } catch (error) {
       console.log(error);
       response
@@ -222,7 +199,6 @@ const postNewUserBooking = async (request, response) => {
         );
     }
   };
-
 
   // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
