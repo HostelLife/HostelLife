@@ -9,13 +9,10 @@ const config = {
   database: process.env.DBDATABASENAME,
   password: process.env.DBPASS,
   port: process.env.DBPORT,
-  // connectionString:
-  //   process.env.DATABASE_URL ||
-  //   "postgresql://postgres:idkfaiddqd@localhost:5432/hostel_life",
-  ssl: process.env.DATABASE_URL ? true : false,
-  // ssl: {
-  //   rejectUnauthorized: false,
-  // },
+  //comment out ssl to make it work on localhost
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 console.log(config);
 const pool = new Pool(config);
