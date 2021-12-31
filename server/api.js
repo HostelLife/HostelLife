@@ -9,10 +9,11 @@ const config = {
   database: process.env.DBDATABASENAME,
   password: process.env.DBPASS,
   port: process.env.DBPORT,
+  // SSL NECESSARY FOR HEROKU
   //comment out ssl to make it work on localhost
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
 };
 console.log(config);
 const pool = new Pool(config);
