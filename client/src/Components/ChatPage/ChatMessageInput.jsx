@@ -15,7 +15,7 @@ export default function ChatMessageInput({ userId, eventId }) {
         `${process.env.REACT_APP_API_BASE_URL}/messages`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json"},
           body: JSON.stringify(body),
         }
       );
@@ -24,6 +24,8 @@ export default function ChatMessageInput({ userId, eventId }) {
       console.log(err.message);
     }
   };
+
+  console.log(content);
 
   return (
     <Form onSubmit={onSubmitMessage}>
@@ -39,6 +41,7 @@ export default function ChatMessageInput({ userId, eventId }) {
         <Button type="submit" variant="outline-secondary" id="button-addon2">
           Send
         </Button>
+
       </InputGroup>
     </Form>
   );

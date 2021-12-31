@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CardChat from "./CardChat.jsx";
 import { useParams } from "react-router-dom";
+import Message from "./Message.jsx";
+
+import ChatMessageInput from "./ChatMessageInput.jsx";
 
 function ChatPage() {
   const [event, setEvent] = useState();
+
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
   const userEmail = userInfo.email;
   console.log("User mail from local storage " + userEmail);
@@ -39,7 +43,13 @@ function ChatPage() {
     console.log(event);
   };
 
-  return <div>{event && <CardChat event={event} onClick={onClick} />}</div>;
+  return (
+    <div>
+      {event && <CardChat event={event} onClick={onClick} />}
+      <Message eventId={id} />
+      <ChatMessageInput />
+    </div>
+  );
 }
 
 export default ChatPage;

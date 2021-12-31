@@ -1,24 +1,12 @@
-// const secrets = require("./secrets.json");
+const secrets = require("./secrets.json");
 const { Pool } = require("pg");
 //const { faCommentsDollar } = require("@fortawesome/free-solid-svg-icons");
 const res = require("express/lib/response");
-
-const config = {
-  user: process.env.DBUSER,
-  host: process.env.DBHOST,
-  database: process.env.DBDATABASENAME,
-  password: process.env.DBPASS,
-  port: process.env.DBPORT,
-  // SSL NECESSARY FOR HEROKU
-  //comment out ssl to make it work on localhost
-  // ssl: {
-  //   rejectUnauthorized: false,
-  // },
-};
-console.log(config);
-const pool = new Pool(config);
+const pool = new Pool(secrets);
 
 const api = () => {
+
+
   const postNewEvent = async (request, response) => {
     const newEvent = request.body;
     console.log(newEvent);
@@ -114,6 +102,17 @@ const api = () => {
     }
   };
 
+  ///////////////////////////////////////////////////////////////
+  // const  isCurrUserParticipating = async (req , res)=> {
+  //   const userEmail = req.query.userEmail;
+
+  //   const userIdQuery = await pool.query(
+  //     `select u.id from users u where u.user_email = $1`, [userEmail]
+  //   );
+  //     console.log(userIdQuery.rows);
+  //   res.status(400).send("ok");
+  // }
+
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
     const currentTme = new Date().toLocaleString();
@@ -137,46 +136,39 @@ const api = () => {
   const getMessagesByEventId = async (req, res) => {
     try {
       const eventId = req.query.event;
-      const userEmail = req.query.userEmail;
-
       const result = await pool.query(
-        `select messages.content, users.user_name, users.user_email, messages.time_stamp from messages
-          inner join users on messages.user_id = users.id
-          where users.user_email=$1 and messages.event_id=$2`,
-        [userEmail, eventId]
+        `SELECT * FROM messages m WHERE m.event_id=$1`,
+        [eventId]
       );
-
-      return res.status(200).json(result.rows);
+      const resultArr = result.rows;
+      res.status(200).send(resultArr);
     } catch (err) {
       console.log(err);
     }
   };
 
-  /////
-
-
-  const postNewUserBooking = async (request, response) => {
+const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
-      const { userName, userEmail, hostelId, checkInDate, checkOutDate } =
-        newBooking;
+      const { userName, userEmail, hostelId, checkInDate, checkOutDate} = newBooking;
 
       console.log(userName);
-
+      
       const emailQueryResult = await pool.query(
         `select u.id from users u where u.user_email = $1`,
         [userEmail]
       );
       const isEmailExsist = emailQueryResult.rows.length > 0;
-      if (!userName) {
+      if(!userName){
         return response.status(400).json({
           status: "User name is requied.",
+          
         });
-      } else if (!isEmailExsist) {
-        const createNewUser = await pool.query(
-          `INSERT INTO users (user_name, user_email) VALUES ($1, $2) returning id`,
-          [userName, userEmail]
-        );
+
+      }
+      else if (!isEmailExsist) {
+      const createNewUser =  await pool.query(
+        `INSERT INTO users (user_name, user_email) VALUES ($1, $2) returning id`, [userName , userEmail]);
 
         const newUserId = createNewUser.rows[0].id;
 
@@ -187,19 +179,26 @@ const api = () => {
         activation_date, 
         deactivation_date)
         VALUES ($1, $2, $3, $4) returning id`,
-          [newUserId, hostelId, checkInDate, checkOutDate]
-        );
+          [
+            newUserId,
+            hostelId,
+            checkInDate,
+            checkOutDate,
+          ]);
 
         return response.status(201).json({
           status: "New user and booking has created.",
           userId: newUserId,
-          bookingId: result.rows[0].id,
+          bookingId: result.rows[0].id
         });
-      } else if (isEmailExsist) {
+
+      } else if(isEmailExsist){
         return response.status(400).json({
-          checkEmail: "User already exsist.",
+          checkEmail: "User already exsist."
         });
+
       }
+
     } catch (error) {
       console.log(error);
       response
@@ -209,6 +208,7 @@ const api = () => {
         );
     }
   };
+
 
   // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
