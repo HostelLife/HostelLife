@@ -10,7 +10,7 @@ export default function EventsPage() {
   let { category } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:5000/events?category=${category}`;
+    const url = `${process.env.REACT_APP_API_BASE_URL}/events?category=${category}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setEvents(data))
