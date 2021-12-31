@@ -10,7 +10,7 @@ import Card from "react-bootstrap/Card";
 
 const activities = [
   {
-    label: "Main Attraction",
+    label: "Main Attractions",
     urlSlug: "main_attraction",
     imagefilename: "sagradaFamilia.jpg",
   },
