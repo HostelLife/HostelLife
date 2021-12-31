@@ -3,7 +3,6 @@ import EventPageCard from "./EventPageCard.jsx";
 import { useParams } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);
@@ -19,7 +18,15 @@ export default function EventsPage() {
         console.error(error);
       });
   }, [category]);
-
+  let categories = () => {
+    if (category === "main_attraction") return "Main Attractions";
+    else if (category === "beach") return "Beaches";
+    else if (category === "hiking") return "Hiking Spots";
+    else if (category === "biking") return "Biking Routes";
+    else if (category === "shopping") return "Shops";
+    else if (category === "food") return "Restaurants";
+    else if (category === "party") return "Clubs & Bars";
+  };
   return (
     <div
       style={{ backgroundColor: "#0D0D0D", width: "100%" }}
@@ -33,15 +40,14 @@ export default function EventsPage() {
           <BackButton />
         </Link>
 
-        <h5 className="mx-5  pt-3 text-light">Must See {category} sites</h5>
+        <h5 className="mx-5  pt-3 text-light">Must See {categories()} </h5>
         <div></div>
       </div>
       <p
         className=" text-center px-3 text-light"
         style={{ backgroundColor: "#0D0D0D" }}
       >
-        Select sites to visit and meet new people who are visiting together with
-        you.
+        Plan your trip and meet new people!
       </p>
       <div
         className="d-flex flex-column p-2  text-center justify-content-start"
