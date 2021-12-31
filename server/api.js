@@ -100,17 +100,6 @@ const api = () => {
     }
   };
 
-  ///////////////////////////////////////////////////////////////
-  // const  isCurrUserParticipating = async (req , res)=> {
-  //   const userEmail = req.query.userEmail;
-
-  //   const userIdQuery = await pool.query(
-  //     `select u.id from users u where u.user_email = $1`, [userEmail]
-  //   );
-  //     console.log(userIdQuery.rows);
-  //   res.status(400).send("ok");
-  // }
-
   const postNewMessege = async (request, response) => {
     const newMessege = request.body;
     const currentTme = new Date().toLocaleString();
@@ -134,12 +123,16 @@ const api = () => {
   const getMessagesByEventId = async (req, res) => {
     try {
       const eventId = req.query.event;
+      const userEmail = req.query.userEmail;
+
       const result = await pool.query(
-        `SELECT * FROM messages m WHERE m.event_id=$1`,
-        [eventId]
+        `select messages.content, users.user_name, users.user_email, messages.time_stamp from messages
+          inner join users on messages.user_id = users.id
+          where users.user_email=$1 and messages.event_id=$2`,
+        [userEmail, eventId]
       );
-      const resultArr = result.rows;
-      res.status(200).send(resultArr);
+
+      return res.status(200).json(result.rows);
     } catch (err) {
       console.log(err);
     }
