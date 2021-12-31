@@ -10,7 +10,7 @@ function ChatPage() {
   let { id } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:5000/events/${id}?userEmail=${userEmail}`;
+    const url = `${process.env.REACT_APP_API_BASE_URL}/events/${id}?userEmail=${userEmail}`;
     console.log(userEmail);
     fetch(url)
       .then((res) => res.json())
@@ -26,7 +26,7 @@ function ChatPage() {
     const data = { userEmail: userEmail };
     console.log(data);
 
-    const url = `http://localhost:5000/messages`;
+    const url = `${process.env.REACT_APP_API_BASE_URL}/messages`;
     await fetch(url, {
       method: "POST",
       headers: {
