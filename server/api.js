@@ -12,7 +12,7 @@ const config = {
   // connectionString:
   //   process.env.DATABASE_URL ||
   //   "postgresql://postgres:idkfaiddqd@localhost:5432/hostel_life",
-  ssl: process.env.DATABASE_URL ? true : false,
+  // ssl: process.env.DATABASE_URL ? true : false,
   ssl: {
     rejectUnauthorized: false,
   },
