@@ -9,6 +9,9 @@ const config = {
   database: process.env.DBDATABASENAME,
   password: process.env.DBPASS,
   port: process.env.DBPORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 };
 console.log(config);
 const pool = new Pool(config);
