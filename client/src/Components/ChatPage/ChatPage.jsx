@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CardChat from "./CardChat.jsx";
 import { useParams } from "react-router-dom";
-import Message from "./Message.jsx";
+import ChatMessage from "../ChatMessage/ChatMessage.jsx";
 
 import ChatMessageInput from "./ChatMessageInput.jsx";
 
@@ -45,9 +45,21 @@ function ChatPage() {
 
   return (
     <div>
-    <Message />
       {event && <CardChat event={event} onClick={onClick} />}
-      <Message eventId={id} />
+
+      <div style={{ minHeight: "60vh", backgroundColor: "#141111" }}>
+        <ChatMessage content={"Hi"} 
+          authorName = {"Suman"}
+          timestamp={"10:20am"}
+          isFirstPerson = {false}
+          />
+          <ChatMessage content={"hello, How are you all"} 
+          authorName = {"Rana"}
+          timestamp={"10:20am"}
+          isFirstPerson = {true}
+          />
+      </div>
+
       <ChatMessageInput />
     </div>
   );

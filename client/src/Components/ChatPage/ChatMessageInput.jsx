@@ -29,8 +29,9 @@ export default function ChatMessageInput({ userId, eventId }) {
 
   return (
     <Form onSubmit={onSubmitMessage}>
-      <InputGroup className="mb-3 mt-2">
+      <InputGroup className="mb-3 mt-2" style={{backgroundColor: "blue" }}>
         <FormControl
+        style={{backgroundColor: "#628c75" }}
           placeholder="Write a message"
           aria-label="Write a message"
           aria-describedby="basic-addon2"
