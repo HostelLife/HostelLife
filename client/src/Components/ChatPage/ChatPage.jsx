@@ -45,6 +45,7 @@ function ChatPage() {
 
   return (
     <div>
+    <Message />
       {event && <CardChat event={event} onClick={onClick} />}
       <Message eventId={id} />
       <ChatMessageInput />
