@@ -47,7 +47,9 @@ export default function WelcomePage() {
 
       <Card.Title className=" mt-5 WelcomePage_text">
         {" "}
-        <p>Hello {userName}! It'a nice to see you here </p>
+        <p>
+          Hello {userName}! <br></br>It'a nice to see you here{" "}
+        </p>
       </Card.Title>
 
       <Link to="/events">
