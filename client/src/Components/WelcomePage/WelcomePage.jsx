@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
@@ -38,17 +38,14 @@ export default function WelcomePage() {
 
   const [visibleQr, setVisibleQr] = useState(false);
   const [visibleInput, setVisibleInput] = useState(false);
-  //localStorage.setItem("name", userName)
+
   const [userEmailInput, setUserEmailInput] = useState("");
 
   const onSubmitEmail = (e) => {
     e.preventDefault();
-    // localStorage.setItem("userInfoKey", JSON.stringify(userInfo));
+
     window.location.href = `/?email=${userEmailInput}`;
-    window.location.href = `/events`;
-    // const accessURL = `${window.location.origin}?email=${userEmailInput}`;
-    // <Link to={accessURL} />;
-    // console.log(accessURL);
+    //NEED TO RELOAD AFTER SETTINGLOCALSTORAGE
   };
 
   if (userInfoObj.email != null) {
