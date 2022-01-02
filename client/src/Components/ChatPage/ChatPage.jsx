@@ -8,10 +8,10 @@ import ChatMessageInput from "./ChatMessageInput.jsx";
 
 const getMessages = async (eventId, userEmail) => {
   const URL = `${process.env.REACT_APP_API_BASE_URL}/messages?event=${eventId}&userEmail=${userEmail}`;
-  const response = await fetch(URL)
+  const response = await fetch(URL);
   const messages = await response.json();
   return messages;
-}
+};
 
 function ChatPage() {
   const [event, setEvent] = useState();
@@ -31,17 +31,14 @@ function ChatPage() {
       .catch((error) => {
         console.error(error);
       });
-      
   }, [eventId, userEmail]);
 
-  useEffect(() =>{
-    getMessages(eventId, userEmail)
-    .then ((messages)=> setMessages(messages));
-
-  }, [])
+  useEffect(() => {
+    getMessages(eventId, userEmail).then((messages) => setMessages(messages));
+  }, []);
 
   if (!event) {
-    return <div> </div>
+    return <div> </div>;
   }
   const { title } = event;
 
@@ -52,19 +49,18 @@ function ChatPage() {
           <BackButton />
         </Link>
         <p className="mt-4 mx-2 text-light">{title}</p>
+        <div></div>
       </Card>
 
       <div style={{ minHeight: "60vh", backgroundColor: "#141111" }}>
-        <ChatMessage content={"Hi"}
-          authorName={"Suman"}
-          timestamp={"10:20am"}
-          isFirstPerson={false}
-        />
-        <ChatMessage content={"hello, How are you all"}
-          authorName={"Rana"}
-          timestamp={"10:20am"}
-          isFirstPerson={true}
-        />
+        {messages.map((message) => (
+          <ChatMessage
+            content={message.content}
+            authorName={message.user_name}
+            timestamp={message.time_stamp}
+            isFirstPerson={message.isFirstPerson}
+          />
+        ))}
       </div>
 
       <ChatMessageInput eventId={eventId} userEmail={userEmail} />
