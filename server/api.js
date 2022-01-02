@@ -9,12 +9,17 @@ const config = {
   database: process.env.DBDATABASENAME,
   password: process.env.DBPASS,
   port: process.env.DBPORT,
-  // SSL NECESSARY FOR HEROKU
+  // NOT NECESSARY FOR HEROKU ANYMORE
   //comment out ssl to make it work on localhost
   // ssl: {
   //   rejectUnauthorized: false,
   // },
 };
+if (process.env.NODE_ENV === "production") {
+  config.ssl = {
+    rejectUnauthorized: false,
+  };
+}
 console.log(config);
 const pool = new Pool(config);
 
@@ -157,6 +162,9 @@ const api = () => {
       console.log(err);
     }
   };
+
+  /////
+
 
   const postNewUserBooking = async (request, response) => {
     try {

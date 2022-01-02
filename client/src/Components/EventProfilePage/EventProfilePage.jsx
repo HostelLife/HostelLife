@@ -16,7 +16,7 @@ export default function EventProfilePage() {
 
   const getEventData = async (eventId, userEmail) => {
     const response = await fetch(
-      `http://localhost:5000/events/${eventId}?userEmail=${userEmail}`
+      `${process.env.REACT_APP_API_BASE_URL}/events/${eventId}?userEmail=${userEmail}`
     );
     const jsonResponse = await response.json();
     return jsonResponse;
@@ -27,7 +27,7 @@ export default function EventProfilePage() {
 
     const data = { userEmail: userEmail };
 
-    const url = `http://localhost:5000/events/${id}/participant`;
+    const url = `${process.env.REACT_APP_API_BASE_URL}/events/${id}/participant`;
     await fetch(url, {
       method: "POST",
       headers: {
@@ -44,7 +44,7 @@ export default function EventProfilePage() {
     event.preventDefault();
 
     const data = { userEmail: userEmail };
-    const url = `http://localhost:5000/events/${id}/participant`;
+    const url = `${process.env.REACT_APP_API_BASE_URL}/events/${id}/participant`;
     await fetch(url, {
       method: "DELETE",
       headers: {

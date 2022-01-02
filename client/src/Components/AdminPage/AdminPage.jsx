@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import "./AdminPage.css";
-import { Link } from "react-router-dom";
 import PopOver from "./PopOver";
 
 export default function AdminPage() {
@@ -18,11 +17,16 @@ export default function AdminPage() {
 
     try {
       const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
-      const response = await fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/users`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+
       console.log(response);
     } catch (err) {
       //var printError = err.message;
@@ -35,36 +39,30 @@ export default function AdminPage() {
       <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
         <div className="d-flex bg-dark flex-row justify-content-start p-2">
           <Form onSubmit={onSubmitForm}>
-            <Form.Group className="mb-3" controlId="formUserName">
-              <Form.Label className="text-light">User Name</Form.Label>
 
+            <Form.Group className="mb-3 mt-3" controlId="formUserName">
+              <Form.Label className="text-light">Guest Name</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
-                type="name"
-                placeholder="Enter User Name"
+                type="text"
+                placeholder="Enter Guest Name"
                 value={userName}
                 onChange={(e) => {
-                  console.log(e.target.value);
+
                   return setUserName(e.target.value);
                 }}
               />
             </Form.Group>
 
             <Form.Group className="mb-3 mt-2" controlId="formBasicEmail">
-              <Form.Label className="text-light">
-                Guest Email Address
-              </Form.Label>
+              <Form.Label className="text-light">Guest Email</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
                 type="email"
-                placeholder="Enter email"
+                placeholder="Enter Guest Email"
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
               />
-
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -89,7 +87,7 @@ export default function AdminPage() {
                 onChange={(e) => setCheckInDate(e.target.value)}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-1" controlId="formBasicEmail">
               <Form.Label className="text-light">Check-Out Date</Form.Label>
               <Form.Control
                 style={{ borderRadius: "18px" }}
@@ -100,12 +98,13 @@ export default function AdminPage() {
                 onChange={(e) => setCheckOutDate(e.target.value)}
               />
             </Form.Group>
-
-            <div>
+            {/* <div>
               <p>Print Error here</p>
+
             </div>
 
             <PopOver userEmail={userEmail} userName={userName} />
+
           </Form>
         </div>
       </Card>
