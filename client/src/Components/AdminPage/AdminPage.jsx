@@ -12,12 +12,15 @@ export default function AdminPage() {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
+  const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
+  const newErrors = {};
+  if (!userName || userName === "") newErrors.userName = "Cannot be blanck!";
+  else if (userName.length > 30) newErrors.userName = "Name is too long!";
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
     try {
-      const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
-
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/users`,
         {
