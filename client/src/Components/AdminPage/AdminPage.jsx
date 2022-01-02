@@ -39,7 +39,6 @@ export default function AdminPage() {
       <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
         <div className="d-flex bg-dark flex-row justify-content-start p-2">
           <Form onSubmit={onSubmitForm}>
-
             <Form.Group className="mb-3 mt-3" controlId="formUserName">
               <Form.Label className="text-light">Guest Name</Form.Label>
               <Form.Control
@@ -48,7 +47,6 @@ export default function AdminPage() {
                 placeholder="Enter Guest Name"
                 value={userName}
                 onChange={(e) => {
-
                   return setUserName(e.target.value);
                 }}
               />
@@ -98,13 +96,11 @@ export default function AdminPage() {
                 onChange={(e) => setCheckOutDate(e.target.value)}
               />
             </Form.Group>
-            {/* <div>
+            <div>
               <p>Print Error here</p>
-
             </div>
 
             <PopOver userEmail={userEmail} userName={userName} />
-
           </Form>
         </div>
       </Card>
