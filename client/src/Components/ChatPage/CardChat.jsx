@@ -22,13 +22,6 @@ function CardChat({ event, onClick }) {
 
       <Card className="chatPage-img mt-2" style={{ height: "10vh", backgroundColor: "#000" }}></Card>
 
-      <Form className="d-flex flex-row ">
-        <Button
-          style={{ backgroundColor: "transparent", border: "none" }}
-          className="d-flex"
-        >
-        </Button>
-      </Form>
     </div>
   );
 }

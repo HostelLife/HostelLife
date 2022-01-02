@@ -4,13 +4,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 import "./ChatMessageInput.css";
 
-export default function ChatMessageInput({ userId, eventId }) {
+export default function ChatMessageInput({ userEmail, eventId }) {
   const [content, setContent] = useState("");
 
   const onSubmitMessage = async (e) => {
     e.preventDefault();
     try {
-      const body = { userId, eventId, content };
+      const body = { userEmail, eventId, content };
+      console.log("eventId",  eventId);
+
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/messages`,
         {
