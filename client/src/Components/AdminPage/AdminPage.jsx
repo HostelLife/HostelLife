@@ -14,8 +14,10 @@ export default function AdminPage() {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+
     try {
       const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
+
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/users`,
         {
@@ -24,6 +26,7 @@ export default function AdminPage() {
           body: JSON.stringify(body),
         }
       );
+
       console.log(response);
     } catch (err) {
       //var printError = err.message;
@@ -93,10 +96,11 @@ export default function AdminPage() {
                 onChange={(e) => setCheckOutDate(e.target.value)}
               />
             </Form.Group>
-            {/* <div>
+            <div>
               <p>Print Error here</p>
-            </div> */}
-            <PopOver userEmail={userEmail} />
+            </div>
+
+            <PopOver userEmail={userEmail} userName={userName} />
           </Form>
         </div>
       </Card>

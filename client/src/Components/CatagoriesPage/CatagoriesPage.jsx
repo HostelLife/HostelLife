@@ -28,7 +28,10 @@ const activities = [
 
 export default function CatagoriesPage() {
   return (
-    <Card className="text-center bg-dark text-light WelcomePage_mainContainer">
+    <Card
+      className="text-center text-light"
+      style={{ backgroundColor: "#000" }}
+    >
       <div className="text-center p-2">
         <div className="d-flex flex-row justify-content-between">
           <Link to="/">
@@ -44,13 +47,10 @@ export default function CatagoriesPage() {
             }}
           >
             Daily Activities
-            {/* divide into a separate container  */}
           </h3>
           <div> </div>
         </div>
         <Container className="CatagoriesPage">
-          {/* <p className="SubTitleFont">CATEGORIES </p>
-      <Container className="ActivityPage"> */}
           <Row>
             {activities.map((activity, index) => (
               <Col xs={6} className="CatagoriesPage_Card" key={index}>

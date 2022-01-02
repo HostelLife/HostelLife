@@ -120,13 +120,21 @@ const api = () => {
   };
 
   const postNewMessege = async (request, response) => {
-    const newMessege = request.body;
+    const requestPayLoad = request.body;
+    const {userEmail, eventId, content} = requestPayLoad;
+
     const currentTme = new Date().toLocaleString();
+
+    const userIdQueryResponse = await pool.query(
+      `select u.id from users u where u.user_email = $1`,
+      [userEmail]
+    );
+    const userId =  userIdQueryResponse.rows[0].id;
 
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, time_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
-      [newMessege.user_id, newMessege.event_id, newMessege.content, currentTme]
+      [userId, eventId, content, currentTme]
     );
 
     const responseBody = { messegeId: result.rows[0].id };
@@ -137,7 +145,6 @@ const api = () => {
     });
   };
 
-  //------//
 
   const getMessagesByEventId = async (req, res) => {
     try {
@@ -147,23 +154,33 @@ const api = () => {
       const result = await pool.query(
         `select messages.content, users.user_name, users.user_email, messages.time_stamp from messages
           inner join users on messages.user_id = users.id
-          where users.user_email=$1 and messages.event_id=$2`,
-        [userEmail, eventId]
+          where messages.event_id=$1`,
+        [eventId]
       );
+      const messages = result.rows;
 
-      return res.status(200).json(result.rows);
+      const enhancedMessages = messages.map((message) => {
+        console.log(message.user_email, userEmail);
+        return {
+           ...message, 
+           isFirstPerson: message.user_email === userEmail,
+           user_email: undefined
+          };
+      });
+
+      console.log(enhancedMessages);
+      return res.status(200).json(enhancedMessages);
     } catch (err) {
       console.log(err);
     }
   };
+
 
   const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
       const { userName, userEmail, hostelId, checkInDate, checkOutDate } =
         newBooking;
-
-      console.log(userName);
 
       const emailQueryResult = await pool.query(
         `select u.id from users u where u.user_email = $1`,
@@ -212,7 +229,6 @@ const api = () => {
     }
   };
 
-  // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
@@ -272,8 +288,6 @@ const api = () => {
     getMessagesByEventId,
 
     addParticipantToEvent,
-
-    //isCurrUserParticipating
 
     deleteParticipantFromEvent,
   };

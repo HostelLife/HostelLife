@@ -4,18 +4,20 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 import "./ChatMessageInput.css";
 
-export default function ChatMessageInput({ userId, eventId }) {
+export default function ChatMessageInput({ userEmail, eventId }) {
   const [content, setContent] = useState("");
 
   const onSubmitMessage = async (e) => {
     e.preventDefault();
     try {
-      const body = { userId, eventId, content };
+      const body = { userEmail, eventId, content };
+      console.log("eventId",  eventId);
+
       const response = await fetch(
         `${process.env.REACT_APP_API_BASE_URL}/messages`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json"},
           body: JSON.stringify(body),
         }
       );
@@ -25,10 +27,13 @@ export default function ChatMessageInput({ userId, eventId }) {
     }
   };
 
+  console.log(content);
+
   return (
     <Form onSubmit={onSubmitMessage}>
-      <InputGroup className="mb-3 mt-2">
+      <InputGroup className="mb-3 mt-2" style={{backgroundColor: "blue" }}>
         <FormControl
+        style={{backgroundColor: "#628c75" }}
           placeholder="Write a message"
           aria-label="Write a message"
           aria-describedby="basic-addon2"
@@ -39,6 +44,7 @@ export default function ChatMessageInput({ userId, eventId }) {
         <Button type="submit" variant="outline-secondary" id="button-addon2">
           Send
         </Button>
+
       </InputGroup>
     </Form>
   );
