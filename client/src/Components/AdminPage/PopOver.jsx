@@ -5,8 +5,8 @@ import Button from "react-bootstrap/Button";
 import "./AdminPage";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function PopOver({ userEmail }) {
-  const url = `http://localhost:3000?email=${userEmail}`;
+function PopOver({ userEmail, userName }) {
+  const url = `http://localhost:3000?email=${userEmail}&name=${userName}`;
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">Copy the Link</Popover.Header>

@@ -13,11 +13,11 @@ export default function AdminPage() {
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
 
-
   const onSubmitForm = async (e) => {
     e.preventDefault();
+
     try {
-      const body = {userName, userEmail, hostelId, checkInDate, checkOutDate };
+      const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
       const response = await fetch("http://localhost:5000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,29 +26,27 @@ export default function AdminPage() {
       console.log(response);
     } catch (err) {
       //var printError = err.message;
-      console.log(err.message);   
+      console.log(err.message);
     }
   };
 
-  
   return (
     <div className="bg-dark" style={{ height: "100vh" }}>
       <Card className="text-start bg-dark text-light d-flex flex-row justify-content-center AdminPage_Card">
         <div className="d-flex bg-dark flex-row justify-content-start p-2">
-          
           <Form onSubmit={onSubmitForm}>
-
             <Form.Group className="mb-3" controlId="formUserName">
               <Form.Label className="text-light">User Name</Form.Label>
+
               <Form.Control
                 style={{ borderRadius: "18px" }}
-                type="text"
+                type="name"
                 placeholder="Enter User Name"
                 value={userName}
                 onChange={(e) => {
                   console.log(e.target.value);
-                 return setUserName(e.target.value);
-                }}            
+                  return setUserName(e.target.value);
+                }}
               />
             </Form.Group>
 
@@ -107,7 +105,7 @@ export default function AdminPage() {
               <p>Print Error here</p>
             </div>
 
-            <PopOver userEmail={userEmail} />
+            <PopOver userEmail={userEmail} userName={userName} />
           </Form>
         </div>
       </Card>
