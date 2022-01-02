@@ -9,7 +9,26 @@
 }
 
 .WelcomePage_button {
-  margin-top: 8rem;
+  margin-top: 2rem;
+  background-color: limegreen !important;
+  padding: 1rem;
+  border-radius: 20px;
+  color: whitesmoke;
+  font-weight: 800;
+}
+.WelcomePage_button_secondary {
+  margin-top: 2rem;
+  background-color: limegreen !important;
+  padding: 0.4rem;
+  border-radius: 20px;
+  color: whitesmoke;
+}
+.WelcomePage_button_terciary {
+  margin-top: 0.2rem;
+  background-color: limegreen !important;
+  padding: 0.4rem;
+  border-radius: 20px;
+  color: whitesmoke;
 }
 .WelcomePage_text {
   background: rgb(83, 232, 139);
