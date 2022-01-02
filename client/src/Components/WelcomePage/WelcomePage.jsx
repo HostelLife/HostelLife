@@ -5,7 +5,6 @@ import OurButton from "../OurButton/OurButton.jsx";
 import "./WelcomePage.css";
 
 const getLocalStorageEmail = () => {
-  //NOT SURE ABOUT THE FUNCTION
   const userInfoResult = localStorage.getItem("userInfoKey");
   const userInfoObj = JSON.parse(userInfoResult);
 
@@ -13,16 +12,15 @@ const getLocalStorageEmail = () => {
   const { email, name } = userInfoObj;
   console.log(email);
 
-  if (email == "" && name === "") {
+  if (email === "" && name === "") {
     console.log("access granted");
   } else {
     console.log("Not Authorised! ");
   }
 };
-//getLocalStorageData()
 
 export default function WelcomePage() {
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   const userEmail = searchParams.get("email");
   const userName = searchParams.get("name");
