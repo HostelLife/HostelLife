@@ -1,0 +1,38 @@
+.actual-message-container {
+    height: auto;
+    width: 80%;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
+    border-radius: 20px !important;
+    background-color: rgb(80, 79, 79); 
+}
+
+.all > h4{
+    color: rgb(0, 0, 107);
+}
+
+.all > p{
+    color: rgb(230, 230, 230);
+    font-size: x-large;
+}
+
+.time-stamp{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.onRight{
+    height: auto;
+    width: 80%;
+    margin-left: auto; 
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
+    border-radius: 20px !important;
+    background-color: #056d34;
+
+}
+
