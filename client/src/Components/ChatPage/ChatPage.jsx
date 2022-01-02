@@ -1,66 +1,73 @@
 import React, { useState, useEffect } from "react";
-import CardChat from "./CardChat.jsx";
 import { useParams } from "react-router-dom";
 import ChatMessage from "../ChatMessage/ChatMessage.jsx";
-
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import BackButton from "../BackButton/BackButton.jsx";
 import ChatMessageInput from "./ChatMessageInput.jsx";
+
+const getMessages = async (eventId, userEmail) => {
+  const URL = `${process.env.REACT_APP_API_BASE_URL}/messages?event=${eventId}&userEmail=${userEmail}`;
+  const response = await fetch(URL)
+  const messages = await response.json();
+  return messages;
+}
 
 function ChatPage() {
   const [event, setEvent] = useState();
+  const [messages, setMessages] = useState();
 
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
   const userEmail = userInfo.email;
-  console.log("User mail from local storage " + userEmail);
   let { id } = useParams();
+  const eventId = id;
 
   useEffect(() => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/events/${id}?userEmail=${userEmail}`;
-    console.log(userEmail);
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setEvent(data))
       .catch((error) => {
         console.error(error);
       });
-  }, [id, userEmail]);
+      
+  }, [eventId, userEmail]);
 
-  const onClick = async (event) => {
-    event.preventDefault();
+  useEffect(() =>{
+    getMessages(eventId, userEmail)
+    .then ((messages)=> setMessages(messages));
 
-    const data = { userEmail: userEmail };
-    console.log(data);
+  }, [])
 
-    const url = `${process.env.REACT_APP_API_BASE_URL}/messages`;
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    setEvent(event);
-    console.log(event);
-  };
+  if (!event) {
+    return <div> </div>
+  }
+  const { title } = event;
 
   return (
     <div>
-      {event && <CardChat event={event} onClick={onClick} />}
+      <Card className="d-flex flex-row bg-dark justify-content-between">
+        <Link to={`/event/${eventId}`}>
+          <BackButton />
+        </Link>
+        <p className="mt-4 mx-2 text-light">{title}</p>
+      </Card>
 
       <div style={{ minHeight: "60vh", backgroundColor: "#141111" }}>
-        <ChatMessage content={"Hi"} 
-          authorName = {"Suman"}
+        <ChatMessage content={"Hi"}
+          authorName={"Suman"}
           timestamp={"10:20am"}
-          isFirstPerson = {false}
-          />
-          <ChatMessage content={"hello, How are you all"} 
-          authorName = {"Rana"}
+          isFirstPerson={false}
+        />
+        <ChatMessage content={"hello, How are you all"}
+          authorName={"Rana"}
           timestamp={"10:20am"}
-          isFirstPerson = {true}
-          />
+          isFirstPerson={true}
+        />
       </div>
 
-      <ChatMessageInput />
+      <ChatMessageInput eventId={eventId} userEmail={userEmail} />
     </div>
   );
 }
