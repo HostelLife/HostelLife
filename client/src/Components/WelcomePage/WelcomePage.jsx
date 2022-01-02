@@ -19,7 +19,6 @@ const getLocalStorageEmail = () => {
     console.log("Not Authorised! ");
   }
 };
-//getLocalStorageData()
 
 export default function WelcomePage() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -33,8 +32,6 @@ export default function WelcomePage() {
   };
 
   localStorage.setItem("userInfoKey", JSON.stringify(userInfo));
-
-  //localStorage.setItem("name", userName)
 
   return (
     <Card
@@ -50,7 +47,7 @@ export default function WelcomePage() {
 
       <Card.Title className=" mt-5 WelcomePage_text">
         {" "}
-        Make new friends while travelling...
+        <p>Hello {userName}! It'a nice to see you here </p>
       </Card.Title>
 
       <Link to="/events">

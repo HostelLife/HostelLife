@@ -6,13 +6,14 @@
 .EventPageCard {
   padding: 0.6rem;
   margin-top: 0.7rem;
-  box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
   border-radius: 20px !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .EventPageCard_image {
@@ -27,14 +28,7 @@
   text-decoration: none;
 }
 .title {
-  background: rgb(83, 232, 139);
-  background: -webkit-linear-gradient(
-    130deg,
-    rgba(83, 232, 139, 1) 0%,
-    rgba(21, 190, 119, 1) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
 }
 .EventPageCard_time {
   color: black;

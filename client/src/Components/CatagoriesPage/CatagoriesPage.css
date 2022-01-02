@@ -1,6 +1,3 @@
-.CatagoriesPage {
-  width: 20rem;
-}
 .CatagoriesPage_Card {
   padding: 1rem;
 }
@@ -11,4 +8,5 @@
   font-size: 1.7rem;
   font-style: italic;
   text-decoration: underline;
+  background-color: blueviolet !important;
 }

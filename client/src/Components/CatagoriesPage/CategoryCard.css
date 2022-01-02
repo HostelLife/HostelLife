@@ -2,9 +2,6 @@
   height: 9rem;
   width: 100%;
   margin-bottom: 15px;
-  box-shadow: 1px 1px 6px -1px rgba(83, 232, 139, 0.8);
-  border-radius: 20px !important;
-  border-color: rgb(249, 168, 77);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,8 +11,11 @@
   overflow: hidden;
 }
 .CatagoryCard_text {
-  color: rgb(83, 232, 139);
-  background-color: #000;
-  opacity: 0.7;
+  color: #f4f4f4;
+
+  border-radius: 20px;
+}
+.CategoryCard_button {
+  background-color: #fff;
   border-radius: 20px;
 }
