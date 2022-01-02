@@ -131,9 +131,6 @@ const api = () => {
     );
     const userId =  userIdQueryResponse.rows[0].id;
 
-    console.log("userId", userId);
-    console.log("EVENT Id", eventId);
-    
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, time_stamp)
         VALUES ($1, $2, $3, $4) RETURNING user_id`,
@@ -148,7 +145,6 @@ const api = () => {
     });
   };
 
-  //------//
 
   const getMessagesByEventId = async (req, res) => {
     try {
@@ -162,11 +158,14 @@ const api = () => {
         [eventId]
       );
       const messages = result.rows;
-      console.log(messages);
 
       const enhancedMessages = messages.map((message) => {
         console.log(message.user_email, userEmail);
-        return { ...message, isFirstPerson: message.user_email === userEmail };
+        return {
+           ...message, 
+           isFirstPerson: message.user_email === userEmail,
+           user_email: undefined
+          };
       });
 
       console.log(enhancedMessages);
@@ -176,16 +175,12 @@ const api = () => {
     }
   };
 
-  /////
-
 
   const postNewUserBooking = async (request, response) => {
     try {
       const newBooking = request.body;
       const { userName, userEmail, hostelId, checkInDate, checkOutDate } =
         newBooking;
-
-      console.log(userName);
 
       const emailQueryResult = await pool.query(
         `select u.id from users u where u.user_email = $1`,
@@ -234,7 +229,6 @@ const api = () => {
     }
   };
 
-  // parameters (event_id, user_email)
   const addParticipantToEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
@@ -294,8 +288,6 @@ const api = () => {
     getMessagesByEventId,
 
     addParticipantToEvent,
-
-    //isCurrUserParticipating
 
     deleteParticipantFromEvent,
   };
