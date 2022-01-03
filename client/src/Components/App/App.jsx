@@ -6,6 +6,7 @@ import CatagoriesPage from "../CatagoriesPage/CatagoriesPage.jsx";
 import WelcomePage from "../WelcomePage/WelcomePage.jsx";
 import ChatPage from "../ChatPage/ChatPage.jsx";
 import AdminPage from "../AdminPage/AdminPage.jsx";
+import EventProfileNoAuth from "../EventProfilePage/EventProfilePageNoAuth.jsx";
 
 const App = () => {
   return (
@@ -15,7 +16,17 @@ const App = () => {
           <Route exact path="/" element={<WelcomePage />} />
           <Route exact path="/events" element={<CatagoriesPage />} />
           <Route exact path="/events/:category" element={<EventsPage />} />
-          <Route exact path="/event/:id" element={<EventProfilePage />} />
+          <Route
+            exact
+            path="/event/:id"
+            element={
+              window.localStorage.length > 0 ? (
+                <EventProfilePage />
+              ) : (
+                <EventProfileNoAuth />
+              )
+            }
+          />
           <Route exact path="/event/:id/chat" element={<ChatPage />} />
           <Route exact path="/admin" element={<AdminPage />} />
         </Routes>
