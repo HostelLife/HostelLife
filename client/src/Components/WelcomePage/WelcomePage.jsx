@@ -1,152 +1,61 @@
 import React, { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
 import "./WelcomePage.css";
-import QrReaderComp from "../QrReader/QrReaderComp.jsx";
+import ManualAuthentifier from "./ManualAuthentifier";
 
-// const getLocalStorageEmail = () => {
+const getUserEmailFromLocalStorage = () => {
+  const userInfoResult = localStorage.getItem("userInfoKey");
+  const userInfoObj = JSON.parse(userInfoResult);
+  return userInfoObj?.email;
+};
 
-const userInfoResult = localStorage.getItem("userInfoKey");
-const userInfoObj = JSON.parse(userInfoResult);
+const persistUserEmailInLocalStorage = (userEmail) => {
+  const userInfo = {
+    email: userEmail,
+  };
 
-//   console.log(typeof userInfoObj);
-//   const { email, name } = userInfoObj;
-//   console.log(email);
-
-//   if (email == "" && name === "") {
-//     console.log("access granted");
-//   } else {
-//     console.log("Not Authorised! ");
-//   }
-// };
-//getLocalStorageData()
+  localStorage.setItem("userInfoKey", JSON.stringify(userInfo));
+};
 
 export default function WelcomePage() {
   let [searchParams] = useSearchParams();
 
-  const userEmail = searchParams.get("email");
-  const userName = searchParams.get("name");
+  const userEmailFromParams = searchParams.get("email");
+  if (userEmailFromParams) {
+    persistUserEmailInLocalStorage(userEmailFromParams);
+  }
 
-  const userInfo = {
-    email: userEmail,
-    name: userName,
+  const persistedUserEmail = getUserEmailFromLocalStorage();
+  const [userEmail, setUserEmail] = useState(persistedUserEmail);
+
+  const handleUserEmailChange = (newUserEmail) => {
+    persistUserEmailInLocalStorage(newUserEmail);
+    setUserEmail(newUserEmail);
   };
 
-  localStorage.setItem("userInfoKey", JSON.stringify(userInfo));
+  return (
+    <Card
+      style={{ height: "100vh" }}
+      className="text-center bg-dark text-dark WelcomePage_mainContainer"
+    >
+      <img
+        alt=""
+        src="images\logo-white.png"
+        style={{ width: "18rem", marginTop: "1px" }}
+        className="WelcomePage_image"
+      />
+      <Card.Title className=" mt-5 WelcomePage_text">
+        Make new friends while travelling...
+      </Card.Title>
 
-  const [visibleQr, setVisibleQr] = useState(false);
-  const [visibleInput, setVisibleInput] = useState(false);
-
-  const [userEmailInput, setUserEmailInput] = useState("");
-
-  const onSubmitEmail = (e) => {
-    e.preventDefault();
-
-    window.location.href = `/?email=${userEmailInput}&name=${userName}`;
-    //NEED TO RELOAD AFTER SETTINGLOCALSTORAGE
-  };
-
-  if (userInfoObj.email != null) {
-    return (
-      <Card
-        style={{ height: "100vh" }}
-        className="text-center bg-dark text-dark WelcomePage_mainContainer"
-      >
-        <img
-          alt=""
-          src="images\logo-white.png"
-          style={{ width: "18rem", marginTop: "1px" }}
-          className=" WelcomePage_image"
-        />
-
-        <Card.Title className=" mt-5 WelcomePage_text">
-          {" "}
-          <p>
-            Hello {userName}! <br></br>It'a nice to see you here{" "}
-          </p>
-        </Card.Title>
-
+      {userEmail ? (
         <Link to="/events">
           <button className="WelcomePage_button">Start Exploring!</button>
         </Link>
-      </Card>
-    );
-  }
-  //FIX REPETITION?
-  else {
-    return (
-      <Card
-        style={{ height: "100vh" }}
-        className="text-center bg-dark text-dark WelcomePage_mainContainer"
-      >
-        <img
-          alt=""
-          src="images\logo-white.png"
-          style={{ width: "18rem", marginTop: "1px" }}
-          className=" WelcomePage_image"
-        />
-
-        <Card.Title className=" mt-5 WelcomePage_text">
-          {" "}
-          <p>
-            Hello {userName}! <br></br>It'a nice to see you here{" "}
-          </p>
-        </Card.Title>
-
-        <Link to="/events">
-          <button className="WelcomePage_button w-75 rounded-pill">
-            Continue Without LogIn
-          </button>
-        </Link>
-        <div>
-          <button
-            content={"Scan QR Code"}
-            className="WelcomePage_button"
-            onClick={() => setVisibleQr(!visibleQr)}
-            variant="primary"
-            size="lg"
-          >
-            {visibleQr ? "Close Scanner" : "Scan QR Code"}
-          </button>
-          {visibleQr && <QrReaderComp> </QrReaderComp>}
-          <button
-            content={"Input Email"}
-            className="WelcomePage_button"
-            onClick={() => setVisibleInput(!visibleInput)}
-            variant="secondary"
-            size="mg"
-          >
-            {visibleInput ? "Close Input Field" : "Input Email"}
-          </button>
-          {visibleInput && (
-            <div>
-              <Form onSubmit={onSubmitEmail}>
-                <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-                  <Form.Label className="text-light"></Form.Label>
-                  <Form.Control
-                    style={{ borderRadius: "18px" }}
-                    type="text"
-                    placeholder="Enter Email"
-                    value={userEmailInput}
-                    onChange={(e) => {
-                      return setUserEmailInput(e.target.value);
-                    }}
-                  />
-                </Form.Group>
-                <Button
-                  className="WelcomePage_button_terciary"
-                  variant="primary"
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </Form>
-            </div>
-          )}
-        </div>
-      </Card>
-    );
-  }
+      ) : (
+        <ManualAuthentifier onUserEmailChange={handleUserEmailChange} />
+      )}
+    </Card>
+  );
 }
