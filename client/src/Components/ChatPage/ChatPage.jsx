@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
 import ChatMessageInput from "./ChatMessageInput.jsx";
+import { format, parseISO } from "date-fns";
 
 const getMessages = async (eventId, userEmail) => {
   const URL = `${process.env.REACT_APP_API_BASE_URL}/messages?event=${eventId}&userEmail=${userEmail}`;
@@ -60,7 +61,7 @@ function ChatPage() {
           <ChatMessage
             content={message.content}
             authorName={message.user_name}
-            timestamp={message.time_stamp}
+            timestamp={format(parseISO(message.time_stamp), "hh:mm a")}
             isFirstPerson={message.isFirstPerson}
           />
         ))}
