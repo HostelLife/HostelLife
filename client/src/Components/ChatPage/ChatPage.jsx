@@ -31,7 +31,7 @@ function ChatPage() {
       .catch((error) => {
         console.error(error);
       });
-  }, [eventId, userEmail]);
+  }, [id, userEmail]);
 
   useEffect(() => {
     getMessages(eventId, userEmail).then((messages) => setMessages(messages));
@@ -44,15 +44,18 @@ function ChatPage() {
 
   return (
     <div>
-      <Card className="d-flex flex-row bg-dark justify-content-between">
+      <Card
+        className="d-flex p-4 flex-row justify-content-between"
+        style={{ backgroundColor: "#000" }}
+      >
         <Link to={`/event/${eventId}`}>
           <BackButton />
         </Link>
-        <p className="mt-4 mx-2 text-light">{title}</p>
+        <p className="mt-4 mx-2 text-light ChatPage_title">{title}</p>
         <div></div>
       </Card>
 
-      <div style={{ minHeight: "60vh", backgroundColor: "#141111" }}>
+      <div className="ChatPage_ChatMessages">
         {messages.map((message) => (
           <ChatMessage
             content={message.content}
@@ -61,9 +64,12 @@ function ChatPage() {
             isFirstPerson={message.isFirstPerson}
           />
         ))}
+        <ChatMessageInput
+          style={{ backgroundColor: "#000" }}
+          eventId={eventId}
+          userEmail={userEmail}
+        />
       </div>
-
-      <ChatMessageInput eventId={eventId} userEmail={userEmail} />
     </div>
   );
 }

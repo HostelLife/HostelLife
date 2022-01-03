@@ -30,28 +30,30 @@ export default function EventsPage() {
   return (
     <div
       style={{ backgroundColor: "#0D0D0D", width: "100%" }}
-      className="d-flex flex-column p-2 justify-content-around"
+      className="d-flex flex-column p-3 justify-content-around"
     >
       <div
-        className="d-flex flex-row p-2  text-center justify-content-around"
+        className="d-flex flex-row p-2 mx-5 text-center justify-content-between"
         style={{ backgroundColor: "#0D0D0D" }}
       >
         <Link to="/events">
           <BackButton />
         </Link>
 
-        <h5 className="mx-5  pt-3 text-light">Must See {categories()} </h5>
+        <h5 className="mx-5 fs-3  pt-4 text-light">Must See {categories()} </h5>
         <div></div>
       </div>
+
       <p
-        className=" text-center px-3 text-light"
+        className=" text-center px-3 fs-6 text-light"
         style={{ backgroundColor: "#0D0D0D" }}
       >
         Plan your trip and meet new people!
       </p>
+
       <div
         className="d-flex flex-column p-2  text-center justify-content-start"
-        style={{ backgroundColor: "#0D0D0D" }}
+        style={{ backgroundColor: "#0D0D0D", height: "100vh" }}
       >
         {events.map((event, index) => {
           return (

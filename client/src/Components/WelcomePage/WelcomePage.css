@@ -9,12 +9,18 @@
 }
 
 .WelcomePage_button {
-  margin-top: 2rem;
-  background-color: limegreen !important;
-  padding: 1rem;
-  border-radius: 20px;
-  color: whitesmoke;
-  font-weight: 800;
+  background: rgb(83, 232, 139);
+  background: linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  border: none;
+  width: 10rem;
+  margin: 2rem 1rem;
+  border-radius: 18px;
+  padding: 0.5rem 1rem;
+  color: #fff;
 }
 .WelcomePage_button_secondary {
   margin-top: 2rem;
@@ -24,10 +30,16 @@
   color: whitesmoke;
 }
 .WelcomePage_button_terciary {
+  background: rgb(83, 232, 139);
+  background: linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  border: none !important;
   margin-top: 0.2rem;
-  background-color: limegreen !important;
-  padding: 0.4rem;
-  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  border-radius: 20px !important;
   color: whitesmoke;
 }
 .WelcomePage_text {

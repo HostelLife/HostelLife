@@ -7,7 +7,7 @@ import "./WelcomePage.css";
 import QrReaderComp from "../QrReader/QrReaderComp.jsx";
 
 // const getLocalStorageEmail = () => {
-//   //NOT SURE ABOUT THE FUNCTION
+
 const userInfoResult = localStorage.getItem("userInfoKey");
 const userInfoObj = JSON.parse(userInfoResult);
 
@@ -44,7 +44,7 @@ export default function WelcomePage() {
   const onSubmitEmail = (e) => {
     e.preventDefault();
 
-    window.location.href = `/?email=${userEmailInput}`;
+    window.location.href = `/?email=${userEmailInput}&name=${userName}`;
     //NEED TO RELOAD AFTER SETTINGLOCALSTORAGE
   };
 
@@ -63,7 +63,9 @@ export default function WelcomePage() {
 
         <Card.Title className=" mt-5 WelcomePage_text">
           {" "}
-          Make new friends while travelling...
+          <p>
+            Hello {userName}! <br></br>It'a nice to see you here{" "}
+          </p>
         </Card.Title>
 
         <Link to="/events">
@@ -88,11 +90,15 @@ export default function WelcomePage() {
 
         <Card.Title className=" mt-5 WelcomePage_text">
           {" "}
-          Make new friends while travelling...
+          <p>
+            Hello {userName}! <br></br>It'a nice to see you here{" "}
+          </p>
         </Card.Title>
 
         <Link to="/events">
-          <button className="WelcomePage_button">Continue Without LogIn</button>
+          <button className="WelcomePage_button w-75 rounded-pill">
+            Continue Without LogIn
+          </button>
         </Link>
         <div>
           <button

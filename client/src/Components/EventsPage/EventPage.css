@@ -37,3 +37,12 @@
   padding: 0.6rem;
   border: none;
 }
+.EventPage_star {
+  color: rgb(83, 232, 139);
+  color: -webkit-linear-gradient(
+    130deg,
+    rgba(83, 232, 139, 1) 0%,
+    rgba(21, 190, 119, 1) 100%
+  );
+  margin-right: 1.5rem;
+}

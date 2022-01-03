@@ -31,10 +31,10 @@ function CardsProfile({ event, onJoinClick, onCancelClick }) {
   };
 
   return (
-    <div className=" bg-dark text-light d-flex justify-content-center">
+    <div className="text-light d-flex justify-content-center">
       <Card
-        className=" bg-dark text-light d-flex justify-content-center"
-        style={{ border: "none" }}
+        className=" text-light d-flex justify-content-center"
+        style={{ border: "none", backgroundColor: "#000" }}
       >
         <Link to={`/events/${category}`} className="ms-3">
           <BackButton />
@@ -49,13 +49,13 @@ function CardsProfile({ event, onJoinClick, onCancelClick }) {
         <Card.Body className="text-light">
           <Card className="CardProfile_container bg-dark">
             <div className="d-flex justify-content-between d-block CardProfile_logos">
-              <Card.Title>{title}</Card.Title>
+              <Card.Title className="CardProfile_title">{title}</Card.Title>
               {isAlreadyJoining && (
                 <AiFillStar
+                  className="CardProfile_Star"
                   style={{
                     height: "2rem",
                     width: "2rem",
-                    color: "orange",
                   }}
                 />
               )}
