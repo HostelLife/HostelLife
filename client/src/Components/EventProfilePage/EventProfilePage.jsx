@@ -26,6 +26,10 @@ export default function EventProfilePage() {
     event.preventDefault();
 
     const data = { userEmail: userEmail };
+    if (userEmail === null) {
+      console.log("No user Data");
+      alert("User Not Registered");
+    }
 
     const url = `${process.env.REACT_APP_API_BASE_URL}/events/${id}/participant`;
     await fetch(url, {
