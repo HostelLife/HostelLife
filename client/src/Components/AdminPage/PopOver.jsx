@@ -5,10 +5,10 @@ import Button from "react-bootstrap/Button";
 import "./AdminPage";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-
 function PopOver({ userEmail, userName }) {
-  const url = `http://localhost:3000?email=${userEmail}&name=${userName}`;
- 
+  const ref = window.location.origin;
+  const url = `${ref}?email=${userEmail}&name=${userName}`;
+
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${url}&size=250x250`;
 
   const popover = (
