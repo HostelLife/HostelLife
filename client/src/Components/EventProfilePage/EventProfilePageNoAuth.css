@@ -1,0 +1,13 @@
+.Big_Text {
+  padding: 1rem;
+  font-weight: 800;
+  font-family: "Titillium Web", sans-serif;
+  color: rgb(83, 232, 139) !important;
+  font-size: 4rem;
+
+  font-style: italic;
+}
+.NoAuthCard {
+  background-color: black !important;
+  height: 100vh;
+}
