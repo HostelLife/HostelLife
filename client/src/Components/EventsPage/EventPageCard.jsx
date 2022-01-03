@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import "./EventPage.css";
+import { format, parseISO } from "date-fns";
 
 function EventPageCard({ event }) {
   const { id, starttime, imagefilename, title } = event;
@@ -25,7 +26,7 @@ function EventPageCard({ event }) {
           <Card.Body>
             <Card.Title className="title">{title}</Card.Title>
             <Card.Text className="text-muted " style={{ fontSize: "15px" }}>
-              {starttime}
+              {format(parseISO(starttime), "EEEE, do MMM  - hh:mm a")}
             </Card.Text>
           </Card.Body>
         </Card>
