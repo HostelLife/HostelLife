@@ -7,7 +7,6 @@ import { AiFillStar } from "react-icons/ai";
 
 import { format, parseISO } from "date-fns";
 
-
 function EventPageCard({ event }) {
   const { id, starttime, imagefilename, title, isAlreadyJoining } = event;
 
@@ -30,15 +29,18 @@ function EventPageCard({ event }) {
             className="EventPageCard_image"
           />
           <Card.Body>
-
             <div className="d-flex justify-content-between d-block">
               <div>
-                <Card.Title className="title mx-3">{title}</Card.Title>
+                <Card.Title className="title">{title}</Card.Title>
+                <Card.Text className="text-muted " style={{ fontSize: "15px" }}>
+                  {format(parseISO(starttime), "EEEE, do MMM  - hh:mm a")}
+                </Card.Text>
+                {/* <Card.Title className="title mx-3">{title}</Card.Title>
                 <Card.Text className="text-muted " style={{ fontSize: "15px" }}>
                   {starttime}
-                </Card.Text>
+                </Card.Text> */}
               </div>
-              <AiFillStar className="EventPage_star" />
+
               {isAlreadyJoining && (
                 <AiFillStar
                   className="EventPage_star"
@@ -49,12 +51,6 @@ function EventPageCard({ event }) {
                 />
               )}
             </div>
-
-            <Card.Title className="title">{title}</Card.Title>
-            <Card.Text className="text-muted " style={{ fontSize: "15px" }}>
-              {format(parseISO(starttime), "EEEE, do MMM  - hh:mm a")}
-            </Card.Text>
-
           </Card.Body>
         </Card>
       </Link>
