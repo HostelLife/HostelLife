@@ -6,7 +6,7 @@ import CatagoriesPage from "../CatagoriesPage/CatagoriesPage.jsx";
 import WelcomePage from "../WelcomePage/WelcomePage.jsx";
 import ChatPage from "../ChatPage/ChatPage.jsx";
 import AdminPage from "../AdminPage/AdminPage.jsx";
-import EventProfileNoAuth from "../EventProfilePage/EventProfilePageNoAuth.jsx";
+// import EventProfileNoAuth from "../EventProfilePage/EventProfilePageNoAuth.jsx";
 
 const App = () => {
   return (
