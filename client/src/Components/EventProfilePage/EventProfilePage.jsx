@@ -6,8 +6,12 @@ export default function EventProfilePage() {
   const [event, setEvent] = useState();
   //getting the localStorage email
   const userInfo = JSON.parse(window.localStorage.getItem("userInfoKey"));
-  const userEmail = userInfo.email;
-  console.log("User mail from local storage " + userEmail);
+
+  let userEmail;
+  if (userInfo) {
+    userEmail = userInfo.email;
+  }
+
   const { id } = useParams();
 
   useEffect(() => {

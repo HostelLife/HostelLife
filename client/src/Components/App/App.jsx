@@ -16,17 +16,18 @@ const App = () => {
           <Route exact path="/" element={<WelcomePage />} />
           <Route exact path="/events" element={<CatagoriesPage />} />
           <Route exact path="/events/:category" element={<EventsPage />} />
-          <Route
+          <Route exact path="/event/:id" element={<EventProfilePage />} />
+          {/* <Route
             exact
             path="/event/:id"
             element={
               window.localStorage.length > 0 ? (
                 <EventProfilePage />
               ) : (
-                <EventProfileNoAuth />
+                < />
               )
             }
-          />
+          /> */}
           <Route exact path="/event/:id/chat" element={<ChatPage />} />
           <Route exact path="/admin" element={<AdminPage />} />
         </Routes>

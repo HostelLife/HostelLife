@@ -121,7 +121,7 @@ const api = () => {
 
   const postNewMessege = async (request, response) => {
     const requestPayLoad = request.body;
-    const {userEmail, eventId, content} = requestPayLoad;
+    const { userEmail, eventId, content } = requestPayLoad;
 
     const currentTme = new Date().toLocaleString();
 
@@ -129,7 +129,7 @@ const api = () => {
       `select u.id from users u where u.user_email = $1`,
       [userEmail]
     );
-    const userId =  userIdQueryResponse.rows[0].id;
+    const userId = userIdQueryResponse.rows[0].id;
 
     const result = await pool.query(
       `INSERT INTO messages (user_id, event_id, content, time_stamp)
@@ -144,7 +144,6 @@ const api = () => {
       time: currentTme,
     });
   };
-
 
   const getMessagesByEventId = async (req, res) => {
     try {
@@ -162,10 +161,10 @@ const api = () => {
       const enhancedMessages = messages.map((message) => {
         console.log(message.user_email, userEmail);
         return {
-           ...message, 
-           isFirstPerson: message.user_email === userEmail,
-           user_email: undefined
-          };
+          ...message,
+          isFirstPerson: message.user_email === userEmail,
+          user_email: undefined,
+        };
       });
 
       console.log(enhancedMessages);
@@ -174,7 +173,6 @@ const api = () => {
       console.log(err);
     }
   };
-
 
   const postNewUserBooking = async (request, response) => {
     try {
@@ -264,7 +262,7 @@ const api = () => {
   const deleteParticipantFromEvent = async (req, res) => {
     try {
       const eventId = req.params.eventId;
-      const userEmail = req.body.user_email;
+      const userEmail = req.body.userEmail;
 
       const emailQuery = `select u.id from users u where u.user_email=$1`;
       const findEmail = await pool.query(emailQuery, [userEmail]);
@@ -275,7 +273,7 @@ const api = () => {
       await pool.query(deleteQuery, [eventId, userId]);
       res.status(200).send("Participant is deleted");
     } catch (err) {
-      console.log("err");
+      console.log("err", err);
     }
   };
 

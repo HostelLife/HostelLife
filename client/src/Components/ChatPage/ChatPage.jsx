@@ -34,10 +34,9 @@ function ChatPage() {
   }, [id, userEmail]);
 
   useEffect(() => {
-    setInterval(()=> {
-      getMessages(eventId, userEmail)
-      .then((messages) => {
-        setMessages(messages)
+    setInterval(() => {
+      getMessages(eventId, userEmail).then((messages) => {
+        setMessages(messages);
       });
     }, 1000);
   }, []);
