@@ -1,4 +1,5 @@
 import "./chatMessage.css";
+import { format, parseISO } from "date-fns";
 
 export default function ChatMessage({
   content,
@@ -15,7 +16,10 @@ export default function ChatMessage({
       >
         <h4 className="authorName">{authorName}</h4>
         <p>{content} </p>
-        <span className="time-stamp"> {timestamp}</span>
+        <span className="time-stamp">
+          {" "}
+          {format(parseISO(timestamp), "hh:mm a")}
+        </span>
       </div>
     </div>
   );
