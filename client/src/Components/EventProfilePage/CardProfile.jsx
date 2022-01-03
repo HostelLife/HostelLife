@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import Button from "react-bootstrap/Button";
+import { format, parseISO } from "date-fns";
 
 function CardsProfile({ event, onJoinClick, onCancelClick }) {
   const {
@@ -60,7 +61,9 @@ function CardsProfile({ event, onJoinClick, onCancelClick }) {
               )}
             </div>
 
-            <Card.Title>{starttime}</Card.Title>
+            <Card.Title>
+              {format(parseISO(starttime), "EEEE, do MMM - hh:mm a")}
+            </Card.Title>
             <p>
               <BsPerson className="PersonLogo" />
               <span className="total-participants">
