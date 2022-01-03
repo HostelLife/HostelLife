@@ -10,6 +10,7 @@ const getMessages = async (eventId, userEmail) => {
   const URL = `${process.env.REACT_APP_API_BASE_URL}/messages?event=${eventId}&userEmail=${userEmail}`;
   const response = await fetch(URL);
   const messages = await response.json();
+  console.log("api response to messages", messages);
   return messages;
 };
 
@@ -33,9 +34,21 @@ function ChatPage() {
       });
   }, [id, userEmail]);
 
+  ////////////////////////////
+
   useEffect(() => {
-    getMessages(eventId, userEmail).then((messages) => setMessages(messages));
+    setInterval(()=> {
+      getMessages(eventId, userEmail)
+      .then((messages) => {
+        console.log("effect-getMessage", messages);
+        setMessages(messages)
+      });
+    }, 1000);
+
   }, []);
+
+  //////////////////////
+
 
   if (!event) {
     return <div> </div>;

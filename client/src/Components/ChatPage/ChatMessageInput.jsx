@@ -22,6 +22,11 @@ export default function ChatMessageInput({ userEmail, eventId }) {
           body: JSON.stringify(body),
         }
       );
+
+      setContent("");
+
+
+
       console.log(response);
     } catch (err) {
       console.log(err.message);

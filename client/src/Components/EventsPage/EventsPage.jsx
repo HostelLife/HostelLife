@@ -18,6 +18,7 @@ export default function EventsPage() {
         console.error(error);
       });
   }, [category]);
+  
   let categories = () => {
     if (category === "main_attraction") return "Main Attractions";
     else if (category === "beach") return "Beaches";
@@ -27,6 +28,9 @@ export default function EventsPage() {
     else if (category === "food") return "Restaurants";
     else if (category === "party") return "Clubs & Bars";
   };
+
+  console.log(events);
+
   return (
     <div
       style={{ backgroundColor: "#0D0D0D", width: "100%" }}
