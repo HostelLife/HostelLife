@@ -37,12 +37,12 @@ export default function WelcomePage() {
   return (
     <Card
       style={{ height: "100vh" }}
-      className="text-center bg-dark text-dark WelcomePage_mainContainer"
+      className="text-center text-dark WelcomePage_mainContainer"
     >
       <img
         alt=""
-        src="images\logo-white.png"
-        style={{ width: "18rem", marginTop: "1px" }}
+        src="images\final-logo.png"
+        style={{ width: "12rem" }}
         className="WelcomePage_image"
       />
       <Card.Title className=" mt-5 WelcomePage_text">

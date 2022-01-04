@@ -90,7 +90,12 @@ INSERT INTO users (user_email, user_name) VALUES ('user1@mail.com', 'user1');
 INSERT INTO users (user_email, user_name) VALUES ('user2@mail.com', 'user2');
 INSERT INTO users (user_email, user_name) VALUES ('user3@mail.com', 'user3');
 INSERT INTO users (user_email, user_name) VALUES ('user4@mail.com', 'user4');
-INSERT INTO users (user_email, user_name) VALUES ('suman@gmail.com', 'suman');
+INSERT INTO users (user_email, user_name) VALUES ('suman@gmail.com', 'Suman');
+INSERT INTO users (user_email, user_name) VALUES ('rana@gmail.com', 'Rana');
+INSERT INTO users (user_email, user_name) VALUES ('diego@gmail.com', 'Diego');
+INSERT INTO users (user_email, user_name) VALUES ('vin@gmail.com', 'Vin');
+INSERT INTO users (user_email, user_name) VALUES ('yogi@gmail.com', 'Yogi');
+
 
 
 INSERT INTO hostels (hostel_name) VALUES ('Hostel One');
