@@ -30,7 +30,7 @@ export default function EventProfilePage() {
     event.preventDefault();
 
     const data = { userEmail: userEmail };
-    if (userEmail === null) {
+    if (userEmail === null || localStorage.length === 0) {
       console.log("No user Data");
       alert("User Not Registered");
     }
