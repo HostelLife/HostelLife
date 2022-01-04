@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton.jsx";
 import ChatMessageInput from "./ChatMessageInput.jsx";
+import "./ChatPage.css";
 
 const getMessages = async (eventId, userEmail) => {
   const URL = `${process.env.REACT_APP_API_BASE_URL}/messages?event=${eventId}&userEmail=${userEmail}`;
@@ -47,10 +48,10 @@ function ChatPage() {
   const { title } = event;
 
   return (
-    <div>
+    <Card style={{ backgroundColor: "#000", height: "100vh" }}>
       <Card
         className="d-flex p-4 flex-row justify-content-between"
-        style={{ backgroundColor: "#000" }}
+        style={{ backgroundColor: "#000", height: "12%" }}
       >
         <Link to={`/event/${eventId}`}>
           <BackButton />
@@ -59,22 +60,25 @@ function ChatPage() {
         <div></div>
       </Card>
 
-      <div className="ChatPage_ChatMessages">
-        {messages.map((message) => (
-          <ChatMessage
-            content={message.content}
-            authorName={message.user_name}
-            timestamp={message.time_stamp}
-            isFirstPerson={message.isFirstPerson}
-          />
-        ))}
+      <Card className="ChatPage_ChatMessages">
+        <Card className="ChatPage_messages">
+          {messages.map((message) => (
+            <ChatMessage
+              content={message.content}
+              authorName={message.user_name}
+              timestamp={message.time_stamp}
+              isFirstPerson={message.isFirstPerson}
+            />
+          ))}
+        </Card>
         <ChatMessageInput
+          className="ChatPage_messagesInput"
           style={{ backgroundColor: "#000" }}
           eventId={eventId}
           userEmail={userEmail}
         />
-      </div>
-    </div>
+      </Card>
+    </Card>
   );
 }
 
