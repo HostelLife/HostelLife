@@ -41,7 +41,7 @@ export default function WelcomePage() {
     >
       <img
         alt=""
-        src="images\final-logo.png"
+        src="images\white-logo-final.png"
         style={{ width: "12rem" }}
         className="WelcomePage_image"
       />
