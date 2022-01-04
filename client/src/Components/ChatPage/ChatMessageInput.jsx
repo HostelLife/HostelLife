@@ -32,7 +32,7 @@ export default function ChatMessageInput({ userEmail, eventId }) {
   console.log(content);
 
   return (
-    <Form onSubmit={onSubmitMessage} className="Input-part">
+    <Form onSubmit={onSubmitMessage} className="InputPart">
       <InputGroup className="mb-3 mt-5 bg-dark overflow-hidden ChatMessageInputMain">
         <FormControl
           className="bg-dark border-0 px-3 text-light fs-4 bg-transparent ChatPage_inputform"
