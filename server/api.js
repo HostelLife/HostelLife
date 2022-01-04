@@ -26,7 +26,7 @@ const pool = new Pool(config);
 const api = () => {
   const postNewEvent = async (request, response) => {
     const newEvent = request.body;
-    console.log(newEvent);
+
     const result = await pool.query(
       `INSERT INTO events (title, description, startTime, location, imageFileName, category)
         VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
@@ -159,7 +159,6 @@ const api = () => {
       const messages = result.rows;
 
       const enhancedMessages = messages.map((message) => {
-        console.log(message.user_email, userEmail);
         return {
           ...message,
           isFirstPerson: message.user_email === userEmail,
@@ -167,7 +166,6 @@ const api = () => {
         };
       });
 
-      console.log(enhancedMessages);
       return res.status(200).json(enhancedMessages);
     } catch (err) {
       console.log(err);
