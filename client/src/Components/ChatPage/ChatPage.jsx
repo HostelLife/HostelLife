@@ -39,7 +39,7 @@ function ChatPage() {
         setMessages(messages);
       });
     }, 1000);
-  }, []);
+  }, [eventId, userEmail]);
 
   if (!event) {
     return <div> </div>;
