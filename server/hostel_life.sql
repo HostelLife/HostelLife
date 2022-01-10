@@ -119,7 +119,7 @@ INSERT INTO messages (user_id, event_id, content, time_stamp) VALUES (4, 1, 'Hel
 INSERT INTO bookings (id, user_id, hostel_id, activation_date, deactivation_date) VALUES ('1', '1', '1', '2022-01-01 12:23:51', '2022-01-11 12:23:51');
 INSERT INTO bookings (id, user_id, hostel_id, activation_date, deactivation_date) VALUES ('2', '2', '3', '2022-01-20 10:11:15', '2022-02-03 10:11:15');
 INSERT INTO bookings (id, user_id, hostel_id, activation_date, deactivation_date) VALUES ('3', '3', '2', '2022-01-05 12:25:24', '2022-01-31 12:25:24');
-INSERT INTO bookings (id, user_id, hostel_id, activation_date, deactivation_date) VALUES ('4', '4', '3', '2022-02-01 11:30:00', '2022-03-01 11:30:00');
+INSERT INTO bookings (id, user_id, hostel_id, activation_date, deactivation_date) VALUES ('4', '4', '3', '2022-02-03 11:30:00', '2022-03-01 11:30:00');
 
 
 
