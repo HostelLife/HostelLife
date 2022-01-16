@@ -24,9 +24,8 @@ const activities = [
   },
   { label: "Food", urlSlug: "food", imagefilename: "7_Portes.jpg" },
   { label: "Party", urlSlug: "party", imagefilename: "shoko.png" },
+  { label: "Football", urlSlug: "football", imagefilename: "Camp-Nou.jpg" },
 ];
-
-// { label: "Football", urlSlug: "football", imagefilename: "Camp-Nou.jpg" },
 
 export default function CatagoriesPage() {
   return (
