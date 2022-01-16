@@ -26,6 +26,8 @@ const activities = [
   { label: "Party", urlSlug: "party", imagefilename: "shoko.png" },
 ];
 
+// { label: "Football", urlSlug: "football", imagefilename: "Camp-Nou.jpg" },
+
 export default function CatagoriesPage() {
   return (
     <Card
