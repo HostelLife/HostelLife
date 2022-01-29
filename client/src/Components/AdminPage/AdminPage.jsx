@@ -14,7 +14,7 @@ export default function AdminPage() {
 
   const body = { userName, userEmail, hostelId, checkInDate, checkOutDate };
   const newErrors = {};
-  if (!userName || userName === "") newErrors.userName = "Cannot be blanck!";
+  if (!userName || userName === "") newErrors.userName = "Cannot be blank!";
   else if (userName.length > 30) newErrors.userName = "Name is too long!";
 
   const onSubmitForm = async (e) => {
